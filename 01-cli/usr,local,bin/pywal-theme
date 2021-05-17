@@ -25,6 +25,7 @@ printf "%s\n" "$THEME" > "${XDG_CACHE_HOME}/.pywal-theme"
 (pidof -x qutebrowser >/dev/null && qutebrowser --target tab-bg-silent ':config-source wal.py') &
 (pidof firefox-bin firefox >/dev/null && pywalfox update) &
 (pidof bspwm >/dev/null && ~/.config/bspwm/bspwmrc) &
+(pidof mako >/dev/null && pkill mako && nohup mako) &
 (pidof stalonetray >/dev/null && pkill stalonetray && nohup stalonetray) &
 (pidof keepassxc >/dev/null && grep -E '^ApplicationTheme=classic$' "${XDG_CONFIG_HOME}/keepassxc/keepassxc.ini" && pkill keepassxc) &
 
