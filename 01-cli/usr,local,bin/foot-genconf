@@ -29,6 +29,6 @@ bright7=${color15}
 
 [cursor]
 color=${background} ${color13}
-beam-thickness=4
+beam-thickness=2
 EOF
 sed -i 's/=\#/=/g;s/ \#/ /g' "$CONFIGFILE"
