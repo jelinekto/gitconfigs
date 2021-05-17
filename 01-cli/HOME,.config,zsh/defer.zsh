@@ -1,4 +1,4 @@
-cat "${XDG_CACHE_HOME}/wal/sequences"
+[ -e "${XDG_CACHE_HOME}/wal/sequences" ] && cat "${XDG_CACHE_HOME}/wal/sequences"
 
 # Aliases
 ## regular
