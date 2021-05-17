@@ -1,0 +1,9 @@
+[Match]
+Name=*
+
+[Network]
+DHCP=yes
+
+[DHCP]
+#DUIDType=vendor
+#DUIDRawData=

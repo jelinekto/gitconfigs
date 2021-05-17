@@ -1,0 +1,122 @@
+sanitise tridactyllocal tridactylsync
+
+" Settings
+colors                     custom
+set editorcmd              urxvtc -name floating -e nvim %f
+set hintchars              asdfjkl;mcuiorewqp
+set hintuppercase          false
+set incsearch              true
+set modeindicator          false
+set modeindicatorshowkeys  true
+set scrollduration         0
+set yankto                 both
+
+" Search engines
+set searchurls.nul  nul
+set searchengine    nul
+set searchurls.s    http://127.0.0.1:8888/?q=%s
+set searchurls.si   http://127.0.0.1:8888/?q=!images%20%s
+set searchurls.g    https://www.startpage.com/do/search?q=%s
+set searchurls.gi   https://www.startpage.com/do/search?cat=pics&q=%s
+set searchurls.go   https://www.google.com/search?q=%s
+set searchurls.d    https://html.duckduckgo.com/html?q=%s
+set searchurls.b    https://www.bing.com/search?q=%s
+set searchurls.rs   https://www.startpage.com/do/search?q=site%3Areddit.com+%s
+set searchurls.pcs  https://lite.duckduckgo.com/lite/?q=site%3Aprocyclingstats.com+%s
+set searchurls.ep   https://lite.duckduckgo.com/lite/?q=site%3Aeliteprospects.com+%s
+set searchurls.gh   https://lite.duckduckgo.com/lite/?q=site%3Agithub.com+%s
+set searchurls.aw   https://wiki.archlinux.org/index.php?search=%s
+set searchurls.cw   https://cs.wikipedia.org/w/index.php?search=%s
+set searchurls.w    https://en.wikipedia.org/w/index.php?search=%s
+set searchurls.gw   https://wiki.gentoo.org/index.php?search=%s
+set searchurls.z    https://gpo.zugaina.org/Search?search=%s
+set searchurls.alp  https://pkgs.alpinelinux.org/packages?name=*%s*&branch=edge&arch=x86_64
+set searchurls.aur  https://aur.archlinux.org/packages/?O=0&SeB=nd&K=%s&outdated=&SB=p&SO=d&PP=250&do_Search=Go
+set searchurls.r    https://old.reddit.com/r/%s
+set searchurls.f    https://www.facebook.com/search/top/?q=%s&epa=SEARCH_BOX
+set searchurls.y    https://www.youtube.com/results?search_query=%s
+set searchurls.ya   https://getyarn.io/yarn-find?text=%s
+set searchurls.t    https://torrentz2.eu/search?f=%s
+set searchurls.rt   https://rutracker.org/forum/search_cse.php?q=%s
+set searchurls.tce  https://translate.google.com/#cs/en/%s
+set searchurls.tec  https://translate.google.com/#en/cs/%s
+set searchurls.ma   https://www.metal-archives.com/search?searchString=%s&type=band_name
+set searchurls.csfd https://www.csfd.cz/hledat/?q=%s
+set searchurls.fo   https://forvo.com/word/%s
+
+" Bindings
+bind s fillcmdline set
+bind S fillcmdline bind
+unbind ZZ
+unbind --mode=ex <C-c>
+unbind --mode=ex <Space>
+unbind <F1>
+bind  <A-F1> help
+bind --mode=insert <A-n> editor
+" closing tabs
+unbind d
+unbind D
+bind   dd tabclose
+bind   dD tabonly
+bind   d0 tabcloseallto left
+bind   d$ tabcloseallto right
+unbind u
+bind   U undo
+" opening tabs/windows
+unbind t
+unbind T
+bind   O fillcmdline tabopen
+bind   e current_url open
+bind   E current_url tabopen
+bind   C tabduplicate
+" switching tabs
+unbind B
+bind   J tabnext
+bind   K tabprev
+bind   w fillcmdline tab
+bind   W fillcmdline taball
+bind   <A-Tab> tabnext
+bind   ;1 tab 1
+bind   ;2 tab 2
+bind   ;3 tab 3
+bind   ;4 tab 4
+bind   ;5 tab 5
+bind   ;6 tab 6
+bind   ;7 tab 7
+bind   ;8 tab 8
+bind   ;9 tab 9
+" move tabs
+bind   mm tabmove -1
+bind   mM tabmove +1
+bind   gd tabdetach
+bind   gD composite tabduplicate | tabdetach
+bind   gG tabgrab
+bind   <C-p> pin
+" hinting
+bind   F hint -t
+bind   ;f hint -b
+" zoom
+bind   - zoom -0.1 true
+bind   = zoom 0.1 true
+bind   + zoom 1
+" reload
+bind   R reload
+bind   <C-r> reloadhard
+" bookmarks
+unbind a
+unbind A
+bind   b current_url bmark
+" find
+bind   / fillcmdline find
+bind   n findnext
+bind   N findnext -1
+" yanking
+bind   yy clipboard yankcanon
+" insert
+bind   I focusinput -l
+" open in mpv
+bind   ;m current_url !s mpv --force-window=immediate --ytdl-format="bestvideo[height<=?1080][vcodec!=vp9]+bestaudio/best"
+bind   ;M hint -W     !s mpv --force-window=immediate --ytdl-format="bestvideo[height<=?1080][vcodec!=vp9]+bestaudio/best"
+
+" vim: filetype=tridactyl
+" vim: commentstring="\ %s

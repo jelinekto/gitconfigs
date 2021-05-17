@@ -1,0 +1,82 @@
+{
+  "acceleratedTabCreation": true,
+  "animation": false,
+  "autoCollapseExpandSubtreeOnAttach": false,
+  "autoCollapseExpandSubtreeOnSelect": false,
+  "autoCollapseExpandSubtreeOnSelectExceptActiveTabRemove": false,
+  "chunkedUserStyleRules0": "QGtleWZyYW1lcyB0aHJvYmJlciB7fQpAa2V5ZnJhbWVzIHRhYi1idXJzdC1hbmltYXRpb24ge30KQGtleWZyYW1lcyB0YWItYnVyc3QtYW5pbWF0aW9uLWxpZ2h0IHt9CkBrZXlmcmFtZXMgYmxpbmsge30KCnRhYi1pdGVtIHsKICAtLXRhYi1zaXplOiAyM3B4ICFpbXBvcnRhbnQ7CiAgaGVpZ2h0OiB2YXIoLS10YWItc2l6ZSk7CiAgb3BhY2l0eTogMS4wOwogIGJvcmRlcjogc29saWQgMHB4OwogIGJveC1zaGFkb3c6IG5vbmUgIWltcG9ydGFudDsKfQp0YWItaXRlbS5hY3RpdmUgewogIG9wYWNpdHk6IDEuMDsKICBiYWNrZ3JvdW5kOiB0cmFuc3BhcmVudDsKICBib3gtc2hhZG93OiBub25lICFpbXBvcnRhbnQ7Cn0KdGFiLWl0ZW06aG92ZXIgewogIGJhY2tncm91bmQ6IHRyYW5zcGFyZW50OwogIG9wYWNpdHk6IDAuOTsKICBib3gtc2hhZG93OiBub25lICFpbXBvcnRhbnQ7Cn0KCi5uZXd0YWItYnV0dG9uLWJveCB7CiAgZGlzcGxheTogbm9uZTsKfQojdGFiYmFyIHsKICBib3R0b206IDAgIWltcG9ydGFudDsgLyogRWxpbWluYXRlIGRlYWQgc3BhY2Ugb24gYm90dG9tICovCn0KCi8qIEhpZGUgYm9yZGVyIG9uIHRhYiBiYXIsIGZvcmNlIGl0cyBzdGF0ZSB0byAnc2Nyb2xsJywgYWRqdXN0IG1hcmdpbi1sZWZ0IGZvciB3aWR0aCBvZiBzY3JvbGxiYXIuICovIAojdGFiYmFyIHsgYm9yZGVyOiAwOyBvdmVyZmxvdy15OiBzY3JvbGwgIWltcG9ydGFudDsgbWFyZ2luLWxlZnQ6IC0xMnB4ICFpbXBvcnRhbnQ7IHNjcm9sbGJhci13aWR0aDogYXV0bzsgfQovKiBIaWRlIC50d2lzdHkgYW5kIGFkanVzdCBtYXJnaW5zIHNvIGZhdmljb25zIGhhdmUgN3B4IG9uIGxlZnQuICovCnRhYi1pdGVtIC50d2lzdHkgewogIG1hcmdpbi1yaWdodDogLTEycHg7CiAgb3BhY2l0eTogMCAhaW1wb3J0YW50OwogIHBvc2l0aW9uOiByZWxhdGl2ZTsKICB6LWluZGV4OiAxMDAwMDsKfQovKiBQdXNoIHRhYiBsYWJlbHMgc2xpZ2h0bHkgdG8gdGhlIHJpZ2h0IHNvIHRoZXkncmUgY29tcGxldGVseSBoaWRkZW4gaW4gY29sbGFwc2VkIHN0YXRlICovCnRhYi1pdGVtIC5sYWJlbCB7CiAgICBtYXJnaW4tbGVmdDogN3B4Owp9Ci8qIEhpZGUgY2xvc2UgYnV0dG9ucyBvbiB0YWJzLiAqLwp0YWItaXRlbSAuY2xvc2Vib3ggewogICAgdmlzaWJpbGl0eTogY29sbGFwc2U7Cn0KLyogSGlkZSBzb3VuZCBwbGF5aW5nL211dGVkIGJ1dHRvbi4gKi8KLnNvdW5kLWJ1dHRvbjo6YmVmb3JlIHsKICAgIGRpc3BsYXk6IG5vbmUgIWltcG9ydGFudDsKfQovKiBBZGp1c3Qgc3R5bGUgZm9yIHRhYiB0aGF0IGhhcyBzb3VuZCBwbGF5aW5nLiAqLwp0YWItaXRlbS5zb3VuZC1wbGF5aW5nIC5mYXZpY29uOjphZnRlciB7CiAgICBjb250ZW50OiAnJzsKICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTsKICAgIHRvcDogNTAlOwogICAgbGVmdDogNTAlOwogICAgYm9yZGVyLXJhZGl1czogNTAlOwogICAgYmFja2dyb3VuZDogI0ZGRkZGRjsKICAgIHotaW5kZXg6IC0xOwogICAgb3BhY2l0eTogMDsKfQovKiBCZXR0ZXIgYWxpZ25tZW50IG9mIEZhdmljb25zIHdoZW4gY29sbGFwc2VkICovCnRhYi1pdGVtW2RhdGEtbGV2ZWxdW2RhdGEtbGV2ZWw9IjAiXSB7CiAgbWFyZ2luLWxlZnQ6IDIlICFpbXBvcnRhbnQ7Cn0KdGFiLWl0ZW1bZGF0YS1sZXZlbF1bZGF0YS1sZXZlbD0iMSJdIHsKICBtYXJnaW4tbGVmdDogNCUgIWltcG9ydGFudDsKfQp0YWItaXRlbVtkYXRhLWxldmVsXVtkYXRhLWxldmVsPSIyIl0gewogIG1hcmdpbi1sZWZ0OiA2JSAhaW1wb3J0YW50Owp9CnRhYi1pdGVtW2RhdGEtbGV2ZWxdW2RhdGEtbGV2ZWw9IjMiXSB7CiAgbWFyZ2luLWxlZnQ6IDglICFpbXBvcnRhbnQ7Cn0KdGFiLWl0ZW1bZGF0YS1sZXZlbF1bZGF0YS1sZXZlbD0iNCJdIHsKICBtYXJnaW4tbGVmdDogMTAlICFpbXBvcnRhbnQ7Cn0KdGFiLWl0ZW1bZGF0YS1sZXZlbF1bZGF0YS1sZXZlbD0iNSJdIHsKICBtYXJnaW4tbGVmdDogMTIlICFpbXBvcnRhbnQ7Cn0KdGFiLWl0ZW1bZGF0YS1sZXZlbF1bZGF0YS1sZXZlbD0iNiJdIHsKICBtYXJnaW4tbGVmdDogMTQlICFpbXBvcnRhbnQ7Cn0KdGFiLWl0ZW1bZGF0YS1sZXZlbF1bZGF0YS1sZXZlbD0iNiJdIHsKICBtYXJnaW4tbGVmdDogMTYlICFpbXBvcnRhbnQ7Cn0=",
+  "configsVersion": 24,
+  "context_bookmarkTree": false,
+  "context_closeTree": false,
+  "context_collapseAll": false,
+  "context_collapseTreeRecursively": false,
+  "context_expandAll": false,
+  "context_expandTreeRecursively": false,
+  "context_openAllBookmarksWithStructureRecursively": true,
+  "context_reloadTree": false,
+  "context_topLevel_bookmarkTree": true,
+  "context_topLevel_closeDescendants": true,
+  "context_topLevel_closeOthers": true,
+  "context_topLevel_closeTree": true,
+  "context_topLevel_collapseAll": true,
+  "context_topLevel_collapseTree": true,
+  "context_topLevel_collapseTreeRecursively": true,
+  "context_topLevel_expandAll": true,
+  "context_topLevel_expandTree": true,
+  "context_topLevel_expandTreeRecursively": true,
+  "context_topLevel_reloadDescendants": true,
+  "context_topLevel_reloadTree": true,
+  "defaultBookmarkParentId": "unfiled_____",
+  "dropLinksOnTabBehavior": 2,
+  "enableLinuxBehaviors": true,
+  "faviconizePinnedTabs": false,
+  "labelOverflowStyle": "crop",
+  "lastDraggedTabs": {
+    "tabIds": [
+      2
+    ],
+    "urlsDigest": "98fbb0a990b312d509e4ca338e0bbb722e1c2247"
+  },
+  "maxTreeLevel": 6,
+  "migratedBookmarkUrls": [
+    "moz-extension://4d07593d-17e2-46bb-ab3c-c990fdd5c0c6/sidebar/sidebar.html",
+    "moz-extension://4d07593d-17e2-46bb-ab3c-c990fdd5c0c6/resources/group-tab.html",
+    "moz-extension://4d07593d-17e2-46bb-ab3c-c990fdd5c0c6/options/options.html",
+    "moz-extension://4d07593d-17e2-46bb-ab3c-c990fdd5c0c6/resources/startup.html",
+    "moz-extension://4d07593d-17e2-46bb-ab3c-c990fdd5c0c6/tests/runner.html"
+  ],
+  "notifiedFeaturesVersion": 8,
+  "optionsExpandedSections": [
+    "section-debug"
+  ],
+  "showExpertOptions": true,
+  "simulateSVGContextFill": false,
+  "suppressGapFromShownOrHiddenToolbarOnFullScreen": true,
+  "syncDeviceInfo": {
+    "id": "device-1620386018400-2503",
+    "name": "Firefox on Linux",
+    "icon": "device-desktop",
+    "timestamp": 1620392519300
+  },
+  "syncDevices": {
+    "device-1620386018400-2503": {
+      "id": "device-1620386018400-2503",
+      "name": "Firefox on Linux",
+      "icon": "device-desktop",
+      "timestamp": 1620392519300
+    }
+  },
+  "syncDevicesLocalCache": {
+    "device-1620386018400-2503": {
+      "id": "device-1620386018400-2503",
+      "name": "Firefox on Linux",
+      "icon": "device-desktop",
+      "timestamp": 1620392519300
+    }
+  },
+  "treeDoubleClickBehavior": 1,
+  "useCachedTree": false,
+  "userStyleRules": "",
+  "userStyleRulesFieldHeight": "173.3333282470703px",
+  "warnOnCloseTabs": false
+}

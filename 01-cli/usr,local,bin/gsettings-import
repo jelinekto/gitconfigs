@@ -1,0 +1,18 @@
+#!/bin/sh
+config="${XDG_CONFIG_HOME}/gtk-3.0/settings.ini"
+if [ ! -f "$config" ]; then exit 1; fi
+
+gtk_theme="$(awk -F '=' '/^gtk-theme-name/ {print $2}' "$config")"
+icon_theme="$(awk -F '=' '/^gtk-icon-theme-name/ {print $2}' "$config")"
+cursor_theme="$(awk -F '=' '/^gtk-cursor-theme-name/ {print $2}' "$config")"
+font_name="$(awk -F '=' '/^gtk-font-name/ {print $2}' "$config")"
+key_theme="$(awk -F '=' '/^gtk-key-theme-name/ {print $2}' "$config")"
+
+gsettings set org.gnome.desktop.interface gtk-theme     "$gtk_theme"
+gsettings set org.gnome.desktop.interface icon-theme    "$icon_theme"
+gsettings set org.gnome.desktop.interface cursor-theme  "$cursor_theme"
+gsettings set org.gnome.desktop.interface font-name     "$font_name"
+gsettings set org.gnome.desktop.interface gtk-key-theme "$key_theme"
+
+gsettings set org.gnome.desktop.interface gtk-theme    Adwaita
+gsettings set org.gnome.desktop.interface gtk-theme    "$gtk_theme"

@@ -1,0 +1,33 @@
+#!/bin/sh
+DISTRO="$(awk -F '^ID=' '/^ID=/ {print $2}' /etc/os-release 2>/dev/null)"
+
+case "$DISTRO" in
+  arch)
+    AUR_HELPER='yay'
+
+    ${AUR_HELPER} -Syu || exit 1
+
+    if [ "$(${AUR_HELPER} -Qqdt | wc -l)" -gt '0' ]; then
+      ${AUR_HELPER} -Rns $(${AUR_HELPER} -Qqdt)
+    fi
+
+    doas rm -Rf /tmp/.pacman_cache "${XDG_CACHE_HOME}/yay" 2>/dev/null
+  ;;
+  *)
+    if type termux-setup-storage >/dev/null 2>&1; then
+      pkg up
+    else
+      printf 'Unknown distro, update your script.\n'
+    fi
+  ;;
+esac
+
+kill "$(cat "$XDG_CACHE_HOME"/.lemonstatus/.*-updates 2>/dev/null)" 2>/dev/null
+pkill -SIGRTMIN+25 i3blocks
+
+printf '\n'
+[ -x /.gitconfigs/install.sh ] && doas /.gitconfigs/install.sh >/dev/null
+[ -x ~/.gitconfigs/install.sh ] && ~/.gitconfigs/install.sh >/dev/null
+
+printf "\n\nPress Enter to close..."
+read -r test

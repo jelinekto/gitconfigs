@@ -1,0 +1,42 @@
+#!/bin/sh
+case "$1" in
+  dark|light)
+    THEME="$(fd '\.json$' "${XDG_CONFIG_HOME}/pywal-schemes/${1}" | shuf -n 1)"
+    printf "Setting theme to '%s'.\n" "$THEME"
+    ;;
+  *)
+    THEME="$1"
+    [ ! -e "$THEME" ] && printf 'No such file.\n' && exit 1
+    ;;
+esac
+
+wal -q --theme "$THEME" || exit 1
+wal --preview | grep -v 'Current'
+printf "%s\n" "$THEME" > "${XDG_CACHE_HOME}/.pywal-theme"
+. "${XDG_CACHE_HOME}/wal/colors.sh"
+
+# background
+(pidof X >/dev/null && hsetroot -solid "$background") &
+
+# various apps
+(type rofi >/dev/null 2>&1 && sed -i "s/selected-normal-foreground: @foreground/selected-normal-foreground: @background/;s/border-color: @background/border-color: $color6/" "${XDG_CACHE_HOME}/wal/colors-"*.rasi && echo '#window { border: 2; }' >> "${XDG_CACHE_HOME}/wal/colors-rofi-dark.rasi") &
+(type alacritty >/dev/null 2>&1 && alacritty-genconf) &
+(type foot >/dev/null 2>&1 && foot-genconf) &
+(pidof -x qutebrowser >/dev/null && qutebrowser --target tab-bg-silent ':config-source wal.py') &
+(pidof firefox-bin firefox >/dev/null && pywalfox update) &
+(pidof bspwm >/dev/null && ~/.config/bspwm/bspwmrc) &
+(pidof stalonetray >/dev/null && pkill stalonetray && nohup stalonetray) &
+(pidof keepassxc >/dev/null && grep -E '^ApplicationTheme=classic$' "${XDG_CONFIG_HOME}/keepassxc/keepassxc.ini" && pkill keepassxc) &
+
+# GTK theme
+[ -e "${XDG_CACHE_HOME}/oomox-xresources-reverse" ] && rm -R "${XDG_CACHE_HOME}/oomox-xresources-reverse"
+GTK_THEME="${XDG_DATA_HOME}/pywal-gtk/$(readlink -f "${THEME}" | sed 's;/;,;g')"
+if [ -e "$GTK_THEME" ]; then
+  cp -a "$GTK_THEME" "${XDG_CACHE_HOME}/oomox-xresources-reverse"
+else
+  pidof -x sassc && killall sassc
+  oomox-cli /opt/oomox/scripted_colors/xresources/xresources-reverse 1>/dev/null
+  mkdir -p "${XDG_DATA_HOME}/pywal-gtk"
+  cp -a "${XDG_CACHE_HOME}/oomox-xresources-reverse" "$GTK_THEME"
+fi
+pkill xsettingsd 2>/dev/null; nohup timeout 2 xsettingsd >/dev/null 2>&1 &

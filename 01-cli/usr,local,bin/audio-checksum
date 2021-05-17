@@ -1,0 +1,14 @@
+#!/bin/sh
+[ ! -f "$1" ] && echo "File '$1' does not exist" && exit 1
+[ ! -f "$2" ] && echo "File '$2' does not exist" && exit 1
+
+FIRST="$(ffmpeg -i "$1" -map 0:a -f md5 - 2>/dev/null | cut -f 2 -d '=')"
+SECOND="$(ffmpeg -i "$2" -map 0:a -f md5 - 2>/dev/null | cut -f 2 -d '=')"
+
+echo "File 1: $FIRST"
+echo "File 2: $SECOND"
+if [ "$FIRST" = "$SECOND" ]; then
+  echo Checksums are the same.
+else
+  echo Checksums differ.
+fi

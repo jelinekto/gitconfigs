@@ -1,0 +1,110 @@
+#env:
+  #TERM: xterm-256color
+
+window:
+  dimensions:
+    columns: 0
+    lines: 0
+  padding:
+    x: 2
+    y: 3
+  dynamic_padding: false
+  decorations: none # none/full
+  startup_mode: Maximized
+scrolling:
+  history: 32000
+  multiplier: 5
+
+debug.render_timer: false
+debug.persistent_logging: false
+draw_bold_text_with_bright_colors: false
+
+# Values for `animation`:
+#   - Ease
+#   - EaseOut
+#   - EaseOutSine
+#   - EaseOutQuad
+#   - EaseOutCubic
+#   - EaseOutQuart
+#   - EaseOutQuint
+#   - EaseOutExpo
+#   - EaseOutCirc
+#   - Linear
+bell:
+  animation: EaseOutExpo
+  duration: 0
+background_opacity: 1
+
+# Available fields:
+#   - mouse
+#   - action
+#   - mods (optional)
+# Values for `mouse`:
+#   - Middle
+#   - Left
+#   - Right
+#   - Numeric identifier such as `5`
+mouse_bindings:
+  - { mouse: Middle, action: PasteSelection }
+
+mouse:
+  double_click: { threshold: 300 }
+  triple_click: { threshold: 300 }
+
+  hide_when_typing: false
+
+  url:
+    launcher: browser
+    # modifiers:
+
+selection:
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>"
+  save_to_clipboard: true
+
+window.dynamic_title: true
+
+cursor:
+  style: Block # block/underline/beam
+  unfocused_hollow: true
+
+live_config_reload: true
+
+shell:
+  program: zsh
+#  args:
+#    - --login
+
+key_bindings:
+  # defaults
+  - { key: V,         mods: Control|Shift, action: Paste                        }
+  - { key: C,         mods: Control|Shift, action: Copy                         }
+  - { key: V,         mods: Alt,           action: Paste                        }
+  - { key: C,         mods: Alt,           action: Copy                         }
+  - { key: Key0,      mods: Control,       action: ResetFontSize                }
+  - { key: Equals,    mods: Control,       action: IncreaseFontSize             }
+  - { key: Minus,     mods: Control,       action: DecreaseFontSize             }
+  - { key: L,         mods: Control,       action: ClearLogNotice               }
+  - { key: L,         mods: Control,       chars:  "\x0c"                       }
+  # various
+  - { key: Semicolon, mods: Alt,           action: SpawnNewInstance             }
+  - { key: Return,    mods: Alt,           action: SpawnNewInstance             }
+  # vi bindings
+  - { key: K,         mods: Control|Alt,   action: ScrollLineUp                 }
+  - { key: J,         mods: Control|Alt,   action: ScrollLineDown               }
+  - { key: U,         mods: Control|Alt,   action: ScrollHalfPageUp             }
+  - { key: D,         mods: Control|Alt,   action: ScrollHalfPageDown           }
+  - { key: B,         mods: Control|Alt,   action: ScrollPageUp                 }
+  - { key: F,         mods: Control|Alt,   action: ScrollPageDown               }
+  - { key: G,         mods: Control|Alt,   action: ScrollToTop                  }
+  # - { key: G,         mods: Control|Alt,   action: ScrollToBottom               }
+  - { key: P,         mods: Control|Alt,   action: Paste                        }
+  - { key: Y,         mods: Control|Alt,   action: Copy                         }
+  # - { key: K,         mods: Control|Alt,   action: IncreaseFontSize             }
+  # - { key: J,         mods: Control|Alt,   action: DecreaseFontSize             }
+  # - { key: U,         mods: Control|Alt,   action: ResetFontSize                }
+  # vi mode
+  - { key: Space,     mods: Alt,           action: ToggleViMode                 }
+  - { key: Escape,                         action: ScrollToBottom,     mode: Vi }
+  - { key: Escape,                         action: ToggleViMode,       mode: Vi }
+  - { key: J,         mods: Shift,         action: ScrollLineDown,     mode: Vi }
+  - { key: K,         mods: Shift,         action: ScrollLineUp,       mode: Vi }

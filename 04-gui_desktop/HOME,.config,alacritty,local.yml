@@ -1,0 +1,10 @@
+font:
+  normal:
+    family: Ubuntu Mono
+  size: 15.5
+  offset:
+    x: -1
+    y: -2
+  glyph_offset:
+    x: 0
+    y: 0

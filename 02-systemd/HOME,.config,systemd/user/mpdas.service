@@ -1,0 +1,8 @@
+[Unit]
+Description=AudoScrobbler client for MPD
+
+[Service]
+ExecStart=/usr/bin/mpdas -c %h/.config/mpdasrc
+
+[Install]
+WantedBy=default.target

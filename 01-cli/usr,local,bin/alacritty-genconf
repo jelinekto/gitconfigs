@@ -1,0 +1,21 @@
+#!/bin/sh
+cat ~/.config/alacritty/config.yml > "${XDG_CACHE_HOME}/.alacritty.yml"
+
+if [ -e ~/.config/alacritty/local.yml ]; then
+  printf '\n' >> "${XDG_CACHE_HOME}/.alacritty.yml"
+  cat ~/.config/alacritty/local.yml >> "${XDG_CACHE_HOME}/.alacritty.yml"
+fi
+
+if [ -e "${XDG_CACHE_HOME}/wal/colors.yml" ]; then
+  printf '\ncolors:\n  normal:\n' >> "${XDG_CACHE_HOME}/.alacritty.yml"
+  grep -E 'color[0-7]:' "${XDG_CACHE_HOME}/wal/colors.yml" >> "${XDG_CACHE_HOME}/.alacritty.yml"
+  printf '\n  bright:\n' >> "${XDG_CACHE_HOME}/.alacritty.yml"
+  grep -E 'color[1-8]:' "${XDG_CACHE_HOME}/wal/colors.yml" >> "${XDG_CACHE_HOME}/.alacritty.yml"
+  printf '\n  dim:\n' >> "${XDG_CACHE_HOME}/.alacritty.yml"
+  grep -E 'color[1-8]:' "${XDG_CACHE_HOME}/wal/colors.yml" >> "${XDG_CACHE_HOME}/.alacritty.yml"
+
+  printf '\n  primary:\n' >> "${XDG_CACHE_HOME}/.alacritty.yml"
+  grep -E 'ground|cursor' "${XDG_CACHE_HOME}/wal/colors.yml" >> "${XDG_CACHE_HOME}/.alacritty.yml"
+
+  sed -i 's/"#/"0x/g;s/color0/black/g;s/color1/red/g;s/color2/green/g;s/color3/yellow/g;s/color4/blue/g;s/color5/magenta/g;s/color6/cyan/g;s/color7/white/g;s/color8/black/g' "${XDG_CACHE_HOME}/.alacritty.yml"
+fi

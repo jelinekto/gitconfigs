@@ -1,0 +1,39 @@
+#!/bin/sh
+
+CUEFILE="$1" && shift
+[ ! -f "${CUEFILE}" ] && echo "No such cue file." && exit 1
+
+TEMPFILE="${XDG_CACHE_HOME}/.wvcue"
+
+grep -m1 'TRACK ' -B1000 ${CUEFILE} | head -n -1 | sed 's/REM //g' | sed -r 's/\s+/=/' | awk '{$1=$1};1' > ${TEMPFILE}
+
+. ${TEMPFILE} 2>/dev/null
+[ -z "$ARTIST" ]		&& ARTIST="$PERFORMER"
+[ -z "$ALBUM" ]		&& ALBUM="$TITLE"
+[ -z "$DATE" ]			&& DATE="$YEAR"
+rm ${TEMPFILE}
+
+wvtag -w "Artist=${ARTIST}" -w "Year=${DATE}" -w "Album=${ALBUM}" "$@"
+
+TRACK="1"
+for f in "$@"; do
+	NEXTTRACK="$((TRACK+1))"
+
+	if [ "$(printf ${TRACK} | wc -m)" = "1" ]; then
+		PADTRACK="0${TRACK}"
+	else
+		PADTRACK="${TRACK}"
+	fi
+
+	if [ "$(printf ${NEXTTRACK} | wc -m)" = "1" ]; then
+		PADNEXTTRACK="0${NEXTTRACK}"
+	else
+		PADNEXTTRACK="${NEXTTRACK}"
+	fi
+
+	TITLE="$(sed -n "/TRACK ${PADTRACK}/,/TRACK ${PADNEXTTRACK}/p" "${CUEFILE}" | awk '/TITLE/ {$1=""; print substr($0,2)}' | cut -c2- | rev | cut -c3- | rev)"
+
+	wvtag -w "Title=${TITLE}" -w "Track=${PADTRACK}" "${f}"
+
+	TRACK="$NEXTTRACK"
+done

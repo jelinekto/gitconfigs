@@ -1,0 +1,9 @@
+[Unit]
+Description=Web content sanitizer proxy
+After=searx.service
+
+[Service]
+ExecStart=/usr/bin/morty -ipv6 -key d2hhdGV2ZXI=
+
+[Install]
+WantedBy=default.target

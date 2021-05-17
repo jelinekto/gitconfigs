@@ -1,0 +1,19 @@
+#!/bin/sh
+START_TIME=$(date +%s)
+
+finish() {
+  tput cnorm
+  [ -n "$ECHOCTL" ] && stty echoctl
+  printf '\n'
+  exit 0
+}
+trap finish INT
+
+tput civis
+! stty -a | grep -q -- '-echoctl' && ECHOCTL=1 && stty -echoctl
+
+export TZ=UTC
+while true; do
+    printf "\r%s" "$(date --date now-"${START_TIME}"sec +%H:%M:%S.%2N)"
+    sleep 0.03
+done

@@ -1,0 +1,9 @@
+[Unit]
+Description=Basic local Searx instance
+After=tor.service
+
+[Service]
+ExecStart=/usr/local/bin/searx-run
+
+[Install]
+WantedBy=default.target

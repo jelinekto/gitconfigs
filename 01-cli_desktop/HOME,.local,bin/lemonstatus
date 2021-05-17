@@ -1,0 +1,88 @@
+#!/bin/dash
+rm -R "${XDG_CACHE_HOME}"/.lemonstatus 2>/dev/null
+mkdir -p "${XDG_CACHE_HOME}"/.lemonstatus
+
+SEPB="  "
+SEPI=" "
+SEPA=" "
+
+block() {
+  ICON="$1" && shift
+  NAME="$1" && shift
+  INTERVAL="$1" && shift
+
+  (while :; do
+    VALUE="$(eval "$@")"
+    if [ -n "$VALUE" ]; then
+      printf '%s' "${SEPB}${ICON}${SEPI}${VALUE}${SEPA}" > "${XDG_CACHE_HOME}"/.lemonstatus/"$NAME"
+    else
+      printf '' > "${XDG_CACHE_HOME}"/.lemonstatus/"$NAME"
+    fi
+
+    sleep "$INTERVAL" &
+    echo $! > "${XDG_CACHE_HOME}"/.lemonstatus/."$NAME"
+
+    wait
+  done &)
+}
+
+block_pers() {
+  NAME="$1" && shift
+  CMD="$1" && shift
+
+  ($CMD $@ > "${XDG_CACHE_HOME}"/.lemonstatus/"$NAME") &
+}
+
+# Blocks definitions
+block '' 01-workspaces infinity \
+"sleep 0.02 && bspc wm -g | tr ':' '\n' | grep -E '^o|^O|^F' | tr '\n' ' ' | sed 's/o.//g;s/[O,F].//g'"
+
+block_pers 02-windowtitle \
+"xtitle -t 60 -s -f %s\n"
+
+block '     '  101-mpd 4 \
+"mpc -f '%artist%  -  %title%' current"
+
+block  102-updates 1800 \
+"until ping -qc 1 1.1.1.1 1>/dev/null 2>&1; do sleep 5; done; checkupdates | wc -l | sed 's/^0$//g'"
+
+block   103-usbdrive 120 \
+"udiskie-info -a -f is_mounted | wc -l | grep -Ev '^0$'"
+
+block   104-volume infinity \
+"pamixer --get-volume-human"
+
+block   105-screentemp infinity \
+"printf \"\$(cat "${XDG_CACHE_HOME}"/.screentemp)K\""
+
+block   106-cpuusage 0 \
+"printf \$(printf \"%03d\n\" \$((100-\$(vmstat 1 3 | awk 'END{print \$15}'))))%%"
+
+block   107-loadavg 9 \
+"cut -d ' ' -f -3 /proc/loadavg"
+
+block   109-ram 5 \
+"free --mebi | awk '/Mem|Swap/ {print \$3+\$5}' | sed -e 'N;s/\n/+/;s/+0//;s/$/ MiB/'"
+
+block   110-gputemp 4 \
+"printf '%s °C' \$(sensors -Au radeon-pci-* | awk -F '[:|.]' '/input/ {print \$2}')"
+
+block   111-coretemp 3 \
+"printf '%s °C' \$(cut -c -2 /sys/devices/platform/it87.656/hwmon/hwmon*/temp1_input)"
+
+block '' 112-clock 23 \
+"date \"+%a %d %b  %H:%M\""
+
+# Print status line
+sleep 0.2
+
+while :; do
+  echo "%{A4:bspc desktop -f prev.occupied.local:}%{A5:bspc desktop -f next.occupied.local:}\
+$(tail -qn 1 "${XDG_CACHE_HOME}"/.lemonstatus/0*)\
+%{A}%{A}%{r}\
+$(tail -qn 1 "${XDG_CACHE_HOME}"/.lemonstatus/1*)"
+
+  inotifywait -e modify "${XDG_CACHE_HOME}"/.lemonstatus/* >/dev/null 2>&1
+done
+
+# vi: ft=sh

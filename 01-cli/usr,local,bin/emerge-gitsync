@@ -1,0 +1,19 @@
+#!/bin/sh
+for repo in /etc/portage/repos.conf/*; do
+ LOCATION="$(awk -F ' = ' '/^location/ {print $2}' "$repo")"
+ URI="$(awk -F ' = ' '/^sync-uri/ {print $2}' "$repo")"
+
+ [ ! -e "$LOCATION" ] && mkdir -p "$LOCATION"
+
+ [ ! -e "${LOCATION}/.git" ] && git clone --depth=1 "$URI" "$LOCATION" && NOFETCH=y
+
+ ([ -z "$NOFETCH" ] && git -C "$LOCATION" fetch --depth=1 origin master && git -C "$LOCATION" reset --hard origin/master && git -C "$LOCATION" gc --prune=now) &
+done
+
+wait
+
+(if type eix; then
+  mv /var/cache/eix/portage.eix /var/cache/eix/previous.eix
+  eix-update
+  eix-diff
+fi) &

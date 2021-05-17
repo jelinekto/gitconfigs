@@ -1,0 +1,28 @@
+# behaviour
+numlockx on &
+xset s off -dpms &
+screentemp 6500 &
+setxkbmap jelinek &
+
+# look
+xsetroot -cursor_name left_ptr &
+(sleep 0.5 && xrdb -merge ~/.config/X11/Xresources && pywal-theme dark) &
+
+# nvidia
+if lsmod | grep -qi nvidia; then
+  doas unlink /etc/X11/xorg.conf.d/10-intel.conf 2>/dev/null
+  doas ln -sf /etc/X11/10-nvidia.conf /etc/X11/xorg.conf.d 2>/dev/null
+  xrandr --setprovideroutputsource modesetting NVIDIA-0
+  xrandr --auto
+  xrandr --dpi 96
+else
+  doas unlink /etc/X11/xorg.conf.d/10-nvidia.conf 2>/dev/null
+  doas ln -sf /etc/X11/10-intel.conf /etc/X11/xorg.conf.d 2>/dev/null
+fi
+
+# daemons
+urxvtd -q -o &
+greenclip daemon &
+unclutter --timeout 2 &
+
+exec bspwm

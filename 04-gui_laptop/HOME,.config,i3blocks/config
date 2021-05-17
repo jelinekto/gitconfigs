@@ -1,0 +1,60 @@
+separator=false
+separator_block_width=12
+
+[mpd]
+command=mpc -f ' %artist%  -  %title%' current
+interval=4
+signal=30
+
+[updates]
+command=until ping -qc 1 1.1.1.1 1>/dev/null 2>&1; do sleep 3; done; echo " $(checkupdates | wc -l)" | grep -Ev ' 0$'
+interval=1800
+signal=25
+
+[usb]
+command=udiskie-info -a -f is_mounted | wc -l | grep -Ev '^0$'
+interval=120
+signal=29
+
+[volume]
+command=pamixer --get-volume-human | sed 's/^/ /'
+interval=60
+signal=28
+
+[brightness]
+command=echo " $(xbacklight -get)%"
+interval=180
+signal=27
+
+[cpufreq]
+command=echo " $(($(cat /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq)/1000)) MHz"
+interval=45
+signal=26
+
+[cpuusage]
+command=printf " %03d%%\n" $((100-$(vmstat 1 3 | awk 'END{print $15}')))
+interval=repeat
+
+[loadavg]
+command=echo " $(cut -d ' ' -f -3 /proc/loadavg)"
+interval=10
+
+[ram]
+command=free --mebi | awk '/Mem|Swap/ {print $3+$5}' | sed -e 'N;s/\n/+/;s/+0//;s/$/ MiB/;s/^/ /'
+interval=5
+
+[gputemp]
+command=echo " $(nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader) °C"
+interval=5
+
+[coretemp]
+command=echo " $(sensors | awk -vRS='.' -vFS='+' '/temp1:/ {print $2" °C"}')"
+interval=3
+
+[battery]
+command=acpi | cut -f 3-5 -d' ' | sed -e 's/Unknown, / /g;s/Discharging, / /g;s/Charging, / /g;s/Full, / /g'
+interval=10
+
+[time]
+command=date "+%a %d %b  %H:%M:%S"
+interval=1

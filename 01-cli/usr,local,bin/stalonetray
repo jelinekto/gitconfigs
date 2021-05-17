@@ -1,0 +1,11 @@
+#!/bin/sh
+. "${XDG_CACHE_HOME}/wal/colors.sh"
+[ -z "$background" ] && background='#000000'
+
+exec /usr/bin/stalonetray \
+ --background "$background" \
+ --window-type desktop \
+ --skip-taskbar true \
+ --window-strut none \
+ --icon-size 1 \
+"$@"

@@ -1,0 +1,11 @@
+configuration {
+	font: "Ubuntu Regular 14";
+  theme: "~/.cache/wal/colors-rofi-dark.rasi";
+	padding: 0;
+	width: 50;
+	lines: 15;
+	columns: 1;
+	auto-select: false;
+	hide-scrollbar: true;
+  modi: "drun";
+}

@@ -1,0 +1,21 @@
+#!/bin/sh
+. "${XDG_CACHE_HOME}/wal/colors.sh"
+
+exec /usr/bin/swaylock -e --indicator-idle-visible \
+  -c "$background" \
+  --inside-ver-color="$background" \
+  --inside-wrong-color="$color1" \
+  --inside-color="$background" \
+  --ring-ver-color="$color3" \
+  --ring-wrong-color="$foreground" \
+  --ring-color="$foreground" \
+  --line-color="$color8" \
+  --key-hl-color="$color2" \
+  --bs-hl-color="$color5" \
+  --separator-color="$color8" \
+  --text-color "$foreground" \
+  --text-clear-color "$foreground" \
+  --text-caps-lock-color "$foreground" \
+  --text-ver-color "$foreground" \
+  --text-wrong-color "$foreground" \
+  "$@"

@@ -1,0 +1,45 @@
+#!/bin/dash
+while echo "$1" | grep -Eq -- '^-'; do
+  case $1 in
+    --nightly|-n)
+      LAUNCH=~/.local/firefox/nightly/firefox-bin
+      ;;
+    --beta|-b)
+      LAUNCH=~/.local/firefox/beta/firefox-bin
+      ;;
+    --stable|-s)
+      LAUNCH=~/.local/firefox/stable/firefox-bin
+      ;;
+    --developer|-d)
+      LAUNCH=~/.local/firefox/developer/firefox-bin
+      ;;
+    --esr-next)
+      LAUNCH=~/.local/firefox/esr-next/firefox-bin
+      ;;
+    --esr)
+      LAUNCH=~/.local/firefox/esr/firefox-bin
+      ;;
+    --system)
+      LAUNCH=/usr/bin/firefox*
+      ;;
+    --*)
+      PARAMS="${PARAMS} ${1}"
+      ;;
+  esac
+  shift
+done
+
+if [ ! -e ~/.mozilla ]; then
+  doas mkdir ~/.mozilla
+  doas chown "$USER":"$USER" ~/.mozilla
+fi
+
+[ -z "$LAUNCH" ] && for BIN in ~/.local/firefox/*/firefox-bin /usr/bin/firefox*; do
+  [ -x "$BIN" ] && LAUNCH="$BIN" && break
+done
+
+type apulse > /dev/null && LAUNCH="apulse ${LAUNCH}"
+
+LAUNCH="${LAUNCH} ${PARAMS} $*"
+
+exec $LAUNCH

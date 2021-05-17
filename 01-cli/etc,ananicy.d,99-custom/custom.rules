@@ -1,0 +1,10 @@
+{ "name": "QtWebEngineProcess", "type": "Doc-View" }
+{ "name": "bspsubscribe", "type": "BG_CPUIO" }
+{ "name": "lemonbar", "type": "BG_CPUIO" }
+{ "name": "lemonstatus", "type": "BG_CPUIO" }
+{ "name": "lemontoggle", "type": "BG_CPUIO" }
+{ "name": "picom", "type": "Doc-View" }
+{ "name": "qutebrowser", "type": "Doc-View" }
+{ "name": "sxhkd", "type": "LowLatency_RT" }
+{ "name": "systemd-journald", "type": "BG_CPUIO" }
+{ "name": "xcape", "type": "LowLatency_RT" }

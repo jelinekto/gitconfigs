@@ -1,0 +1,6 @@
+#!/bin/sh
+export FZF_DEFAULT_COMMAND='fd -HL'
+exec /usr/bin/fzf --no-sort --cycle --layout=reverse --border=none --info=inline \
+--color=16,hl:5,hl+:0,fg+:0,bg+:6,info:8,prompt:8,pointer:0,marker:0,spinner:1 \
+--bind="enter:accept-non-empty,tab:down,shift-tab:up,ctrl-f:page-down,ctrl-b:page-up,ctrl-d:half-page-down,ctrl-u:half-page-up" \
+ "$@"

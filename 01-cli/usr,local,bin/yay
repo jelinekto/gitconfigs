@@ -1,0 +1,9 @@
+#!/bin/dash
+exec schedtool -n 20 -D -e /usr/bin/yay \
+  --devel --upgrademenu \
+  --nosudoloop --sudo doas \
+  --sortby popularity \
+  --timeupdate \
+  --norebuild \
+  --answerclean None --answerdiff None --answeredit None --removemake \
+  "$@"

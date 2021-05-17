@@ -1,0 +1,38 @@
+#!/bin/sh
+while echo $1 | grep -q '^-'; do
+  [ "$1" = "--sh" ] && FORMAT="sh"
+  [ "$1" = "-s" ] && FORMAT="sh"
+  [ "$1" = "--dash" ] && FORMAT="dash"
+  [ "$1" = "-d" ] && FORMAT="dash"
+  [ "$1" = "--bash" ] && FORMAT="bash"
+  [ "$1" = "-b" ] && FORMAT="bash"
+  [ "$1" = "--python" ] && FORMAT="python"
+  [ "$1" = "--py" ] && FORMAT="python"
+  [ "$1" = "-p" ] && FORMAT="python"
+  [ "$1" = "-e" ] && EDIT="1"
+  [ "$1" = "--edit" ] && EDIT="1"
+  shift
+done
+
+[ ! -z "$FORMAT" ] && FORMATLOCK="1"
+
+for f in $@; do
+  if [ -z "$FORMATLOCK" ]; then
+    echo "$f" | grep -q '.sh$' && FORMAT="sh"
+    echo "$f" | grep -q '.bash$' && FORMAT="bash"
+    echo "$f" | grep -q '.py$' && FORMAT="python"
+  fi
+
+  touch "$f"
+
+  if [ "$(cat "$f" | wc -l)" = "0" ] && [ ! -z "$FORMAT" ]; then
+    [ "$FORMAT" = 'sh' ] && printf '#!/bin/sh\n\n' > "$f"
+    [ "$FORMAT" = 'dash' ] && printf '#!/bin/dash\n\n' > "$f"
+    [ "$FORMAT" = 'bash' ] && printf '#!/usr/bin/env bash\n\n' > "$f"
+    [ "$FORMAT" = 'python' ] && printf '#!/usr/bin/env python3\n\n' > "$f"
+  fi
+
+  chmod +x "$f"
+done
+
+[ ! -z "$EDIT" ] && exec "$EDITOR" "$@" || exit 0

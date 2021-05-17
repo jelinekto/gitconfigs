@@ -1,0 +1,25 @@
+#!/bin/sh
+SOURCE="$1"
+shift
+TARGET="$1"
+shift
+OPTS="$@"
+
+[ ! -d "${XDG_CACHE_HOME}/.wv-to-opus" ] && mkdir -p "${XDG_CACHE_HOME}/.wv-to-opus"
+
+DIRNAME="$(basename "$SOURCE")"
+[ "$DIRNAME" = "." ] && DIRNAME="$(pwd | rev | cut -f1 -d/ | rev)"
+
+mkdir -p "${TARGET}/${DIRNAME}"
+for f in "${SOURCE}"/*.wv; do
+	while [ ! "$(($(pgrep ffmpeg | wc -l)+$(pgrep opusenc | wc -l)))" -lt "$(($(nproc)-1))" ]; do sleep 0.3; done
+	(BASENAME="$(basename -s '.wv' "$f")"
+	if [ ! -f "${TARGET}/${DIRNAME}/${BASENAME}.ogg" ] && [ ! -f "${XDG_CACHE_HOME}/.wv-to-opus/${BASENAME}.flac" ]; then
+		ffmpeg -y -i "$f" "${XDG_CACHE_HOME}/.wv-to-opus/${BASENAME}.flac" -compression_level 1 2>/dev/null
+		opusenc "${XDG_CACHE_HOME}/.wv-to-opus/${BASENAME}.flac" "${TARGET}/${DIRNAME}/${BASENAME}.ogg" ${OPTS}
+		rm "${XDG_CACHE_HOME}/.wv-to-opus/${BASENAME}.flac"
+	fi) &
+done
+
+wait
+echo Done.

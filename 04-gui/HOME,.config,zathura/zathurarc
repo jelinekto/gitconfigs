@@ -1,0 +1,24 @@
+set window-title-basename true
+set window-title-page true
+set statusbar-home-tilde true
+
+set font "Ubuntu Regular 14"
+set guioptions 'statusbar'
+
+set highlight-transparency 0.4
+
+set page-cache-size 10
+
+set scroll-page-aware true
+
+set zoom-step 5
+
+set selection-clipboard clipboard
+
+map | set "guioptions statusbar"
+map \\ set "guioptions ''"
+
+map = zoom in
+map + zoom 100%
+
+map I recolor

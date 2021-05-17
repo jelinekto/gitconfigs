@@ -1,0 +1,133 @@
+listen_addresses = ['127.0.0.1:53']
+# user_name = 'nobody'
+
+server_names = []
+disabled_server_names = []
+ipv4_servers = true
+ipv6_servers = false
+dnscrypt_servers = true
+doh_servers = true
+require_dnssec = true
+require_nolog = false
+require_nofilter = true
+
+max_clients = 50
+timeout = 200
+keepalive = 30
+cert_refresh_delay = 240
+blocked_query_response = 'refused' # hinfo
+
+force_tcp = false # This can be useful if you need to route everything through Tor.
+#proxy = 'socks5://127.0.0.1:9050'
+# http_proxy = 'http://127.0.0.1:8888'
+
+lb_strategy = 'p10' # Load-balancing strategy: 'p2' (default), 'ph', 'first' or 'random'
+lb_estimator = false
+
+log_level = 2 # 0-6
+# log_file = '/tmp/dnscrypt.log'
+# log_file_latest = true
+use_syslog = true
+log_files_max_size = 5
+log_files_max_age = 2
+log_files_max_backups = 1
+
+dnscrypt_ephemeral_keys = false # DNSCrypt: Create a new, unique key for every single DNS query # This may improve privacy but can also have a significant impact on CPU usage # Only enable if you don't have a lot of network load
+tls_disable_session_tickets = false # DoH: Disable TLS session tickets - increases privacy but also latency
+
+## DoH: Use a specific cipher suite instead of the server preference
+## 49199 = TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+## 49195 = TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+## 52392 = TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305
+## 52393 = TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305
+##  4865 = TLS_AES_128_GCM_SHA256
+##  4867 = TLS_CHACHA20_POLY1305_SHA256
+##
+## On non-Intel CPUs such as MIPS routers and ARM systems (Android, Raspberry Pi...),
+## the following suite improves performance.
+## This may also help on Intel CPUs running 32-bit operating systems.
+##
+## Keep tls_cipher_suite empty if you have issues fetching sources or
+## connecting to some DoH servers. Google and Cloudflare are fine with it.
+# tls_cipher_suite = [52392, 49199]
+
+fallback_resolvers = ['193.17.47.1:53', '185.43.135.1:53']
+ignore_system_dns = true
+
+netprobe_timeout = -1
+netprobe_address = '193.17.47.1:53'
+offline_mode = false
+
+block_ipv6 = true
+block_unqualified = true
+block_undelegated = true
+reject_ttl = 600
+
+cache = true
+cache_size = 4096
+cache_min_ttl = 2400
+cache_max_ttl = 86400
+cache_neg_min_ttl = 60
+cache_neg_max_ttl = 600
+
+[local_doh]
+# listen_addresses = ['127.0.0.1:3000']
+# path = "/dns-query"
+# cert_file = "/var/lib/dnscrypt-proxy/localhost.pem"
+# cert_key_file = "/var/lib/dnscrypt-proxy/localhost.pem"
+
+[query_log]
+  # file = '/dev/null'
+  # format = 'tsv'
+  # ignored_qtypes = ['DNSKEY', 'NS']
+
+[nx_log]
+  # file = '/var/log/dnscrypt-proxy/nx.log'
+  format = 'tsv'
+
+[blacklist]
+
+[ip_blacklist]
+
+[whitelist]
+
+[schedules]
+
+[sources]
+
+  ## An example of a remote source from https://github.com/DNSCrypt/dnscrypt-resolvers
+  [sources.'public-resolvers']
+  urls = ['https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/public-resolvers.md', 'https://download.dnscrypt.info/resolvers-list/v3/public-resolvers.md']
+  cache_file = '/var/cache/dnscrypt-proxy/public-resolvers.md'
+  minisign_key = 'RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3'
+  prefix = ''
+
+  ## Anonymized DNS relays
+  [sources.'relays']
+  urls = ['https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/relays.md', 'https://download.dnscrypt.info/resolvers-list/v3/relays.md']
+  cache_file = '/var/cache/dnscrypt-proxy/relays.md'
+  minisign_key = 'RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3'
+  refresh_delay = 72
+  prefix = ''
+
+  ## Quad9 over DNSCrypt - https://quad9.net/
+  # [sources.quad9-resolvers]
+  # urls = ['https://www.quad9.net/quad9-resolvers.md']
+  # minisign_key = 'RWQBphd2+f6eiAqBsvDZEBXBGHQBJfeG6G+wJPPKxCZMoEQYpmoysKUN'
+  # cache_file = '/var/cache/dnscrypt-proxy/quad9-resolvers.md'
+  # prefix = 'quad9-'
+
+[broken_implementations]
+# fragments_blocked = []
+
+[doh_client_x509_auth]
+
+[anonymized_dns]
+skip_incompatible = true
+routes = [
+  { server_name='*', via=['anon-acsacsar-ams-ipv4', 'anon-ams-nl', 'anon-bcn', 'anon-cs-de2', 'anon-cs-fr', 'anon-cs-fr2', 'anon-cs-md', 'anon-cs-nl', 'anon-cs-nl2', 'anon-cs-pt', 'anon-cs-se', 'anon-dnscrypt.uk-ipv4', 'anon-ev-to', 'anon-ibksturm', 'anon-kama', 'anon-meganerd', 'anon-scaleway', 'anon-scaleway-ams', 'anon-skyfighter', 'anon-sth-se', 'anon-v.dnscrypt.uk-ipv4', 'anon-yofiji-se-ipv4'] },
+]
+
+[dns64]
+
+[static]

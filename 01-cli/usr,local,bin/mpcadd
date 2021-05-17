@@ -1,0 +1,8 @@
+#!/bin/sh
+for file in "$@"; do
+  if [ -e "$file" ]; then
+    mpc add "$(readlink -f "$file" | awk -F "/home/$(whoami)/Music/" '{print $2}')"
+  else
+    mpc add "$file"
+  fi
+done

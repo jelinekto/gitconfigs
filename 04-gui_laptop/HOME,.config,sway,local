@@ -1,0 +1,5 @@
+# CPU clock
+bindsym Mod4+Prior exec doas cpupower frequency-set -u $(echo $(cat /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq)-100000 | bc -l); exec pkill -SIGRTMIN+26 i3blocks
+bindsym Mod4+Next exec doas cpupower frequency-set -u $(echo $(cat /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq)+100000 | bc -l); exec pkill -SIGRTMIN+26 i3blocks
+bindsym Mod4+Shift+Prior exec doas cpupower frequency-set -u 800M; exec pkill -SIGRTMIN+26 i3blocks
+bindsym Mod4+Shift+Next exec doas cpupower frequency-set -u 2.9G; exec pkill -SIGRTMIN+26 i3blocks

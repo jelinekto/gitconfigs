@@ -1,0 +1,6 @@
+#!/bin/sh
+STDIN="$(cat -)"
+
+$TERMINAL_FLOATING sh -c "echo $'$STDIN' | $FUZZYFINDER --prompt \"${1} \" > ${XDG_CACHE_HOME}/.fuzzterm"
+cat "${XDG_CACHE_HOME}/.fuzzterm"
+rm "${XDG_CACHE_HOME}/.fuzzterm"

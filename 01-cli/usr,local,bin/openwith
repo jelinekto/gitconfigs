@@ -1,0 +1,11 @@
+#!/bin/sh
+case "$1" in
+  *facebook.com/groups/*/user/*)
+    GROUP="$(echo "$1" | cut -f 5 -d '/')"
+    MEMBER="$(echo "$1" | cut -f 7 -d '/')"
+    $BROWSER "https://www.facebook.com/groups/${GROUP}/admin_activities?activity_subject=${MEMBER}"
+    ;;
+  *)
+    mpv --force-window=immediate "$1"
+    ;;
+esac

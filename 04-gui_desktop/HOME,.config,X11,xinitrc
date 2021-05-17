@@ -1,0 +1,18 @@
+# behaviour
+numlockx on &
+xset s off -dpms &
+screentemp 5500 &
+setxkbmap jelinek &
+
+# look
+xsetroot -cursor_name left_ptr &
+(sleep 0.5 && xrdb -merge ~/.config/X11/Xresources && pywal-theme dark) &
+
+# daemons
+urxvtd -q -o &
+greenclip daemon &
+unclutter --timeout 2 &
+(sleep 3 && keepassxc) &
+(while :; do mountpoint -q /data && date > /data/.keep; sleep 600; done) &
+
+exec bspwm

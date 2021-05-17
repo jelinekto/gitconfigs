@@ -1,0 +1,27 @@
+#!/bin/sh
+if [ ! -e /sys/fs/bcache ]; then
+  modprobe bcache || exit 1
+fi
+
+if [ ! -e /dev/bcache0 ]; then
+  echo /dev/disk/by-partlabel/data > /sys/fs/bcache/register
+  echo /dev/disk/by-partlabel/cache > /sys/fs/bcache/register
+fi
+
+grep -q 'no cache' /sys/block/bcache0/bcache/state && \
+  bcache-super-show /dev/disk/by-partlabel/cache | awk '/cset.uuid/ {print $2}' > /sys/block/bcache0/bcache/attach
+
+echo writeback > /sys/block/bcache0/bcache/cache_mode
+echo 5 > /sys/block/bcache0/bcache/writeback_percent
+echo 0 > /sys/block/bcache0/bcache/cache/congested_read_threshold_us
+echo 0 > /sys/block/bcache0/bcache/cache/congested_write_threshold_us
+
+[ ! -e /dev/mapper/cryptdata ] && cryptsetup luksOpen /dev/bcache0 cryptdata --key-file /.keyfile
+
+mountpoint -q /data || mount -t xfs -o noatime,logdev=/dev/disk/by-partlabel/log /dev/mapper/cryptdata /data
+for d in $(ls /data); do
+  if ! mountpoint -q /home/jeli/"$d"; then
+    mkdir -p /home/jeli/"$d"
+    mount -o bind /data/"$d" /home/jeli/"$d"
+  fi
+done

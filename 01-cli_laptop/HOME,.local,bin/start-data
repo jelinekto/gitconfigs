@@ -1,0 +1,8 @@
+#!/bin/sh
+for subvol in /btrfs/@*; do
+  mountpoint="/home/${USER}/$(echo "$subvol" | cut -f 2- -d '@' | tr '@' '/')"
+  [ ! -e "$mountpoint" ] && doas mkdir -p "$mountpoint"
+  if ! mountpoint -q "${mountpoint}"; then
+    doas mount -o bind "${subvol}" "${mountpoint}" &
+  fi
+done

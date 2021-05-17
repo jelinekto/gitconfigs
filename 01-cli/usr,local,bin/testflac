@@ -1,0 +1,13 @@
+#!/bin/sh
+
+level="$1"
+shift
+
+[ ! -d "${XDG_CACHE_HOME}/.testflac" ] && mkdir -p "${XDG_CACHE_HOME}/.testflac"
+
+for file in "$@"; do
+	output=$(echo "$file" | rev | cut -f 1 -d / | rev)
+	until [ "$(pgrep auCDtect | wc -l)" -lt "$(($(nproc)-1))" ]; do sleep 0.5; done
+	ffmpeg -i "$file" "${XDG_CACHE_HOME}/.testflac/${output}.wav" 1>/dev/null 2>/dev/null
+	(auCDtect "$level" "${XDG_CACHE_HOME}/.testflac/${output}.wav" | egrep "looks like|file" && rm "${XDG_CACHE_HOME}/.testflac/${output}".wav 2>/dev/null) &
+done

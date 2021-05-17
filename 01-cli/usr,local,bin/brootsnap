@@ -1,0 +1,28 @@
+#!/bin/sh
+# syntax btrsnap DESCRIPTION MAXNUMBER SUBVOLUME SNAPDIR
+
+desc="$1"
+max="$2"
+subvol="$3"
+snapdir="$4"
+[ -z "$desc" ] && desc=manual
+[ -z "$max" ] && max=100
+[ -z "$subvol" ] && subvol=/
+[ -z "$snapdir" ] && snapdir=/.snapshots
+
+[ ! -e "$snapdir" ] && mkdir "$snapdir"
+
+if [ ! "$max" -eq 0 ]; then
+  snapshot=$(date "+%y%m%d_%H:%M:%S_${desc}")
+  btrfs subvol snapshot -r "$subvol" "${snapdir}/${snapshot}"
+fi
+
+list=$(ls "$snapdir" | grep "_${desc}$")
+number=$(printf "$list" | wc -l)
+diff=$(($number-$max+1))
+
+if [ "$diff" -gt 0 ]; then
+  for toremove in $(printf "$list" | head -n $diff); do
+    btrfs subvol delete "${snapdir}/${toremove}"
+  done
+fi

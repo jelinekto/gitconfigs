@@ -1,0 +1,24 @@
+#!/bin/sh
+set -e
+
+[ -z "$1" ] || cd "$1"
+
+curl https://raw.githubusercontent.com/arkenfox/user.js/master/updater.sh > updater.sh
+curl https://raw.githubusercontent.com/arkenfox/user.js/master/prefsCleaner.sh > prefsCleaner.sh
+chmod +x updater.sh
+chmod +x prefsCleaner.sh
+
+if [ -e "${XDG_CONFIG_HOME}/firefox/user-overrides.js" ]; then
+  cp "${XDG_CONFIG_HOME}/firefox/user-overrides.js" user-overrides.js
+else type termux-setup-storage 1>/dev/null 2>/dev/null;
+  cp "$(fd -H user-overrides.js /data/data/com.termux)" user-overrides.js
+  echo "user_pref(\"layout.css.devPixelsPerPx\", \"-1.0\");" >> user-overrides.js
+fi
+
+./updater.sh -u -s
+echo 1 | ./prefsCleaner.sh
+
+chmod --reference=storage.sqlite user.js prefs.js
+chown --reference=storage.sqlite user.js prefs.js
+
+rm -R userjs_backups prefs.js.backup*

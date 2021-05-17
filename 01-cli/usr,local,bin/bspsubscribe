@@ -1,0 +1,11 @@
+#!/bin/dash
+until pgrep bspwm >/dev/null; do
+  sleep 0.5
+done
+
+bspc subscribe node desktop | while read -r l; do
+  kill "$(cat "${XDG_CACHE_HOME}"/.lemonstatus/.*-windowtitle)" 2>/dev/null &
+  kill "$(cat "${XDG_CACHE_HOME}"/.lemonstatus/.*-workspaces)" "$(cat "${XDG_CACHE_HOME}"/.lemonstatus/.*-windowtitle)" 2>/dev/null &
+done
+
+wait

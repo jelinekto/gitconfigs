@@ -1,0 +1,47 @@
+[options]
+suppress_default_binds = true
+
+[aliases]
+# alias = command to run
+
+[binds]
+q = quit
+
+# Image navigation
+<bracketleft> = prev
+<bracketright> = next
+<Shift+K> = prev
+<Shift+J> = next
+gg = goto 0
+<Shift+G> = goto -1
+
+# Panning
+j = pan 0 -25
+k = pan 0 25
+h = pan 25 0
+l = pan -25 0
+<Ctrl+d> = pan 0 -500
+<Ctrl+u> = pan 0 500
+<Ctrl+f> = pan 0 -1000
+<Ctrl+b> = pan 0 1000
+
+# Zooming
+<equal> = zoom 1
+<minus> = zoom -1
+<Shift+plus> = zoom actual
+
+# Other commands
+dd = close
+<Shift+F> = fullscreen
+<backslash> = overlay
+v = overlay
+c = center
+r = reset
+
+# Gif playback
+<period> = next_frame
+<space> = toggle_playing
+
+# Slideshow control
+t = slideshow +1
+<Shift+T> = slideshow -1

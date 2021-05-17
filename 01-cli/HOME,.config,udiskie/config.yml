@@ -1,0 +1,28 @@
+tray: false
+notify: false
+notifications:
+  timeout: false
+password_cache: 15
+password_prompt: ["zenity", "--entry", "--hide-text", "--text", "Enter password for {device_presentation}:"]
+device_config:
+  - ui_id_label: usbdata
+    ignore: true
+  - is_systeminternal: true
+    ignore: true
+  - id_type: btrfs
+    ignore: false
+    automount: false
+    options: [compress-force=15, noatime]
+  - is_filesystem: true
+    ignore: false
+    automount: false
+    options: [noatime]
+  - is_crypto: true
+    ignore: false
+    automount: false
+    options: [noatime]
+  - is_loop: true
+    ignore: false
+    automount: false
+    options: [noatime]
+  - ignore: true

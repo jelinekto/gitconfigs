@@ -1,0 +1,154 @@
+#!/bin/sh
+while [ -n "$1" ]; do
+  case "$1" in
+    --no-menu|-n)
+    NOMENUCONFIG=y
+    ;;
+    --build-only|-b)
+    BUILDONLY=y
+    ;;
+    --wait|-w)
+    WAIT=y
+    ;;
+    --keep-modules|-k)
+    KEEPMODULES=y
+    ;;
+    --config|-c)
+    shift
+    CONFIGFILE="$1"
+    ;;
+    --jobs|-j)
+    shift
+    JOBS="$1"
+    ;;
+    --sources|-s)
+    shift
+    SOURCES="$1"
+    ;;
+    --version|-v)
+    shift
+    VERSION="$1"
+    ;;
+    --inplace|-i)
+    INPLACE=y
+    ;;
+    --tmpfs|-t)
+    TMPFS=y
+    ;;
+    --quiet-emerge|-q)
+    VERBOSE='--quiet-build'
+    ;;
+    --ccache|-a)
+    CCACHE=y
+    echo "$2" | grep -vq -- '-^' && shift && CCACHE_DIR="$1"
+    ;;
+    --rm-src|-r)
+    RMSRC=y
+    ;;
+    --existing-src|-e)
+    EXISTINGSRC=y
+    ;;
+    -*)
+    echo Gentoo kernel building script
+    echo
+    echo 'Usage:'
+    echo 'kernbuild [options] <kernel image name>'
+    echo
+    echo 'Available options:'
+    echo " --no-menu       | -n           skip 'make menuconfig'"
+    echo " --jobs          | -j <number>  number of make jobs (defaults to nproc)"
+    echo " --build-only    | -b           do not install the kernel and keep /usr/src"
+    echo " --config        | -c <path>    .config file to use (defaults to /proc/config.gz)"
+    echo " --inplace       | -i           do not overwrite the old .bkp kernel image"
+    echo " --tmpfs         | -t           build on tmpfs and unmount it afterwards"
+    echo " --wait          | -w           wait for a keystroke before unmounting/deleting /usr/src"
+    echo " --sources       | -s <name>    *-sources package to use (defaults to the first one found in world file and gentoo-sources respectively)"
+    echo " --version       | -v <number>  specify the version of sources (defaults to the latest available)"
+    echo " --keep-modules  | -k           do not perform /lib/modules cleanup"
+    echo " --quiet-emerge  | -q           use '--quiet-build=y' for emerge steps (default forces verbose output)"
+    echo " --ccache        | -a <dir>     build using ccache (directory defaults to ~/.ccache)"
+    echo " --rm-src        | -r           delete the contents of /usr/src after building succesfully"
+    echo " --existing-src  | -e           skip emerge step, reuse current contents of /usr/src"
+    exit 1
+    ;;
+    *)
+    KERNELIMAGE="$1"
+    ;;
+  esac
+  shift
+done
+
+[ -z "$KERNELIMAGE" ] && echo 'No kernel image name specified, falling back to 'vmlinuz-linux'.' && KERNELIMAGE='vmlinuz-linux'
+echo "$KERNELIMAGE" | grep -viq 'vmlinuz' && printf "Kernel image name would be $KERNELIMAGE, press enter if you are sure about that." && read DUMMY
+
+[ -z "$CONFIGFILE" ] && CONFIGFILE='/proc/config.gz' && modprobe configs 2>/dev/null
+[ ! -f "$CONFIGFILE" ] && echo "Source config file $CONFIGFILE does not exist." && exit 1
+
+if [ -z "$EXISTINGSRC" ]; then
+  [ -z "$SOURCES" ] && SOURCES="$(grep -E '^sys-kernel\/.*-sources$' /var/lib/portage/world | tail -n 1)"
+  [ -z "$SOURCES" ] && SOURCES='gentoo-sources'
+  [ -n "$VERSION" ] && SOURCES="=${SOURCES}-${VERSION}"
+
+  [ -z "$VERBOSE" ] && VERBOSE="--quiet-build=n --jobs=1"
+
+  mkdir -p /usr/src
+  if [ -n "$TMPFS" ] && [ ! "$(df -hT /usr/src | awk '/tmpfs/ {print $2}')" = "tmpfs" ]; then
+    mount -t tmpfs tmpfs -o noatime /usr/src || { echo 'Could not mount tmpfs on /usr/src.' && exit 1; }
+  fi
+  USE='symlink' emerge -1 --nodeps --ask=n ${VERBOSE} "$SOURCES" || { echo 'Could not emerge kernel sources package.' && exit 1; }
+fi
+
+cd /usr/src/linux || { echo "'/usr/src/linux' does not exist." && exit 1; }
+
+[ -n "$CCACHE" ] && make -j"$JOBS" mrproper
+
+[ -e /etc/kernbuild.conf ] && . /etc/kernbuild.conf
+
+if echo "$CONFIGFILE" | grep -E -q '.gz$'; then
+  zcat "$CONFIGFILE" > /usr/src/linux/.config
+else
+  cp "$CONFIGFILE" /usr/src/linux/.config
+fi
+[ ! -f /usr/src/linux/.config ] && echo 'Could not get config file ready for some reason.' && exit 1
+
+. /usr/src/linux/.config
+make -j"$JOBS" oldconfig
+[ -z "$NOMENUCONFIG" ] && make -j"$JOBS" menuconfig
+make -j"$JOBS" syncconfig
+
+[ -z "$JOBS" ] && JOBS="$(nproc)"
+MAKECMD="make -j$JOBS"
+[ -n "$CCACHE" ] && MAKECMD="KBUILD_BUILD_TIMESTAMP='' $MAKECMD CC='ccache gcc'"
+[ -n "$CCACHE_DIR" ] && MAKECMD="CCACHE_DIR="$CCACHE_DIR" $MAKECMD"
+eval $MAKECMD
+
+[ -n "$BUILDONLY" ] && exit 0
+
+if [ ! -e /usr/src/linux/arch/x86/boot/bzImage ]; then
+  echo "Kernel image does not exist, exiting now."
+  exit 1
+fi
+
+mount /boot 2>/dev/null
+
+if [ -z "$INPLACE" ]; then
+  [ -f /boot/${KERNELIMAGE}.bkp ] && rm /boot/${KERNELIMAGE}.bkp
+  [ -f /boot/${KERNELIMAGE} ] && mv /boot/${KERNELIMAGE} /boot/${KERNELIMAGE}.bkp
+  [ -z "$KEEPMODULES" ] && rm -R "$(readlink -f /lib/modules/* | grep -- $CONFIG_LOCALVERSION | grep -v $(uname -r))" 2>/dev/null
+else
+  [ -f /boot/${KERNELIMAGE} ] && rm /boot/${KERNELIMAGE}
+  [ -z "$KEEPMODULES" ] && rm -R "$(readlink -f /lib/modules/* | grep -- $CONFIG_LOCALVERSION | grep $(uname -r))" 2>/dev/null
+fi
+
+grep -E -q '^CONFIG_MODULES=y$' /usr/src/linux/.config && make -j"$JOBS" modules_install
+cp /usr/src/linux/arch/x86/boot/bzImage /boot/${KERNELIMAGE}
+
+type emerge 1>/dev/null 2>/dev/null && grep -E -q '^CONFIG_MODULES=y$' /usr/src/linux/.config && emerge --ask=n ${VERBOSE} @module-rebuild
+
+[ -n "$WAIT" ] && echo && echo "Do whatever you need before cleaning up /usr/src..." && read DUMMY
+
+if [ -n "$TMPFS" ] && [ "$(df -hT /usr/src | awk '/tmpfs/ {print $2}')" = "tmpfs" ]; then
+  umount -l /usr/src
+fi
+
+[ -n "$RMSRC" ] && rm -R /usr/src/*

@@ -1,0 +1,100 @@
+{
+  "version": "1.9.2",
+  "date": 1619308223000,
+  "preferences": {
+    "automaticMode": {
+      "active": true,
+      "newTab": "created"
+    },
+    "notifications": false,
+    "container": {
+      "namePrefix": "tmp",
+      "color": "yellow",
+      "colorRandom": true,
+      "colorRandomExcluded": [
+        "toolbar"
+      ],
+      "icon": "fingerprint",
+      "iconRandom": false,
+      "iconRandomExcluded": [],
+      "numberMode": "keepuntilrestart",
+      "removal": 120000
+    },
+    "iconColor": "default",
+    "isolation": {
+      "global": {
+        "navigation": {
+          "action": "never"
+        },
+        "mouseClick": {
+          "middle": {
+            "action": "notsamedomain",
+            "container": "default"
+          },
+          "ctrlleft": {
+            "action": "always",
+            "container": "default"
+          },
+          "left": {
+            "action": "never",
+            "container": "default"
+          }
+        },
+        "excluded": {},
+        "excludedContainers": []
+      },
+      "domain": [],
+      "mac": {
+        "action": "enabled"
+      },
+      "reactivateDelay": 0
+    },
+    "browserActionPopup": true,
+    "pageAction": true,
+    "contextMenu": true,
+    "contextMenuBookmarks": false,
+    "keyboardShortcuts": {
+      "AltC": true,
+      "AltP": true,
+      "AltN": true,
+      "AltShiftC": true,
+      "AltX": true,
+      "AltO": true,
+      "AltI": true
+    },
+    "replaceTabs": true,
+    "closeRedirectorTabs": {
+      "active": false,
+      "delay": 2000,
+      "domains": [
+        "t.co",
+        "outgoing.prod.mozaws.net",
+        "slack-redir.net"
+      ]
+    },
+    "ignoreRequests": [],
+    "cookies": {
+      "domain": {}
+    },
+    "scripts": {
+      "domain": {},
+      "active": false
+    },
+    "deletesHistory": {
+      "active": false,
+      "automaticMode": "never",
+      "contextMenu": false,
+      "contextMenuBookmarks": false,
+      "containerAlwaysPerDomain": "never",
+      "containerIsolation": "never",
+      "containerRemoval": 0,
+      "containerMouseClicks": "never",
+      "statistics": false
+    },
+    "statistics": false,
+    "ui": {
+      "expandPreferences": true,
+      "popupDefaultTab": "actions"
+    }
+  }
+}

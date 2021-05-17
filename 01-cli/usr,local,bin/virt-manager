@@ -1,0 +1,10 @@
+#!/bin/sh
+if ! pidof libvirtd >/dev/null; then
+  doas systemctl start libvirtd.service
+fi
+
+if type apulse >/dev/null 2>&1; then
+  exec apulse /usr/bin/virt-manager "$@"
+else
+  exec /usr/bin/virt-manager "$@"
+fi

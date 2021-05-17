@@ -1,0 +1,11 @@
+#!/bin/sh
+killall lemonstatus 2>/dev/null
+
+if pkill lemonbar >/dev/null 2>&1; then
+  bspc config top_padding 0
+else
+  nohup lemonstatus | lemonbar -d | while read -r line; do eval "${line}"; done 1>/dev/null 2>&1 &
+  bspc config top_padding "$(awk '/bspc config top_padding / {print $NF}' ~/.config/bspwm/bspwmrc)"
+  until pgrep lemonbar >/dev/null; do :; done; sleep 0.2
+  xdo above -t "$(xdo id -n root)" "$(xdo id -n lemonbar)"
+fi

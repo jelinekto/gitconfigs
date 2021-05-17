@@ -1,0 +1,18 @@
+#!/bin/sh
+. "${XDG_CACHE_HOME}/wal/colors.sh"
+
+exec /usr/bin/i3lock -e --indicator \
+  -c "$background" \
+  --insidevercolor="$background" \
+  --insidewrongcolor="$color1" \
+  --insidecolor="$background" \
+  --ringvercolor="$color3" \
+  --ringwrongcolor="$foreground" \
+  --ringcolor="$foreground" \
+  --linecolor="$color8" \
+  --keyhlcolor="$color2" \
+  --bshlcolor="$color5" \
+  --separatorcolor="$color8" \
+  --verifcolor="$foreground" \
+  --wrongcolor="$color1" \
+  "$@"

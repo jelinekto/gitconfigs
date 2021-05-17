@@ -1,0 +1,18 @@
+#!/bin/sh
+
+for arg in $@; do
+  echo $arg | grep -vq -- '^-' && DIR="$arg"
+done
+[ -z "$DIR" ] && DIR="/home/$USER/.ccache"
+
+if [ ! -d "$DIR" ]; then
+  echo "$DIR: no such directory."
+  exit 1
+elif [ ! -e "$DIR/ccache.conf" ]; then
+  echo "The config file '$DIR/ccache.conf' does not exist, creating one."
+fi
+
+ARG="$(echo $@ | sed s="$DIR"==g)"
+[ -z "$ARG" ] && ARG='-s'
+
+CCACHE_DIR="$DIR" ccache $ARG

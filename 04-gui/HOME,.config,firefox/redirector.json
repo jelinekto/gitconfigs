@@ -1,0 +1,74 @@
+{
+    "createdBy": "Redirector v3.5.3",
+    "createdAt": "2021-04-11T10:59:18.500Z",
+    "redirects": [
+        {
+            "description": "Mobile websites",
+            "exampleUrl": "https://m.website",
+            "exampleResult": "https://website",
+            "error": null,
+            "includePattern": "https://m.*",
+            "excludePattern": "",
+            "patternDesc": "",
+            "redirectUrl": "https://$1",
+            "patternType": "W",
+            "processMatches": "noProcessing",
+            "disabled": false,
+            "grouped": false,
+            "appliesTo": [
+                "main_frame"
+            ]
+        },
+        {
+            "description": "Mobile websites",
+            "exampleUrl": "https://mobile.website",
+            "exampleResult": "https://website",
+            "error": null,
+            "includePattern": "https://mobile.*",
+            "excludePattern": "",
+            "patternDesc": "",
+            "redirectUrl": "https://$1",
+            "patternType": "W",
+            "processMatches": "noProcessing",
+            "disabled": false,
+            "grouped": false,
+            "appliesTo": [
+                "main_frame"
+            ]
+        },
+        {
+            "description": "Old Reddit",
+            "exampleUrl": "https://www.reddit.com/something",
+            "exampleResult": "https://old.reddit.com/something",
+            "error": null,
+            "includePattern": "https://www.reddit.com/*",
+            "excludePattern": "",
+            "patternDesc": "",
+            "redirectUrl": "https://old.reddit.com/$1",
+            "patternType": "W",
+            "processMatches": "noProcessing",
+            "disabled": false,
+            "grouped": false,
+            "appliesTo": [
+                "main_frame"
+            ]
+        },
+        {
+            "description": "Mobile Reddit",
+            "exampleUrl": "https://m.reddit.com/something",
+            "exampleResult": "https://old.reddit.com/something",
+            "error": null,
+            "includePattern": "https://m.reddit.com/*",
+            "excludePattern": "",
+            "patternDesc": "",
+            "redirectUrl": "https://old.reddit.com/$1",
+            "patternType": "W",
+            "processMatches": "noProcessing",
+            "disabled": false,
+            "grouped": false,
+            "appliesTo": [
+                "main_frame"
+            ]
+        }
+    ]
+}

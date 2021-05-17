@@ -1,0 +1,20 @@
+#!/bin/sh
+
+mkdir -p "${XDG_CACHE_HOME}/.flac-to-wv"
+PARAMS="$1" && shift
+
+for f in "$@"; do
+  BASENAME="$(basename "${f}" | rev | cut -d. -f2- | rev)"
+  LOCATION="$(realpath "${f}" | rev | cut -d/ -f2- | rev)"
+
+  if [ ! -f "${XDG_CACHE_HOME}/.flac-to-wv/${BASENAME}.wav" ] && [ ! -f "${LOCATION}/${BASENAME}.wv" ]; then
+    ARTIST="$(mediainfo "${f}" | awk -F: '/Performer/ {$1=""; print $0}' | awk '{$1=$1}1' | head -n1)"
+    ALBUM="$(mediainfo "${f}" | awk -F: '/Album/ {$1=""; print $0}' | awk '{$1=$1}1' | head -n1)"
+    YEAR="$(mediainfo "${f}" | awk -F: '/date/ {$1=""; print $0}' | awk '{$1=$1}1' | head -n1)"
+    TITLE="$(mediainfo "${f}" | awk -F: '/Track name/ {$1=""; print $0}' | awk '{$1=$1}1' | head -n1)"
+    TRACK="$(mediainfo "${f}" | awk -F: '/Position/ {$1=""; print $0}' | awk '{$1=$1}1' | head -n1)"
+
+    ffmpeg -i "${f}" "${XDG_CACHE_HOME}/.flac-to-wv/${BASENAME}.wav" >/dev/null 2>&1
+    wavpack -d ${PARAMS} -w "Artist=${ARTIST}" -w "Album=${ALBUM}" -w "Year=${YEAR}" -w "Title=${TITLE}" -w "Track=${TRACK}" "${XDG_CACHE_HOME}/.flac-to-wv/${BASENAME}.wav" -o "${LOCATION}/${BASENAME}.wv" 2>&1 | grep "created"
+  fi
+done

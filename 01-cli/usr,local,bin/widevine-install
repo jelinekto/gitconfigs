@@ -1,0 +1,25 @@
+#!/bin/sh
+mkdir "${XDG_CACHE_HOME}/widevine-install" 2>/dev/null
+cd "${XDG_CACHE_HOME}/widevine-install" || exit 1
+
+VERSION="$(wget -qO- https://dl.google.com/widevine-cdm/versions.txt | tail -n1)"
+if [ -z "$1" ]; then
+ CHROMIUM_PREFIX="${HOME}/.config/chromium"
+else
+ CHROMIUM_PREFIX="$1"
+fi
+CHROMIUM_PREFIX="${CHROMIUM_PREFIX}/WidevineCdm/${VERSION}"
+
+if [ -e "${CHROMIUM_PREFIX}" ]; then
+ printf 'Latest WideVine already installed.\n'
+ exit 0
+fi
+
+wget -c -O widevine.zip "https://dl.google.com/widevine-cdm/${VERSION}-linux-x64.zip"
+unzip widevine.zip
+
+install -Dm644 libwidevinecdm.so "${CHROMIUM_PREFIX}/_platform_specific/linux_x64/libwidevinecdm.so"
+install -m644 manifest.json "${CHROMIUM_PREFIX}/manifest.json"
+install -m644 LICENSE.txt "${CHROMIUM_PREFIX}/LICENSE.txt"
+
+rm -R "${XDG_CACHE_HOME}/widevine-install"

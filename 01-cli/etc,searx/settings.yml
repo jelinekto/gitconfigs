@@ -1,0 +1,223 @@
+general:
+    debug: False
+    instance_name: "searx"
+    contact_url: False
+search:
+    safe_search: 0
+    autocomplete: ""
+    default_lang: ""
+    ban_time_on_fail: 0
+    max_ban_time_on_fail: 0
+server:
+    port: 8888
+    bind_address: "127.0.0.1"
+    secret_key: "WhoCaresLmao"
+    base_url: False
+    image_proxy: False
+    http_protocol_version: "1.0"
+    method: "POST"
+    default_http_headers:
+        X-Content-Type-Options: nosniff
+        X-XSS-Protection: 1; mode=block
+        X-Download-Options: noopen
+        X-Robots-Tag: noindex, nofollow
+        Referrer-Policy: no-referrer
+outgoing:
+    request_timeout: 3.0
+    # max_request_timeout: 10.0
+    useragent_suffix: ""
+    pool_connections: 1000
+    pool_maxsize: 1000
+    proxies:
+        http:
+            - socks5://127.0.0.1:9050
+        https:
+            - socks5://127.0.0.1:9050
+#    source_ips:
+#        - 1.1.1.1
+#        - 1.1.1.2
+# plugins:
+#   - plugin1
+enabled_plugins:
+   - "HTTPS rewrite"
+   - "Open Access DOI rewrite"
+   - "Hash plugin"
+   - "HTTPS rewrite"
+   - "Infinite scroll"
+   - "Self Informations"
+   - "Search on category select"
+   - "Tracker URL remover"
+
+checker:
+    off_when_debug: True
+    additional_tests:
+      rosebud: &test_rosebud
+        matrix:
+          query: rosebud
+          lang: en
+        result_container:
+          - not_empty
+          - ['one_title_contains', 'citizen kane']
+        test:
+          - unique_results
+      android: &test_android
+        matrix:
+          query: ['android']
+          lang: ['en', 'de', 'fr', 'zh-CN']
+        result_container:
+          - not_empty
+          - ['one_title_contains', 'google']
+        test:
+          - unique_results
+    tests:
+      infobox: &tests_infobox
+        infobox:
+          matrix:
+            query: ["linux", "new york", "bbc"]
+          result_container:
+            - has_infobox
+
+engines:
+  # - name: ddg definitions
+  #   engine: duckduckgo_definitions
+  #   shortcut: ddd
+  #   weight: 2
+  #   tests: *tests_infobox
+  - name: duckduckgo
+    engine: duckduckgo
+    shortcut: ddg
+    additional_tests:
+      rosebud: *test_rosebud
+  - name: qwant
+    engine: qwant
+    shortcut: qw
+    categories: general
+    additional_tests:
+      rosebud: *test_rosebud
+  - name: startpage
+    engine: startpage
+    shortcut: sp
+    additional_tests:
+      rosebud: *test_rosebud
+  - name : gigablast
+    engine : gigablast
+    shortcut : gb
+    additional_tests:
+      rosebud: *test_rosebud
+  - name : yahoo
+    engine : yahoo
+    shortcut : yh
+  - name : mojeek
+    shortcut: mjk
+    engine: xpath
+    paging : True
+    search_url : https://www.mojeek.com/search?q={query}&s={pageno}
+    results_xpath: /html/body//div[@class="results"]/ul[@class="results-standard"]/li
+    url_xpath : ./h2/a/@href
+    title_xpath : ./h2
+    content_xpath : ./p[@class="s"]
+    suggestion_xpath : /html/body//div[@class="top-info"]/p[@class="top-info spell"]/a
+    first_page_num : 0
+    page_size : 10
+    about:
+      website: https://www.mojeek.com/
+      wikidata_id: Q60747299
+      official_api_documentation: https://www.mojeek.com/services/api.html/
+      use_official_api: false
+      require_api_key: false
+      results: HTML
+  - name: seznam
+    shortcut: szn
+    engine: seznam
+    additional_tests:
+      rosebud: *test_rosebud
+
+  - name: duckduckgo images
+    engine: duckduckgo_images
+    shortcut: ddi
+  - name: qwant images
+    engine: qwant
+    shortcut: qwi
+    categories: images
+  - name : bing images
+    engine : bing_images
+    shortcut : bii
+
+  - name : github
+    engine : github
+    shortcut : gh
+  - name : gitlab
+    engine : json_engine
+    paging : True
+    search_url : https://gitlab.com/api/v4/projects?search={query}&page={pageno}
+    url_query : web_url
+    title_query : name_with_namespace
+    content_query : description
+    page_size : 20
+    categories : it
+    shortcut : gl
+    about:
+      website: https://about.gitlab.com/
+      wikidata_id: Q16639197
+      official_api_documentation: https://docs.gitlab.com/ee/api/
+      use_official_api: false
+      require_api_key: false
+      results: JSON
+  - name : stackoverflow
+    engine : stackoverflow
+    shortcut : st
+
+  - name: qwant news
+    engine: qwant
+    shortcut: qwn
+    categories: news
+  - name : yahoo news
+    engine : yahoo_news
+    shortcut : yhn
+  - name : wikinews
+    engine : mediawiki
+    shortcut : wn
+    categories : news
+    base_url : "https://{language}.wikinews.org/"
+    number_of_results : 5
+    search_type : text
+    about:
+      website: https://www.wikinews.org/
+      wikidata_id: Q964
+  - name : bing news
+    engine : bing_news
+    shortcut : bin
+
+ui:
+    static_path: ""
+    templates_path: ""
+    default_theme: oscar
+    default_locale: ""
+    theme_args :
+        oscar_style: logicodev # default style of oscar
+    results_on_new_tab: True
+#   categories_order :
+#     - general
+#     - files
+#     - map
+#     - it
+#     - science
+
+locales:
+    en: English
+
+doi_resolvers :
+  oadoi.org: 'https://oadoi.org/'
+  doi.org: 'https://doi.org/'
+  doai.io : 'https://dissem.in/'
+  sci-hub.tw: 'https://sci-hub.tw/'
+default_doi_resolver: 'sci-hub.tw'
+
+brand:
+    git_url: https://github.com/searx/searx
+    git_branch: master
+    issue_url: https://github.com/searx/searx/issues
+    docs_url: https://searx.github.io/searx
+    public_instances: https://searx.space
+    wiki_url: https://github.com/searx/searx/wiki
+    twitter_url: https://twitter.com/Searx_engine

@@ -1,0 +1,2 @@
+#!/bin/sh
+exec /usr/bin/wofi -t "$TERMINAL" -i -n "$@"

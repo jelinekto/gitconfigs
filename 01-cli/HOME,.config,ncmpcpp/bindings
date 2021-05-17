@@ -1,0 +1,90 @@
+# screens
+def_key "escape"
+  show_playlist
+def_key "B"
+  show_browser
+def_key "B"
+  change_browse_mode
+def_key "\\"
+  show_search_engine
+def_key "\\"
+  reset_search_engine
+def_key "i"
+  show_media_library
+def_key "i"
+  toggle_media_library_columns_mode
+def_key "P"
+  show_playlist_editor
+def_key "c"
+  edit_song
+def_key "c"
+  edit_library_tag
+def_key "c"
+  edit_library_album
+def_key "c"
+  edit_directory_name
+def_key "c"
+  edit_playlist_name
+def_key "c"
+  edit_lyrics
+def_key "C"
+  show_tag_editor
+def_key "O"
+  show_outputs
+
+# move around
+def_key "k"
+  scroll_up
+def_key "j"
+  scroll_down
+def_key "h"
+  previous_column
+def_key "l"
+  next_column
+def_key "ctrl-u"
+  page_up
+def_key "ctrl-d"
+  page_down
+def_key "g"
+  move_home
+def_key "G"
+  move_end
+
+# find
+def_key "n"
+  next_found_item
+def_key "N"
+  previous_found_item
+
+# select stuff
+def_key "space"
+  select_item
+  scroll_down
+def_key "a"
+  add_item_to_playlist
+
+# seek
+def_key "J"
+  next
+def_key "K"
+  previous
+def_key "L"
+  seek_forward
+def_key "H"
+  seek_backward
+def_key ";"
+  jump_to_position_in_song
+
+# misc
+def_key ","
+  show_lyrics
+def_key "<"
+  show_song_info
+def_key ">""
+  show_artist_info
+
+# delete stuff
+def_key "D"
+  delete_playlist_items
+def_key "D"
+  delete_stored_playlist

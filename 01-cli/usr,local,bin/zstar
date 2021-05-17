@@ -1,0 +1,43 @@
+#!/bin/sh
+while [ -n "$1" ]; do
+	case $1 in
+		-0*|-1*|-2*|-3*|-4*|-5*|-6*|-7*|-8*|-9*)
+		COMPLEVEL="$1"
+		;;
+		--0*|--1*|--2*|--3*|--4*|--5*|--6*|--7*|--8*|--9*)
+		COMPLEVEL="--fast=$(echo "$1" | cut -c 3-)"
+		;;
+		--quick|-q)
+		COMPLEVEL="--fast=1000000"
+		;;
+		--nocompress|-n)
+		NOCOMPRESS=y
+		;;
+		--exclude*)
+		EXCLUDELIST="$EXCLUDELIST $1"
+		;;
+		--decompress|-d)
+		OPERATION="x"
+		;;
+		--verbose|-v)
+		VERBOSE="v"
+		;;
+		*)
+		if [ -z "$FILENAME" ]; then
+			FILENAME="$1"
+		else
+			DIRNAME="$1"
+		fi
+		;;
+	esac
+	shift
+done
+
+[ -z "$DIRNAME" ] && DIRNAME="$(basename -s .tar.zst "$FILENAME")"
+[ -z "$OPERATION" ] && OPERATION="c"
+[ -z "$NOCOMPRESS" ] && COMPOPTS="-I zstd -T$(nproc) -v --ultra --long=31 ${COMPLEVEL}"
+[ "$OPERATION" = "x" ] && [ ! -d "$DIRNAME" ] && mkdir -p "$DIRNAME"
+
+[ -e "$FILENAME" ] && [ "$OPERATION" = "c" ] && printf "File '%s' already exists, overwrite? y/[n] " "$FILENAME" && read -r CONFIRM && [ ! "$(echo "$CONFIRM" | tr 'Y' 'y')" = "y" ] && exit 1
+
+tar "$COMPOPTS" $EXCLUDELIST --xattrs --xattrs-include='*.*' -S${OPERATION}${VERBOSE}pf "$FILENAME" -C "$DIRNAME" .

@@ -1,0 +1,15 @@
+Port 22
+Port 2222
+LogLevel ERROR
+
+PasswordAuthentication no
+PubkeyAuthentication no
+PermitRootLogin no
+MaxAuthTries 3
+Compression yes
+AddressFamily inet
+
+Match Address 192.168.*.*
+  PasswordAuthentication yes
+  PubkeyAuthentication yes
+  X11Forwarding yes

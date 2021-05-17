@@ -1,0 +1,8 @@
+#!/bin/sh
+# pidof stalonetray >/dev/null || stalonetray &
+
+[ -e "${XDG_DATA_HOME}/keepassxc" ] || mkdir -p "${XDG_DATA_HOME}/keepassxc"
+[ -e "${XDG_CACHE_HOME}/keepassxc" ] || ln -fs "${XDG_DATA_HOME}/keepassxc" "${XDG_CACHE_HOME}/keepassxc"
+sed -i '/^MainWindowGeometry=/d' "${XDG_DATA_HOME}/keepassxc/keepassxc.ini" 2>/dev/null
+
+exec /usr/bin/keepassxc "$@"

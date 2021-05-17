@@ -1,0 +1,211 @@
+# pywal colors
+include ~/.cache/wal/colors-sway
+client.focused          $color6     $color6     $background
+client.focused_inactive $foreground $foreground $background
+client.unfocused        $color8     $color8     $background
+
+# status bar
+bar {
+  colors {
+    statusline $foreground
+    background $background
+    focused_workspace   $color6     $color6     $background
+    active_workspace    $color8     $color8     $background
+    inactive_workspace  $background $background $foreground
+    urgent_workspace    $color1     $color1     $background
+  }
+  position bottom
+  mode hide
+  font pango:Ubuntu Light, FontAwesome 14
+  status_command i3blocks
+  strip_workspace_name yes
+  strip_workspace_numbers yes
+  tray_output none
+}
+bindsym Mod4+b bar hidden_state toggle 
+
+# start daemons
+exec autotiling
+exec_always foot --server
+exec_always sh -c 'pkill flashfocus; exec flashfocus'
+exec_always mpdas
+exec_always pulseaudio --start
+
+# theming
+font "Ubuntu 14"
+default_border none
+set $floating_border pixel 2
+default_floating_border $floating_border 
+titlebar_border_thickness 0
+titlebar_padding 5 1
+exec_always gsettings-import
+
+# behaviour
+floating_modifier Mod4 normal
+focus_follows_mouse no
+focus_wrapping no
+workspace_auto_back_and_forth yes
+
+# bindings
+bindsym Mod4+r reload
+## focus windows
+bindsym Mod4+h focus left
+bindsym Mod4+j focus down
+bindsym Mod4+k focus up
+bindsym Mod4+l focus right
+bindsym Mod4+space focus mode_toggle
+bindsym Mod4+p focus parent
+bindsym Mod4+Shift+p focus child
+bindsym Mod4+z exec nc_flash_window
+## move windows
+bindsym Mod4+Shift+h unmark "_swap"; mark --add "_swap"; focus left; swap container with mark "_swap"; focus left; unmark "_swap"
+bindsym Mod4+Shift+j unmark "_swap"; mark --add "_swap"; focus down; swap container with mark "_swap"; focus down; unmark "_swap"
+bindsym Mod4+Shift+k unmark "_swap"; mark --add "_swap"; focus up; swap container with mark "_swap"; focus up; unmark "_swap"
+bindsym Mod4+Shift+l unmark "_swap"; mark --add "_swap"; focus right; swap container with mark "_swap"; focus right; unmark "_swap"
+bindsym Mod4+x [con_mark="_swap"] unmark "_swap"; mark --add "_swap"
+bindsym Mod4+Mod1+x swap container with mark "_swap"; [con_mark="_swap"] focus; unmark "_swap"
+bindsym Mod4+Mod1+h move left
+bindsym Mod4+Mod1+j move down
+bindsym Mod4+Mod1+k move up
+bindsym Mod4+Mod1+l move right
+bindsym Mod4+Shift+space floating toggle
+bindsym --whole-window Mod4+button2 floating toggle
+## resize windows
+bindsym Mod4+bracketleft resize shrink width 50px
+bindsym Mod4+bracketright resize grow width 50px
+bindsym Mod4+Shift+bracketleft resize shrink height 50px
+bindsym Mod4+Shift+bracketright resize grow height 50px
+## close windows
+bindsym Mod4+Shift+c kill
+## switch workspace
+bindsym Mod4+1 workspace number 01
+bindsym Mod4+2 workspace number 02
+bindsym Mod4+3 workspace number 03
+bindsym Mod4+4 workspace number 04
+bindsym Mod4+5 workspace number 05
+bindsym Mod4+6 workspace number 06
+bindsym Mod4+7 workspace number 07
+bindsym Mod4+8 workspace number 08
+bindsym Mod4+9 workspace number 09
+bindsym Mod4+0 workspace number 10
+bindsym Mod4+tab workspace next
+bindsym --whole-window Mod4+button4 workspace prev
+bindsym --whole-window Mod4+button5 workspace next
+bindsym --whole-window Mod4+button9 workspace prev
+bindsym --whole-window Mod4+button8 workspace next
+bindsym Mod4+escape workspace back_and_forth
+## move window to workspace
+bindsym Mod4+Shift+1 move container to workspace number 01
+bindsym Mod4+Shift+2 move container to workspace number 02
+bindsym Mod4+Shift+3 move container to workspace number 03
+bindsym Mod4+Shift+4 move container to workspace number 04
+bindsym Mod4+Shift+5 move container to workspace number 05
+bindsym Mod4+Shift+6 move container to workspace number 06
+bindsym Mod4+Shift+7 move container to workspace number 07
+bindsym Mod4+Shift+8 move container to workspace number 08
+bindsym Mod4+Shift+9 move container to workspace number 09
+bindsym Mod4+Shift+0 move container to workspace number 10
+bindsym  Mod4+Mod1+1 move container to workspace number 01; workspace number 01
+bindsym  Mod4+Mod1+2 move container to workspace number 02; workspace number 02
+bindsym  Mod4+Mod1+3 move container to workspace number 03; workspace number 03
+bindsym  Mod4+Mod1+4 move container to workspace number 04; workspace number 04
+bindsym  Mod4+Mod1+5 move container to workspace number 05; workspace number 05
+bindsym  Mod4+Mod1+6 move container to workspace number 06; workspace number 06
+bindsym  Mod4+Mod1+7 move container to workspace number 07; workspace number 07
+bindsym  Mod4+Mod1+8 move container to workspace number 08; workspace number 08
+bindsym  Mod4+Mod1+9 move container to workspace number 09; workspace number 09
+bindsym  Mod4+Mod1+0 move container to workspace number 10; workspace number 10
+bindsym Mod4+Shift+tab move container to workspace next; workspace next
+bindsym Mod4+Shift+escape move container to workspace back_and_forth; workspace back_and_forth
+## layouts
+bindsym Mod4+q exec sh -c "pkill autotiling 2>/dev/null || exec autotiling"
+bindsym Mod4+i exec sh -c "pkill autotiling 2>/dev/null; swaymsg splith"
+bindsym Mod4+u exec sh -c "pkill autotiling 2>/dev/null; swaymsg splitv"
+bindsym Mod4+t layout tabbed
+bindsym Mod4+g layout toggle split
+bindsym Mod4+m fullscreen
+bindsym Mod4+f sticky toggle
+## lock screen, suspend
+bindsym Mod4+grave exec swaylock
+## screenshots
+exec_always mkdir -p "${XDG_CACHE_HOME}/screenshots" "${HOME}/Videos/screencapture"
+bindsym Mod4+s exec grim -g "$(slurp)" "${XDG_CACHE_HOME}/screenshots/area_$(date +%y%m%d-%H:%M:%S).png"
+bindsym Mod4+Shift+s exec grim -o "$(swaymsg -t get_outputs -p | awk '/(focused)/ {print $2}')" "${XDG_CACHE_HOME}/screenshots/screen_$(date +%y%m%d-%H:%M:%S).png"
+## screen capture
+bindsym Mod4+equal exec pkill -SIGINT wf-recorder || wf-recorder -a -o "$(swaymsg -t get_outputs -p | awk '/(focused)/ {print $2}')" -f "${HOME}/Videos/screencapture/screen_$(date +%y%m%d-%H:%M:%S).mp4"
+bindsym Mod4+Shift+equal exec pkill -SIGINT wf-recorder || wf-recorder -a -g "$(slurp)" -f "${HOME}/Videos/screencapture/area_$(date +%y%m%d-%H:%M:%S).mp4"
+## launch applications
+bindsym Mod4+o exec rofi -show run
+bindsym Mod4+Return exec $TERMINAL || foot --server
+bindsym Mod4+Shift+Return exec $TERMINAL_FLOATING || foot --server
+bindsym Mod4+semicolon exec $TERMINAL || foot --server
+bindsym Mod4+Shift+semicolon exec $TERMINAL_FLOATING || foot --server
+bindsym Mod4+Mod1+b exec browser
+bindsym Mod4+Mod1+c exec chromium
+bindsym Mod4+Mod1+g exec lutris
+bindsym Mod4+Mod1+p exec keepassxc
+bindsym Mod4+Mod1+v exec virt-manager
+bindsym Mod4+Mod1+f exec pcmanfm
+bindsym Mod4+Mod1+m exec $TERMINAL ncmpcpp
+bindsym Mod4+Mod1+s exec $TERMINAL htop
+bindsym Mod4+Mod1+n exec $TERMINAL nmtui
+bindsym Mod4+Mod1+e exec $TERMINAL nvim
+bindsym Mod4+Mod1+d exec $TERMINAL dmesg -w
+bindsym Mod4+Mod1+r exec $TERMINAL newsboat
+bindsym Mod4+a exec $TERMINAL_FLOATING sysup
+# clipboard manager
+exec wl-paste -t text --watch clipman store --no-persist --histpath "~/.cache/.clipman.json"
+bindsym Mod4+v exec clipman pick --tool rofi -T"-dmenu -p clipboard" --histpath "~/.cache/.clipman.json"
+## various menus
+bindsym Mod4+w exec sway-select-window
+bindsym Mod4+c exec $TERMINAL_FLOATING python -q
+bindsym Mod4+e exec cat ~/.local/share/emojis.txt | rofi -dmenu -p emoji | cut -f 1 -d ' ' | wl-copy -n
+bindsym Mod4+n exec udiskie-mount $(udiskie-info -a -o "\{ui_device_label\} (\{id_type\})" -f '!is_mounted' | rofi -dmenu -p mount | cut -f 1 -d ':'); exec pkill -SIGRTMIN+29 i3blocks
+bindsym Mod4+Shift+n exec udiskie-umount $(udiskie-info -a -o "\{ui_device_label\} (\{id_type\})" -f is_mounted | rofi -dmenu -p unmount | cut -f 1 -d ':'); exec pkill -SIGRTMIN+29 i3blocks
+## volume
+bindsym Mod4+Left exec pactl set-sink-volume @DEFAULT_SINK@ -1%; exec pkill -SIGRTMIN+28 i3blocks
+bindsym Mod4+Right exec pactl set-sink-volume @DEFAULT_SINK@ +1%; exec pkill -SIGRTMIN+28 i3blocks
+bindsym Mod4+Shift+Left exec pactl set-sink-volume @DEFAULT_SINK@ 0%; exec pkill -SIGRTMIN+28 i3blocks
+bindsym Mod4+Shift+Right exec pactl set-sink-volume @DEFAULT_SINK@ 100%; exec pkill -SIGRTMIN+28 i3blocks
+## brightness
+bindsym Mod4+Down exec doas xbacklight -5; exec pkill -SIGRTMIN+27 i3blocks
+bindsym Mod4+Up exec doas xbacklight +5; exec pkill -SIGRTMIN+27 i3blocks
+bindsym Mod4+Shift+Down exec doas xbacklight 1; exec pkill -SIGRTMIN+27 i3blocks
+bindsym Mod4+Shift+Up exec doas xbacklight 100; exec pkill -SIGRTMIN+27 i3blocks
+## mpd controls
+bindsym Mod4+Control+k exec mpc prev; exec pkill -SIGRTMIN+30 i3blocks
+bindsym Mod4+Control+j exec mpc next; exec pkill -SIGRTMIN+30 i3blocks
+bindsym Mod4+Control+h exec mpc seek -2
+bindsym Mod4+Control+l exec mpc seek +2
+bindsym Mod4+Control+space exec mpc toggle; exec pkill -SIGRTMIN+30 i3blocks
+bindsym Mod4+Control+c exec mpc clear; exec pkill -SIGRTMIN+30 i3blocks
+bindsym Mod4+Control+s exec sh -c 'mpc clear; mpc ls | mpc add; mpc shuffle; mpc play; exec pkill -SIGRTMIN+30 i3blocks'
+bindsym Mod4+Control+u exec mpc sendmessage mpdas unlove
+bindsym Mod4+Control+f exec mpc sendmessage mpdas love
+## change theme
+bindsym Mod4+y exec pywal-theme dark
+bindsym Mod4+Shift+y exec pywal-theme light
+bindsym Mod4+Shift+t exec pywal-theme "${XDG_CONFIG_HOME}/pywal-schemes/$(fd \.json --base-directory "${XDG_CONFIG_HOME}/pywal-schemes" | rofi -dmenu -p theme)"
+## mouse buttons workaround
+bindsym --whole-window button8 exec swaymsg seat seat0 cursor press button5
+bindsym --whole-window button9 exec swaymsg seat seat0 cursor press button4
+
+# general input/output settings
+input * { 
+  xkb_layout jelinek
+  tap enabled
+}
+seat * {
+  hide_cursor 2000
+}
+output * {
+  background "$color8" solid_color
+}
+
+# window rules
+for_window [title="- KeePassXC$"] floating enable; border $floating_border
+for_window [title="^float$"] floating enable; border $floating_border
+for_window [title="^footpipe$"] floating enable; border $floating_border
+for_window [shell="xwayland"] title_format "[XW] %title" 
+
+include ~/.config/sway/local

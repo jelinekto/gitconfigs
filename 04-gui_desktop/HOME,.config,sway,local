@@ -1,0 +1,2 @@
+exec gammastep -P -O 5500K
+exec sh -c 'while :; do mountpoint -q /data && date > /data/.keep; sleep 300; done'

@@ -1,0 +1,20 @@
+#!/bin/sh
+[ ! -e "${XDG_CACHE_HOME}/.bspratio" ] && echo 50 > "${XDG_CACHE_HOME}/.bspratio"
+
+if echo "$1" | grep -Eq -- '^\+|^\-'; then
+  RATIO="$(cat "${XDG_CACHE_HOME}/.bspratio")"
+  RATIO="$(echo "${RATIO}${1}" | bc -l)"
+else
+  RATIO="$1"
+fi
+
+
+if [ ! "$RATIO" -gt 0 ]; then
+  RATIO=1
+elif [ ! "$RATIO" -lt 100 ]; then
+  RATIO=99
+fi
+
+echo "$RATIO" > "${XDG_CACHE_HOME}/.bspratio"
+
+bspc node -o "$(echo ${RATIO}/100 | bc -l)"

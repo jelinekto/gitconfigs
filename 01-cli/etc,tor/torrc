@@ -1,0 +1,31 @@
+SocksPort 9050 IsolateClientAddr IsolateSOCKSAuth IsolateClientProtocol IsolateDestPort IsolateDestAddr
+SocksPolicy accept 127.0.0.1
+SocksPolicy reject *
+
+ClientOnly 1
+ExitRelay 0
+BridgeRelay 0
+ExitPolicy reject *:*
+Sandbox 1
+
+# ConnectionPadding 1
+ConnectionPadding auto
+EnforceDistinctSubnets 1
+
+CircuitBuildTimeout 10
+CircuitsAvailableTimeout 300
+MaxCircuitDirtiness 120
+NewCircuitPeriod 60
+
+Log notice syslog
+DataDirectory /tmp/tor
+
+ControlPort 9051
+CookieAuthentication 1
+DisableDebuggerAttachment 0
+CookieAuthFile /tmp/tor/control_auth_cookie
+CookieAuthFileGroupReadable 1
+DataDirectoryGroupReadable 1
+
+AvoidDiskWrites 1
+HardwareAccel 1

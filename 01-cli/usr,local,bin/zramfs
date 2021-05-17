@@ -1,0 +1,82 @@
+#!/bin/sh
+# parse parameters
+while [ ! -z "$1" ]; do
+  case $1 in
+    -t*|--t*)
+      shift
+      FILESYSTEM="$1"
+    ;;
+    -s*|--s*)
+      shift
+      SIZE="$1"
+      ;;
+    -c*|--c*)
+      shift
+      COMP="$1"
+      ;;
+    *)
+      DIR="$1"
+      ;;
+  esac
+  shift
+done
+
+# set default values for parameters
+[ -z "$SIZE" ] && SIZE="$(($(free -m | awk '/Mem:/ {print $2}')*2))M" # use twice the RAM
+[ -z "$COMP" ] && COMP='zstd'
+[ -z "$FILESYSTEM" ] && FILESYSTEM='xfs'
+FILESYSTEM="$(echo $FILESYSTEM | tr '[:upper:]' '[:lower:]')" # make the parameter case insensitive
+
+# load necessary kernel modules
+if [ -e /proc/modules ]; then
+  lsmod | grep -q zram || modprobe zram
+  [ "$FILESYSTEM" = "xfs" ] && lsmod | grep -q null_blk || modprobe null_blk queue_mode=0 irqmode=0 gb=1 nr_devices=5
+fi
+
+# hot add a new zram device
+NUM="$(zramctl -n | wc -l)"
+[ "$NUM" = "$(ls /dev/zram* | wc -l)" ] && cat /sys/class/zram-control/hot_add
+[ ! -e /dev/zram${NUM} ] && echo 'Could not hot add a new zram device.' && exit 1
+
+# set default mount options for all file systems
+MOUNTOPTS='discard,noatime'
+
+# fs-specific mkfs and mount parameters
+case "$FILESYSTEM" in
+  xfs)
+    MKFSOPTS="-m reflink=1"
+    [ -e /dev/nullb${NUM} ] && MOUNTOPTS="${MOUNTOPTS},logdev=/dev/nullb${NUM}" && MKFSOPTS="${MKFSOPTS} -l logdev=/dev/nullb${NUM}"
+  ;;
+  fat|vfat|fat32)
+    MKFSOPTS='-F32'
+    MOUNTOPTS="${MOUNTOPTS},umask=0000,allow_utime=2,usefree"
+    FILESYSTEM='vfat'
+  ;;
+  btrfs)
+    MKFSOPTS='-d single -m single -M -K'
+    MOUNTOPTS="${MOUNTOPTS},nobarrier,nodatasum,nossd"
+    ;;
+  ext|ext4)
+    MKFSOPTS='-t ext4 -T small -O ^has_journal -m 0 -E nodiscard'
+    MOUNTOPTS="${MOUNTOPTS},barrier=0"
+    ;;
+  swap)
+    SWAP=1
+    ;;
+  *)
+    echo File system not supported.
+    exit 1
+  ;;
+esac
+
+echo "$COMP" > "/sys/block/zram${NUM}/comp_algorithm"
+echo "$SIZE" > "/sys/block/zram${NUM}/disksize"
+
+[ ! -z "$SWAP" ] && mkswap /dev/zram${NUM} && swapon /dev/zram${NUM} && exit 0
+
+mkdir -p "$DIR"
+if mkfs.${FILESYSTEM} ${MKFSOPTS} /dev/zram${NUM}; then
+  until mount -t "$FILESYSTEM" -o "$MOUNTOPTS" /dev/zram${NUM} "$DIR"; do sleep 0.1; done
+else
+  echo 1 > /sys/block/zram${NUM}/reset
+fi

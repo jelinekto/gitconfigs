@@ -1,0 +1,17 @@
+#!/bin/sh
+[ ! -e "$1" ] && echo 'No such file.' && exit 1
+DIRNAME="$(dirname "$1")"
+
+if grep -q '{fontspec}' "$1"; then
+  COMMAND='xelatex'
+else
+  COMMAND='pdflatex'
+fi
+COMMAND="${COMMAND} -output-directory=$DIRNAME $1"
+
+${COMMAND} || exit 1
+
+if grep -q '{biblatex}' "$1"; then
+  biber --output-directory "$DIRNAME" "$(basename "$1" | rev | cut -f 2- -d '.' | rev)" || exit 1
+  ${COMMAND} || exit 1
+fi

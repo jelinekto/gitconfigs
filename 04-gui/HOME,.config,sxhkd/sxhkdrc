@@ -1,0 +1,221 @@
+# Reload configs
+super + {_, shift} + F4
+  sh ~/.config/bspwm/bspwmrc
+
+# Keyboard layout
+super + BackSpace
+  setxkbmap jelinek -variant $(grep xkb_symbols /usr/share/X11/xkb/symbols/jelinek | cut -d \" -f 2 | rofi -dmenu -p 'keyboard layout')
+
+# Focus window
+super + {h,j,k,l}
+  bspc node -f {west,south,north,east}
+
+# Close/kill window
+super + shift + {c, Delete}
+  bspc node -{c,k}
+
+# Focus desktop
+super + {1-9}
+  bspc desktop -f {1-9}
+super + 0
+  bspc desktop -f $(bspc wm -g | tr ':' '\n' | grep 'f' | head -n 1 | cut -c 2-)
+
+# Move window to desktop
+super + shift + {1-9}
+  bspc node -d {1-9}
+super + shift + 0
+  bspc node -d $(bspc wm -g | tr ':' '\n' | grep 'f' | head -n 1 | cut -c 2-)
+
+# Move window to desktop and focus it
+super + alt + {1-9}
+  bspc node -d {1-9} --focus
+super + alt + 0
+  bspc node -d $(bspc wm -g | tr ':' '\n' | grep 'f' | head -n 1 | cut -c 2-) --focus
+
+# Move windows
+super + shift + {h,j,k,l}
+  bspc node -s {west,south,north,east}
+
+# Flip window tree
+super + {_,shift + } f
+  bspc node @parent -F {vertical,horizontal}
+
+# Rotate window tree
+super + {_,shift + } r
+  bspc node @/ -C {forward,backward}
+
+# Resize windows
+super + {bracketleft,braceleft,braceright,bracketright}
+  STEP=20; SELECTION={1,2,3,4}; \
+  bspc node -z $(echo "left -$STEP 0,bottom 0 $STEP,top 0 -$STEP,right $STEP 0" | cut -d',' -f$SELECTION) || \
+  bspc node -z $(echo "right -$STEP 0,top 0 $STEP,bottom 0 -$STEP,left $STEP 0" | cut -d',' -f$SELECTION)
+
+# Preselections
+super + {u,U,i,I,underscore}
+  bspc node -p {south,north,east,west,cancel}
+super + {minus,equal,plus}
+  bspratio {-5,+5,50}
+
+# Change gaps & borders size
+super + less
+  [ "$(bspc config window_gap)" -gt "0" ] &&\
+  bspc config window_gap $(echo $(bspc config window_gap)-1 | bc -l)
+super + greater
+  [ "$(bspc config window_gap)" -lt "51" ] &&\
+  bspc config window_gap $(echo $(bspc config window_gap)+1 | bc -l)
+super + comma
+  [ "$(bspc config border_width)" -gt "0" ] &&\
+  bspc config border_width $(echo $(bspc config border_width)-1 | bc -l)
+super + period
+  [ "$(bspc config border_width)" -lt "11" ] &&\
+  bspc config border_width $(echo $(bspc config border_width)+1 | bc -l)
+
+# Toggle floating
+super + {shift + space, button2}
+  bspc node focused.tiled -t floating || bspc node focused.floating -t tiled
+
+# Focus floating
+super + space
+  bspc node -f next.local.floating || bspc node -f next.local.tiled
+
+# Toggle fullscreen
+super + m
+  bspc node focused.tiled -t fullscreen || bspc node focused.fullscreen -t tiled
+
+# Cycle through desktops
+super + {_,shift + } Tab
+  bspc desktop -f {next,prev}.occupied.local
+button{8,9}
+  bspc desktop -f {next,prev}.occupied.local
+
+# Back-and-forth between desktops
+super + Escape
+  bspc desktop -f last
+
+# Toggle status bar
+super + b
+  lemontoggle
+
+# Move mouse cursor with keyboard
+super + KP_{Left,Right,Up,Down}
+  xdotool mousemove_relative -- {-10 0,  10 0,  0 -10,  0 10}
+super + shift + KP_{Left,Right,Up,Down}
+  xdotool mousemove_relative -- {-50 0,  50 0,  0 -50,  0 50}
+super + KP_{Home,Prior,End,Next}
+  xdotool mousemove_relative -- {-10 -10,  10 -10,  -10 10,  10 10}
+super + shift + KP_{Home,Prior,End,Next}
+  xdotool mousemove_relative -- {-50 -50,  50 -50,  -50 50,  50 50}
+super + {_,shift +} KP_Begin
+  xdotool click --clearmodifiers {1,3}
+super + KP_Insert
+  xdotool click --clearmodifiers 2
+
+# Terminal
+super + {semicolon, Return}
+  $TERMINAL -cd /home/$USER -e /bin/zsh
+super + {colon, shift + Return}
+  $TERMINAL -e /bin/sh
+
+# Lock screen
+super + {grave,asciitilde}
+  i3lock
+
+# Screenshots
+super + s
+  mkdir -p "${XDG_CACHE_HOME}"/screenshots;\
+  maim -u -f png -m 10 "${XDG_CACHE_HOME}"/screenshots/full_$(date "+%y%m%d-%H%M%S").png
+super + shift + s
+  mkdir -p "${XDG_CACHE_HOME}"/screenshots;\
+  maim -u -f png -m 10 -s "${XDG_CACHE_HOME}"/screenshots/sel_$(date "+%y%m%d-%H%M%S").png
+
+# Screen temperature
+super + {F11,F12}
+  screentemp {-250,+250};\
+  kill $(< "${XDG_CACHE_HOME}"/.lemonstatus/.*-screentemp)
+super + shift + {F11,F12}
+  screentemp {-1000,+1000};\
+  kill $(< "${XDG_CACHE_HOME}"/.lemonstatus/.*-screentemp)
+
+# Rofi menus
+super + o
+  exec $(zsh -c "whence -pm '*' | rev | cut -f 1 -d / | rev" | rofi -dmenu -i -p 'run')
+@super + p
+  if pidof keepassxc >/dev/null; then xdotool key "Super_L+Ctrl+P"; else keepassxc; fi
+super + w
+  rofi -show window
+super + e
+  cat ~/.local/share/emojis.txt | rofi -dmenu -i -p 'emoji' | cut -f 1 -d ' ' | xclip -r -selection clipboard
+super + v
+  rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+super + c
+  rofi -show calc -modi calc -no-show-match -no-sort
+# super + shift + p
+#   passfill fill
+super + n
+  udiskie-mount $(udiskie-info -a -o "\{ui_device_label\} (\{id_type\})" -f '!is_mounted' | rofi -dmenu -p 'mount' | cut -f 1 -d ':');\
+  kill $(< "${XDG_CACHE_HOME}"/.lemonstatus/.*-usbdrive)
+super + shift + n
+  udiskie-umount $(udiskie-info -a -o "\{ui_device_label\} (\{id_type\})" -f is_mounted | rofi -dmenu -p 'unmount' | cut -f 1 -d ':');\
+  kill $(< "${XDG_CACHE_HOME}"/.lemonstatus/.*-usbdrive)
+
+# (Pseudo)FN keys
+super + {_,shift + } {Left, Right}
+  pactl set-sink-volume @DEFAULT_SINK@ {-1, 0, +1, 100}%;\
+  kill $(< "${XDG_CACHE_HOME}"/.lemonstatus/.*-volume)
+{_,shift + } {XF86AudioLowerVolume, XF86AudioRaiseVolume}
+  pactl set-sink-volume @DEFAULT_SINK@ {-5, 0, +5, 100}%;\
+  kill $(< "${XDG_CACHE_HOME}"/.lemonstatus/.*-volume)
+super + {_,shift + } {Down, Up}
+  doas xbacklight {-5, 1, +5, 100};\
+  kill $(< "${XDG_CACHE_HOME}"/.lemonstatus/.*-backlight)
+{_,shift + } {XF86MonBrightnessDown, XF86MonBrightnessUp}
+  doas xbacklight {-5, 1, +5, 100};\
+  kill $(< "${XDG_CACHE_HOME}"/.lemonstatus/.*-backlight)
+
+# CPU clock
+super + {Prior, Next}
+  doas cpupower frequency-set -u $(echo $(cat /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq){-,+}100000 | bc -l);\
+  kill $(< "${XDG_CACHE_HOME}"/.lemonstatus/.*-freq)
+super + shift + {Prior, Next}
+  doas cpupower frequency-set -u {800M,2.9G};\
+  kill $(< "${XDG_CACHE_HOME}"/.lemonstatus/.*-freq)
+
+# MPD control
+super + control + {k,j}
+  mpc {prev, next};\
+  kill $(< "${XDG_CACHE_HOME}"/.lemonstatus/.*-mpd)
+super + control + {h,l}
+  mpc seek {-,+}2
+super + control + space
+  mpc toggle;\
+  kill $(< "${XDG_CACHE_HOME}"/.lemonstatus/.*-mpd)
+super + control + c
+  mpc clear;\
+  kill $(< "${XDG_CACHE_HOME}"/.lemonstatus/.*-mpd)
+super + control + s
+  mpc clear; mpc ls | mpc add; mpc shuffle; mpc play;\
+  kill $(< "${XDG_CACHE_HOME}"/.lemonstatus/.*-mpd)
+super + control + {u,f}
+  mpc sendmessage mpdas {un,_}love
+
+# Launch apps
+super + alt + {b,c,g,p,v}
+  {browser,browser-alt,lutris,keepassxc,virt-manager}
+super + alt + {m,s,n,e,l,r}
+  $TERMINAL -e {ncmpcpp,htop,nmtui,nvim,dmesg -w,newsboat}
+super + alt + {w}
+  $TERMINAL_FLOATING -e {progress -mw}
+
+# Change pywal theme
+super + {_, shift + } t
+  pywal-theme $(fd '\.json$' ~/.config/pywal-schemes/{dark,light} | rofi -dmenu -i -p 'Theme')
+super + {_, shift + } y
+  pywal-theme {dark,light}
+
+# System update
+super + a
+  $TERMINAL_FLOATING -e sysup
+
+# Restart Tor
+super + shift + slash
+  doas systemctl restart tor

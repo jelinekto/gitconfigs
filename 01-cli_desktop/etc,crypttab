@@ -1,0 +1,1 @@
+#cryptswap /dev/disk/by-partlabel/swap /dev/urandom swap,cipher=aes-xts-plain64,size=256,discard

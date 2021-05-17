@@ -1,0 +1,10 @@
+#!/bin/dash
+case "$0" in *notor-browser)
+  export TOR_SKIP_LAUNCH=1 TOR_TRANSPROXY=1 ;;
+esac
+
+if type apulse >/dev/null 2>&1; then
+  exec apulse ~/.local/tor-browser/firefox "$@"
+else
+  exec ~/.local/tor-browser/firefox "$@"
+fi

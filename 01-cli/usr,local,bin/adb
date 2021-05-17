@@ -1,0 +1,4 @@
+#!/bin/dash
+pidof adb >/dev/null || doas /usr/bin/adb start-server
+exec /usr/bin/adb "$@"
+# vim: ft=sh

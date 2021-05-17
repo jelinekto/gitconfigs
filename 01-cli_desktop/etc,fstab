@@ -1,0 +1,12 @@
+/dev/disk/by-partlabel/root             /                   btrfs remount,noatime                                                                            0 0
+/dev/disk/by-partlabel/root             /btrfs              btrfs subvolid=5,noatime                                                                         0 0
+/dev/disk/by-partlabel/swap             none                swap  defaults                                                                                   0 0
+
+/dev/disk/by-partlabel/esp              /boot               vfat  defaults,noatime,discard                                                                   0 0
+/dev/disk/by-partlabel/gparted          /mnt/gparted        vfat  defaults,noatime,discard,noauto                                                            0 0
+
+/dev/disk/by-partlabel/usbdata          /data               btrfs compress-force=zstd:15,noatime,autodefrag,noauto,users                                     0 0
+/dev/disk/by-partlabel/samsung_backup-1 /mnt/samsung_backup btrfs compress-force=zstd:15,noatime,noauto,users,device=/dev/disk/by-partlabel/samsung_backup-2 0 0
+
+tmpfs                                   /tmp                tmpfs noatime,size=8G                                                                            0 0
+tmpfs                                   /home/jeli/.cache   tmpfs noatime,nosuid,noexec,nodev,size=2G,uid=jeli,gid=jeli,mode=700,users                       0 0

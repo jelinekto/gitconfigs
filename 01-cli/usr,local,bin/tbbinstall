@@ -1,0 +1,18 @@
+#!/bin/sh
+[ -z "$1" ] && printf 'Specify version.\n' && exit 1
+
+if [ -e ~/.local/tor-browser ]; then
+  printf "\'~/.local/tor-browser\' already exists, continuing will wipe it..."
+  read dummy
+  printf '\n'
+  rm -R ~/.local/tor-browser
+fi
+
+printf "Fetching Tor Browser '%s'...\n" "$1"
+wget -c -nv --show-progress "https://www.torproject.org/dist/torbrowser/${1}/tor-browser-linux64-${1}_en-US.tar.xz" -O ~/.local/tbb.tar.xz || { printf 'Fetch failed, aborting.\n'; exit 1; }
+
+printf "\nUnpacking Tor Browser %s...\n" "$1"
+tar -xf ~/.local/tbb.tar.xz -C ~/.local && \
+  mv ~/.local/tor-browser_en-US/Browser ~/.local/tor-browser && \
+  rm -R ~/.local/tor-browser_en-US ~/.local/tbb.tar.xz && \
+  printf "\nTor Browser %s to roll in '~/.local/tor-browser'.\n" "$1"

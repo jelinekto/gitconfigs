@@ -1,0 +1,10 @@
+/dev/disk/by-partlabel/root    /                 btrfs remount,noatime                                                      0 0
+/dev/disk/by-partlabel/root    /btrfs            btrfs noatime,subvolid=5                                                   0 0
+
+/dev/disk/by-partlabel/esp     /boot             vfat  defaults,noatime                                                     0 0
+/dev/disk/by-partlabel/gparted /mnt/gparted      vfat  defaults,noatime,noauto                                              0 0
+
+/dev/disk/by-partlabel/usbdata /mnt/usbdata      btrfs noatime,compress-force=zstd:15,autodefrag,users,noauto               0 0
+
+tmpfs                          /tmp              tmpfs noatime,size=8G                                                      0 0
+tmpfs                          /home/jeli/.cache tmpfs noatime,nosuid,noexec,nodev,size=2G,uid=jeli,gid=jeli,mode=700,users 0 0

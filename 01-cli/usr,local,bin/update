@@ -1,0 +1,37 @@
+#!/bin/sh -e
+OS="$(awk -F '=' '/^ID=/ {print $2}' /etc/os-release)"
+
+if [ ! "$(whoami)" = 'root' ]; then
+  echo 'Not running as root.'
+  exit 1
+fi
+
+case $OS in
+  gentoo )
+    echo "$@" | grep -q -- '--nosync' || emerge-gitsync
+
+    while read -r exclude; do
+      EXCLUDE="${EXCLUDE} --exclude=${exclude}"
+    done < /etc/portage/package.exclude
+    emerge -uDN --with-bdeps=y --ask --verbose --keep-going ${EXCLUDE} world
+
+    smart-live-rebuild -j$(($(nproc)*2)) -- --ask=n --keep-going || true
+
+    emerge @preserved-rebuild
+
+    emerge --depclean
+
+    emerge @preserved-rebuild
+
+    revdep-rebuild
+
+    if type prelink 1>/dev/null 2>/dev/null; then
+      prelink -ai
+    fi
+
+    eclean -d distfiles
+
+    dispatch-conf
+    ;;
+
+esac

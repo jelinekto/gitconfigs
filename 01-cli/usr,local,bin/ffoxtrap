@@ -1,0 +1,34 @@
+#!/bin/sh
+case "$1" in
+  beta)     VARIANT='beta'
+            URL='-beta' ;;
+  dev*)     VARIANT='developer'
+            URL='-devedition' ;;
+  nightly)  VARIANT='nightly'
+            URL='-nightly' ;;
+  esr-next) VARIANT='esr-next'
+            URL='-esr-next'
+    ;;
+  esr)      VARIANT='esr'
+            URL='-esr'
+    ;;
+  stable)   VARIANT='stable'
+            URL='' ;;
+  *)
+    echo 'Valid variants are: nightly, beta, developer, esr, esr-next and stable.'
+    exit 1
+    ;;
+esac
+
+mkdir -p ~/.local/firefox
+
+[ -e ~/.local/firefox/$VARIANT ] && echo "Variant '$VARIANT' seems to be installed already." && exit 1
+
+printf "Fetching archive for '%s'...\n" "$VARIANT"
+wget -c -nv --show-progress "https://download.mozilla.org/?product=firefox${URL}-latest-ssl&os=linux64&lang=en-US" -O ~/.local/firefox/ffoxtrap.tar.bz2 || { printf 'Fetch failed, aborting.\n'; exit 1; }
+
+printf "\nUnpacking '%s'...\n" "$VARIANT"
+tar -xjf ~/.local/firefox/ffoxtrap.tar.bz2 -C ~/.local/firefox && \
+  mv ~/.local/firefox/firefox ~/.local/firefox/$VARIANT && \
+  rm ~/.local/firefox/ffoxtrap.tar.bz2 && \
+  printf "\nNew Firefox install ready to roll in '~/.local/firefox/%s'.\n" "$VARIANT"

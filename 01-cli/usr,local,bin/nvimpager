@@ -1,0 +1,17 @@
+#!/bin/sh
+if [ -n "$1" ]; then
+  INPUT="$1"
+else
+  INPUT='-'
+fi
+
+CONTENT="$(cat $INPUT)"
+LINES="$(printf '%s' "$CONTENT" | wc -l)"
+
+if [ "$LINES" -eq '0' ]; then
+  true
+elif [ "$LINES" -gt 25 ]; then
+  echo "$CONTENT" | exec nvim -c 'setlocal ft=man nobuflisted buftype=nofile bufhidden=wipe noswapfile' -c 'setlocal ft=txt' -c 'filetype detect' -c 'nnoremap q :q!<CR>'
+else
+  exec echo "$CONTENT"
+fi

@@ -1,0 +1,7 @@
+export PATH="${PATH}:/data/data/com.termux/files/usr/usr/local/bin:/data/data/com.termux/files/usr/home/.local/bin"
+export SUDO=''
+
+find -L . -name . -o -type d -prune -o -type l -exec rm {} + &
+(for f in $(ls storage/shared); do [ -e ~/"$f" ] || ln -s storage/shared/"$f" "$f"; done) &
+
+pidof sshd >/dev/null || sshd &
