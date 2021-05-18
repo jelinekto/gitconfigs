@@ -325,7 +325,7 @@ zle -N _autojump-go
 bindkey -M vicmd "^k" _autojump-go
 bindkey -M viins "^k" _autojump-go
 
-ff() {
+f() {
     fff "$@"
     cd "$(cat "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")"
 }
@@ -360,36 +360,6 @@ function fzy_history() {
 }
 zle -N fzy_history
 bindkey -M viins "^R" fzy_history
-
-## file/dir fuzzy find
-function fzy_find() {
-  local location="${LBUFFER/* /}${RBUFFER/ */}"
-  [ ! -z "$location" ] && [ ! -d "${LBUFFER/* /}${RBUFFER/ */}" ] && zle complete-word
-  local location="${LBUFFER/* /}${RBUFFER/ */}"
-  [ ! -z "$location" ] && BUFFER="$(sed "s;\(.*\)${location};\1;" <<< "$BUFFER")"
-
-  if grep -q -- "^~" <<< "$location"; then
-    local location="$(sed "s|~|${HOME}|g" <<< "$location")"
-  elif grep -vq -- "^/" <<< "$location"; then
-    local location="./$location"
-  fi
-  [ -z "$location" ] && local location="."
-
-  [ -d "$location" ] && local target="$(fd -Hp "$location" | $FUZZYFINDER)"
-  [ -d "$target" ] && local target="${target}/"
-  grep -q " " <<< "$target" && local target="$(sed "s| |\\ |g" <<< "$target")"
-
-  if [ ! -z "$target" ]; then
-    grep -q ' ' <<< "$target" && local target="\"$target\""
-    BUFFER="$(sed "s|^ ||g;s|  | |g" <<< "$BUFFER $target ")"
-    CURSOR+="$(wc -c <<< "$target")"
-  fi
-
-  zle reset-prompt
-}
-zle -N fzy_find
-bindkey -M viins "^O" fzy_find
-bindkey -M vicmd "^O" fzy_find
 
 ## prepend stuff to command line
 function prepend-sudo {
