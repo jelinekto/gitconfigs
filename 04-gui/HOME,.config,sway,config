@@ -26,7 +26,6 @@ bindsym Mod4+b bar hidden_state toggle
 
 # start daemons
 exec autotiling
-exec_always foot --server
 exec_always mako
 exec_always sh -c 'pkill flashfocus; exec flashfocus'
 exec_always mpdas
