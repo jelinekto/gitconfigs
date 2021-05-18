@@ -1,8 +1,8 @@
 # pywal colors
 include ~/.cache/wal/colors-sway
-client.focused          $color6     $color6     $background
-client.focused_inactive $foreground $foreground $background
-client.unfocused        $color8     $color8     $background
+client.focused          $color6     $color6     $background $color6
+client.focused_inactive $background $background $background $background
+client.unfocused        $background $background $background $background
 
 # status bar
 bar bar-0 {
@@ -32,11 +32,12 @@ exec_always pulseaudio --start
 
 # theming
 font "Ubuntu 14"
-default_border none
-set $floating_border pixel 2
-default_floating_border $floating_border 
+set $border pixel 2
+default_border $border
+default_floating_border $border
 titlebar_border_thickness 0
 titlebar_padding 5 1
+hide_edge_borders none
 exec_always gsettings-import
 
 # behaviour
@@ -202,9 +203,10 @@ output * {
 }
 
 # window rules
-for_window [title="- KeePassXC$"] floating enable; border $floating_border
-for_window [title="^float$"] floating enable; border $floating_border
-for_window [title="^footpipe$"] floating enable; border $floating_border
+for_window [title="- KeePassXC$"] floating enable; border $border
+for_window [title="^float$"] floating enable; border $border
+for_window [title="^footpipe$"] floating enable; border $border
 for_window [shell="xwayland"] title_format "[XW] %title" 
+for_window [app_id="^firefox$"] border none
 
 include ~/.config/sway/local
