@@ -137,10 +137,10 @@ bindsym Mod4+equal exec pkill -SIGINT wf-recorder || wf-recorder -a -o "$(swayms
 bindsym Mod4+Shift+equal exec pkill -SIGINT wf-recorder || wf-recorder -a -g "$(slurp)" -f "${HOME}/Videos/screencapture/area_$(date +%y%m%d-%H:%M:%S).mp4"
 ## launch applications
 bindsym Mod4+o exec rofi -show run
-bindsym Mod4+Return exec $TERMINAL || foot --server
-bindsym Mod4+Shift+Return exec $TERMINAL_FLOATING || foot --server
-bindsym Mod4+semicolon exec $TERMINAL || foot --server
-bindsym Mod4+Shift+semicolon exec $TERMINAL_FLOATING || foot --server
+bindsym Mod4+Return exec $TERMINAL
+bindsym Mod4+Shift+Return exec $TERMINAL_FLOATING
+bindsym Mod4+semicolon exec $TERMINAL
+bindsym Mod4+Shift+semicolon exec $TERMINAL_FLOATING
 bindsym Mod4+Mod1+b exec browser
 bindsym Mod4+Mod1+c exec chromium
 bindsym Mod4+Mod1+g exec lutris
