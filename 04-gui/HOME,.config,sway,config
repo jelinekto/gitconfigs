@@ -20,7 +20,6 @@ bar {
   status_command i3blocks
   strip_workspace_name yes
   strip_workspace_numbers yes
-  tray_output none
 }
 bindsym Mod4+b bar hidden_state toggle 
 
