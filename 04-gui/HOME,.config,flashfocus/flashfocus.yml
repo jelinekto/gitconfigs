@@ -7,11 +7,8 @@ flash-on-focus: true
 flash-fullscreen: false
 flash-lone-windows: 'never'
 
-# rules:
-#   - window-class: firefox
-#     flash-on-focus: False
+rules:
+  - window-name: 'Save As'
+    flash-on-focus: False
 #   - app-id: termite
-#     default-opacity: 0.8
-# rules:
-#   - window-name: ^(?!termite)$
 #     default-opacity: 0.8
