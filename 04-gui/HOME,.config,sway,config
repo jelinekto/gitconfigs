@@ -5,7 +5,7 @@ client.focused_inactive $foreground $foreground $background
 client.unfocused        $color8     $color8     $background
 
 # status bar
-bar {
+bar bar-0 {
   colors {
     statusline $foreground
     background $background
