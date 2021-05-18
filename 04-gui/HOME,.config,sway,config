@@ -1,8 +1,15 @@
-# pywal colors
 include ~/.cache/wal/colors-sway
+
+# borders
 client.focused          $color6     $color6     $background $color6
-client.focused_inactive $background $background $background $background
-client.unfocused        $background $background $background $background
+client.focused_inactive $color8     $color8     $background $color8
+client.unfocused        $background $background $foreground $background
+set $border pixel 2
+default_border none
+default_floating_border $border
+titlebar_border_thickness 0
+titlebar_padding 5 1
+hide_edge_borders both
 
 # status bar
 bar bar-0 {
@@ -32,12 +39,6 @@ exec_always pulseaudio --start
 
 # theming
 font "Ubuntu 14"
-set $border pixel 2
-default_border $border
-default_floating_border $border
-titlebar_border_thickness 0
-titlebar_padding 5 1
-hide_edge_borders none
 exec_always gsettings-import
 
 # behaviour

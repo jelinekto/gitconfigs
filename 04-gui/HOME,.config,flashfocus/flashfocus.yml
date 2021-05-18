@@ -3,7 +3,7 @@ default-opacity: 1
 time: 100
 simple: true
 ntimepoints: 1
-flash-on-focus: false
+flash-on-focus: true
 flash-fullscreen: false
 flash-lone-windows: 'never'
 
