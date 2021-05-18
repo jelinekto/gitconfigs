@@ -42,8 +42,8 @@ export  WINEPREFIX="${XDG_DATA_HOME}/wine" \
         PASSWORD_STORE_DIR="${XDG_DATA_HOME}/pass"
 
 # default applications
-export  TERMINAL="footclient" \
-        TERMINAL_FLOATING="footclient -T float -w 900x600" \
+export  TERMINAL="foot" \
+        TERMINAL_FLOATING="foot -T float -w 900x600" \
         PAGER="nvimpager" \
         MANPAGER="nvimpager" \
         FUZZYFINDER="fzf" \
