@@ -1,6 +1,7 @@
 # zmodload zsh/zprof
 # set -x
 
+sleep 0.05
 # powerlevel10k instant prompt
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
@@ -76,9 +77,6 @@ zle -N zle-line-init
 echo -ne "\e[5 q"
 cursor_preexec() { echo -ne "\e[5 q" ;}
 preexec_functions+=(cursor_preexec)
-
-# Annoying percent signs
-[ ! "$TERM" = 'linux' ] && clear
 
 # powerlevel10k instant prompt
 (( ! ${+functions[p10k-instant-prompt-finalize]} )) || p10k-instant-prompt-finalize
