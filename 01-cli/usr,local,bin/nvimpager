@@ -1,5 +1,4 @@
 #!/bin/sh
-echo "$0"
 if [ -n "$1" ]; then
   INPUT="$1"
 else
