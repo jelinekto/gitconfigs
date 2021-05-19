@@ -1,7 +1,7 @@
 #!/bin/sh
 PIPEFILE="${XDG_CACHE_HOME}/.footpipe-${RANDOM}${RANDOM}"
-
 cat - > "$PIPEFILE"
-footclient -T footpipe -w 1200x800 "$EDITOR" "$PIPEFILE" || foot -T footpipe -w 1200x800 "$EDITOR" "$PIPEFILE"
+
+foot -T footpipe -w 1300x900 "$PAGER" "$PIPEFILE"
 
 rm "$PIPEFILE"

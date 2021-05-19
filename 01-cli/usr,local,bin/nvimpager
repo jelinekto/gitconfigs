@@ -1,4 +1,5 @@
 #!/bin/sh
+echo "$0"
 if [ -n "$1" ]; then
   INPUT="$1"
 else
@@ -11,7 +12,12 @@ LINES="$(printf '%s' "$CONTENT" | wc -l)"
 if [ "$LINES" -eq '0' ]; then
   true
 elif [ "$LINES" -gt 25 ]; then
-  echo "$CONTENT" | exec nvim -c 'setlocal ft=man nobuflisted buftype=nofile bufhidden=wipe noswapfile' -c 'setlocal ft=txt' -c 'filetype detect' -c 'nnoremap q :q!<CR>'
+  case "$0" in
+    *nvimanpager)
+      echo "$CONTENT" | exec nvim -c 'set nobuflisted buftype=nofile bufhidden=wipe noswapfile modifiable filetype=man' -c 'nnoremap q :q!<CR>' ;;
+    *)
+      echo "$CONTENT" | exec nvim -c 'set nobuflisted buftype=nofile bufhidden=wipe noswapfile modifiable' -c 'filetype detect' -c 'nnoremap q :q!<CR>' "+ normal G $" ;;
+  esac
 else
-  exec echo "$CONTENT"
+  echo "$CONTENT"
 fi
