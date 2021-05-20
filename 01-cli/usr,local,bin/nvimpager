@@ -14,6 +14,8 @@ else
   case "$0" in
     *nvimanpager)
       echo "$CONTENT" | exec nvim -c 'set nobuflisted buftype=nofile bufhidden=wipe noswapfile modifiable filetype=man' -c 'nnoremap q :q!<CR>' ;;
+    *nvimgitpager)
+      echo "$CONTENT" | exec nvim -c 'set nobuflisted buftype=nofile bufhidden=wipe noswapfile modifiable filetype=man' -c 'set filetype=diff' -c 'nnoremap q :q!<CR>' ;;
     *)
       echo "$CONTENT" | exec nvim -c 'set nobuflisted buftype=nofile bufhidden=wipe noswapfile modifiable' -c 'filetype detect' -c 'nnoremap q :q!<CR>' "+ normal G $" ;;
   esac

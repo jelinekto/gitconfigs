@@ -46,6 +46,7 @@ export  TERMINAL="foot" \
         TERMINAL_FLOATING="foot -T float -w 900x600" \
         PAGER="nvimpager" \
         MANPAGER="nvimanpager" \
+        GIT_PAGER="nvimgitpager" \
         FUZZYFINDER="fzf" \
         BROWSER="browser" \
         PDFREADER="zathura" \
