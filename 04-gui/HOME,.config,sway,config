@@ -32,6 +32,7 @@ bindsym Mod4+b bar hidden_state toggle
 
 # start daemons
 exec autotiling
+exec mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | wob
 exec_always mako
 exec_always sh -c 'pkill flashfocus; exec flashfocus'
 exec_always mpdas
@@ -164,15 +165,15 @@ bindsym Mod4+e exec cat ~/.local/share/emojis.txt | rofi -dmenu -p emoji | cut -
 bindsym Mod4+n exec udiskie-mount $(udiskie-info -a -o "\{ui_device_label\} (\{id_type\})" -f '!is_mounted' | rofi -dmenu -p mount | cut -f 1 -d ':'); exec pkill -SIGRTMIN+29 i3blocks
 bindsym Mod4+Shift+n exec udiskie-umount $(udiskie-info -a -o "\{ui_device_label\} (\{id_type\})" -f is_mounted | rofi -dmenu -p unmount | cut -f 1 -d ':'); exec pkill -SIGRTMIN+29 i3blocks
 ## volume
-bindsym Mod4+Left exec pactl set-sink-volume @DEFAULT_SINK@ -1%; exec pkill -SIGRTMIN+28 i3blocks
-bindsym Mod4+Right exec pactl set-sink-volume @DEFAULT_SINK@ +1%; exec pkill -SIGRTMIN+28 i3blocks
-bindsym Mod4+Shift+Left exec pactl set-sink-volume @DEFAULT_SINK@ 0%; exec pkill -SIGRTMIN+28 i3blocks
-bindsym Mod4+Shift+Right exec pactl set-sink-volume @DEFAULT_SINK@ 100%; exec pkill -SIGRTMIN+28 i3blocks
+bindsym Mod4+Left exec pactl set-sink-volume @DEFAULT_SINK@ -1% && pamixer --get-volume > $SWAYSOCK.wob; exec pkill -SIGRTMIN+28 i3blocks
+bindsym Mod4+Right exec pactl set-sink-volume @DEFAULT_SINK@ +1% && pamixer --get-volume > $SWAYSOCK.wob; exec pkill -SIGRTMIN+28 i3blocks
+bindsym Mod4+Shift+Left exec pactl set-sink-volume @DEFAULT_SINK@ 0% && pamixer --get-volume > $SWAYSOCK.wob; exec pkill -SIGRTMIN+28 i3blocks
+bindsym Mod4+Shift+Right exec pactl set-sink-volume @DEFAULT_SINK@ 100% && pamixer --get-volume > $SWAYSOCK.wob; exec pkill -SIGRTMIN+28 i3blocks
 ## brightness
-bindsym Mod4+Down exec doas xbacklight -5; exec pkill -SIGRTMIN+27 i3blocks
-bindsym Mod4+Up exec doas xbacklight +5; exec pkill -SIGRTMIN+27 i3blocks
-bindsym Mod4+Shift+Down exec doas xbacklight 1; exec pkill -SIGRTMIN+27 i3blocks
-bindsym Mod4+Shift+Up exec doas xbacklight 100; exec pkill -SIGRTMIN+27 i3blocks
+bindsym Mod4+Down exec doas xbacklight -5 && xbacklight -get > $SWAYSOCK.wob; exec pkill -SIGRTMIN+27 i3blocks
+bindsym Mod4+Up exec doas xbacklight +5 && xbacklight -get > $SWAYSOCK.wob; exec pkill -SIGRTMIN+27 i3blocks
+bindsym Mod4+Shift+Down exec doas xbacklight 1 && xbacklight -get > $SWAYSOCK.wob; exec pkill -SIGRTMIN+27 i3blocks
+bindsym Mod4+Shift+Up exec doas xbacklight 100 && xbacklight -get > $SWAYSOCK.wob; exec pkill -SIGRTMIN+27 i3blocks
 ## mpd controls
 bindsym Mod4+Control+k exec mpc prev; exec pkill -SIGRTMIN+30 i3blocks
 bindsym Mod4+Control+j exec mpc next; exec pkill -SIGRTMIN+30 i3blocks
