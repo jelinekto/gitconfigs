@@ -1,14 +1,8 @@
-# plugins
+trap "exec fish" USR1
+
+# autojump plugin
 if test -s /usr/share/autojump/autojump.fish
   source /usr/share/autojump/autojump.fish
-end
-
-# restart shell on signal, do not reload config unless necessary
-trap "exec fish" USR1
-if [ -n "$reload_config" ]
-  rm "$XDG_CONFIG_HOME/fish/fish_variables"
-else
-  exit
 end
 
 # aliases
@@ -122,3 +116,20 @@ set -U fish_pager_color_selected_completion black
 set -U fish_color_cwd --bold brblue
 set -U fish_color_cwd_root --bold brblue
 set -U fish_color_status --bold brred
+## git prompt
+set -U __fish_git_prompt_show_informative_status 1
+set -U __fish_git_prompt_color_branch magenta --bold
+set -U __fish_git_prompt_showupstream informative
+set -U __fish_git_prompt_char_upstream_ahead "^"
+set -U __fish_git_prompt_char_upstream_behind "v"
+set -U __fish_git_prompt_char_upstream_prefix ""
+set -U __fish_git_prompt_char_stagedstate "#"
+set -U __fish_git_prompt_char_dirtystate "~"
+set -U __fish_git_prompt_char_untrackedfiles "+"
+set -U __fish_git_prompt_char_invalidstate "X"
+set -U __fish_git_prompt_char_cleanstate ""
+set -U __fish_git_prompt_color_dirtystate --bold bryellow
+set -U __fish_git_prompt_color_stagedstate --bold brgreen
+set -U __fish_git_prompt_color_invalidstate --bold brred
+set -U __fish_git_prompt_color_untrackedfiles --bold brblue
+set -U __fish_git_prompt_color_cleanstate --bold brgreen
