@@ -1,5 +1,6 @@
-# use signal to reload config
+# reload on signal, do not reload unless necessary
 trap "exec fish" USR1
+[ -z "$reload_config" ] && exit
 
 # aliases
 alias -s l "ls --color=auto --group-directories-first" 
