@@ -18,7 +18,6 @@ if [ -e "$ZPLUGDIR/powerlevel10k/powerlevel10k.zsh-theme" ]; then
   [ ! -e "${XDG_CACHE_HOME}/gitstatus" ] && ln -s "${XDG_DATA_HOME}/zsh/gitstatus" "$XDG_CACHE_HOME"
   POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
   source "$ZPLUGDIR/powerlevel10k/powerlevel10k.zsh-theme"
-  sleep 0.05
   source "$ZDOTDIR"/p10k.zsh
 fi
 

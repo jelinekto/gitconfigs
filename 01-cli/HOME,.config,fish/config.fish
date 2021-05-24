@@ -1,3 +1,7 @@
+# use signal to reload config
+trap "exec fish" USR1
+
+# get rid off greeting message
 set -U fish_greeting
 
 # key bindings
