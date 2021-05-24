@@ -5,6 +5,9 @@ if test -s /usr/share/autojump/autojump.fish
   source /usr/share/autojump/autojump.fish
 end
 
+# do not process stuff under this line unless necessary
+[ -z "$reload_config" ] && exit
+
 # aliases
 alias -s l "ls --color=auto --group-directories-first" 
 alias -s ls "ls --color=auto --group-directories-first" 
