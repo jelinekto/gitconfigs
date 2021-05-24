@@ -42,7 +42,8 @@ export  WINEPREFIX="${XDG_DATA_HOME}/wine" \
         PASSWORD_STORE_DIR="${XDG_DATA_HOME}/pass"
 
 # default applications
-export  TERMINAL="foot" \
+export  INT_SHELL="fish" \
+        TERMINAL="foot" \
         TERMINAL_FLOATING="foot -T float -w 900x600" \
         PAGER="nvimpager" \
         MANPAGER="nvimanpager" \
@@ -82,5 +83,5 @@ if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ] && [ ! -e "${XDG_CACHE_HOME}/
   touch "${XDG_CACHE_HOME}/.started_gui"
   exec sway --my-next-gpu-wont-be-nvidia
 else
-  exec zsh
+  exec $INT_SHELL
 fi
