@@ -113,13 +113,14 @@ set -U fish_pager_color_selected_background --background=brcyan
 set -U fish_pager_color_selected_prefix black
 set -U fish_pager_color_selected_completion black
 ## prompt colours
-set -U fish_color_cwd --bold brblue
-set -U fish_color_cwd_root --bold brblue
+set -U fish_color_cwd normal
+set -U fish_color_cwd_root normal
 set -U fish_color_status --bold brred
 ## git prompt
 set -U __fish_git_prompt_show_informative_status 1
 set -U __fish_git_prompt_color_branch magenta --bold
 set -U __fish_git_prompt_showupstream informative
+set -U __fish_git_prompt_char_stateseparator " "
 set -U __fish_git_prompt_char_upstream_ahead "^"
 set -U __fish_git_prompt_char_upstream_behind "v"
 set -U __fish_git_prompt_char_upstream_prefix ""
@@ -128,8 +129,8 @@ set -U __fish_git_prompt_char_dirtystate "~"
 set -U __fish_git_prompt_char_untrackedfiles "+"
 set -U __fish_git_prompt_char_invalidstate "X"
 set -U __fish_git_prompt_char_cleanstate ""
-set -U __fish_git_prompt_color_dirtystate --bold bryellow
-set -U __fish_git_prompt_color_stagedstate --bold brgreen
-set -U __fish_git_prompt_color_invalidstate --bold brred
-set -U __fish_git_prompt_color_untrackedfiles --bold brblue
-set -U __fish_git_prompt_color_cleanstate --bold brgreen
+set -U __fish_git_prompt_color_dirtystate --bold brmagenta
+set -U __fish_git_prompt_color_stagedstate --bold brmagenta
+set -U __fish_git_prompt_color_invalidstate --bold brmagenta
+set -U __fish_git_prompt_color_untrackedfiles --bold brmagenta
+set -U __fish_git_prompt_color_cleanstate --bold brmagenta

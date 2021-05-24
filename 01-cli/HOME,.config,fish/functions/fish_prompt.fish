@@ -2,15 +2,14 @@ function fish_prompt
     set -l laststatus $status
 
     # current directory
-    set_color --bold brblue
-    echo -n (prompt_pwd)
+    printf '%s' (prompt_pwd)
     set_color normal
 
     # git
     printf '%s ' (fish_git_prompt)
 
     # jobs
-    set -l jobs (jobs | wc -l)
+    set -l jobs (jobs | grep -v autojump | wc -l)
     if test $jobs -gt 0
       set_color brcyan
       printf '[%s] ' $jobs
