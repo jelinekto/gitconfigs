@@ -27,3 +27,7 @@ set -U fish_pager_color_progress --reverse
 set -U fish_pager_color_selected_background --background=brcyan
 set -U fish_pager_color_selected_prefix black
 set -U fish_pager_color_selected_completion black
+## prompt colours
+set -U fish_color_cwd --bold brblue
+set -U fish_color_cwd_root --bold brblue
+set -U fish_color_status --bold brred
