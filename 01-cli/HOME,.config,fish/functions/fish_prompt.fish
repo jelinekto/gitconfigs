@@ -1,4 +1,3 @@
-# Defined interactively
 function fish_prompt --description 'Write out the prompt'
     set -l last_pipestatus $pipestatus
     set -lx __fish_last_status $status # Export for __fish_print_pipestatus.
@@ -71,7 +70,7 @@ function fish_prompt --description 'Write out the prompt'
     
     # suffix colour
     set -l suffix_color
-    if test "$last_pipestatus" -eq 0
+    if test "$__fish_last_status" -eq 0
       set suffix_color --bold brgreen
     else
       set suffix_color --bold brred

@@ -1,6 +1,15 @@
-# reload on signal, do not reload unless necessary
+# plugins
+if test -s /usr/share/autojump/autojump.fish
+  source /usr/share/autojump/autojump.fish
+end
+
+# restart shell on signal, do not reload config unless necessary
 trap "exec fish" USR1
-[ -z "$reload_config" ] && exit
+if [ -n "$reload_config" ]
+  rm "$XDG_CONFIG_HOME/fish/fish_variables"
+else
+  exit
+end
 
 # aliases
 alias -s l "ls --color=auto --group-directories-first" 
@@ -36,7 +45,7 @@ abbr -a ytf "youtube-dl -f"
 abbr -a ytF "youtube-dl -F" 
 abbr -a dmesg "dmesg -e" 
 abbr -a fstab "$EDITOR /etc/fstab" 
-abbr -a rld "rm $XDG_CONFIG_HOME/fish/fish_variables; pkill -USR1 fish"
+abbr -a rld "pkill -USR1 fish"
 abbr -a zconf "$EDITOR "$ZDOTDIR"/.zshrc "$ZDOTDIR"/*.zsh" 
 abbr -a fconf "$EDITOR $XDG_CONFIG_HOME/fish/**"
 abbr -a nvimrc "$EDITOR ~/.config/nvim/init.vim" 
