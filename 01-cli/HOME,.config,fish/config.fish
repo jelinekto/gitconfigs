@@ -41,10 +41,10 @@ abbr -a dmesg "dmesg -e"
 abbr -a fstab "$EDITOR /etc/fstab" 
 abbr -a rld "pkill -USR1 fish"
 abbr -a zconf "$EDITOR "$ZDOTDIR"/.zshrc "$ZDOTDIR"/*.zsh" 
-abbr -a fconf "$EDITOR $XDG_CONFIG_HOME/fish/**"
+abbr -a fconf "$EDITOR $XDG_CONFIG_HOME/fish/{config.fish,functions/fish*}"
 abbr -a nvimrc "$EDITOR ~/.config/nvim/init.vim" 
 abbr -a vimrc "$EDITOR ~/.config/nvim/init.vim" 
-abbr -a dd 'dd status progress bs 4M' 
+abbr -a dd 'dd status=progress bs=4M' 
 abbr -a cdu "$SUDO compsize -x" 
 abbr -a cstatus "s git -C $GITCONFIGS status" 
 abbr -a cdiff "s git -C $GITCONFIGS diff" 
