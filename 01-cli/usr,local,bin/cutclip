@@ -24,6 +24,10 @@ until [ -z "$1" ]; do
     KEEP=1
     shift
     ;;
+    -n|--noaudio)
+    NOAUDIO='-an'
+    shift
+    ;;
     *)
     SOURCE="$1"
     shift
@@ -42,6 +46,4 @@ case "$SOURCE" in http*://*|www.*|youtube.com/*|youtu.be/*)
   ;;
 esac
 
-ffmpeg -y ${START} ${END} -i "$SOURCE"* ${COPY} -map 0:v:0 -map 0:a:0 "$OUTPUT"
-
-[ -z "$KEEP" ] && rm "${XDG_CACHE_HOME}/cutclip/source."* 2>/dev/null
+ffmpeg -y ${START} ${END} -i "$SOURCE"* ${COPY} -map 0:v:0 -map 0:a:0 $NOAUDIO "$OUTPUT"
