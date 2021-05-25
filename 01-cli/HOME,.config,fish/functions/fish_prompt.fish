@@ -1,12 +1,18 @@
 function fish_prompt
     set -l laststatus $status
 
+    # ssh
+    if set -q SSH_TTY
+      set_color bryellow
+      printf '%s@%s ' $USER $hostname
+    end
+
     # current directory
-    printf '%s' (prompt_pwd)
     set_color normal
+    printf '%s' (prompt_pwd)
 
     # git
-    printf '%s ' (fish_git_prompt)
+    fish_git_prompt
 
     # jobs
     set -l jobs (jobs | grep -v autojump | wc -l)
@@ -29,7 +35,7 @@ function fish_prompt
       set symbol_color --bold brred
     end
     set_color $symbol_color
-    printf '%s ' "$symbol"
+    printf ' %s ' "$symbol"
 
     set_color normal
 end

@@ -1,12 +1,11 @@
-trap "exec fish" USR1
+# do not process this file unless necessary
+if status is-interactive; and not set -q __fish_config_set
 
-# autojump plugin
-if test -s /usr/share/autojump/autojump.fish
-  source /usr/share/autojump/autojump.fish
-end
-
-# do not process stuff under this line unless necessary
-[ -n "$__fish_config_set" ] && exit
+# variables
+set -U fish_greeting
+set -U fish_key_bindings fish_hybrid_key_bindings
+set -U fish_handle_reflow 0
+set -U fish_escape_delay_ms 10
 
 # aliases
 alias -s l "ls --color=auto --group-directories-first" 
@@ -85,12 +84,6 @@ abbr -a reswap "for swap in (swapon --noheadings | awk '{print $1}'); do s swapo
 abbr -a cpuvuln "grep . /sys/devices/system/cpu/vulnerabilities/*" 
 abbr -a splitflac "shnsplit -f *.cue -o flac flac -0 -o %f - -t %n %t"
 
-# get rid off greeting message
-set -U fish_greeting
-
-# key bindings
-set -U fish_key_bindings fish_hybrid_key_bindings
-
 # colours
 set -U fish_color_autosuggestion brblack
 set -U fish_color_cancel brblack
@@ -139,3 +132,4 @@ set -U __fish_git_prompt_color_untrackedfiles --bold brmagenta
 set -U __fish_git_prompt_color_cleanstate --bold brmagenta
 
 set -U __fish_config_set 1
+end
