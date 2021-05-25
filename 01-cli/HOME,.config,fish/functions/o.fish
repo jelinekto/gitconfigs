@@ -1,4 +1,4 @@
-function sw
+function o
   switch "$argv[1]"
     case \*.part \*.PART \*.mp4 \*.MP4 \*.avi \*.AVI \*.mov \*.MOV \*.webm \*.WEBM \*.mkv \*.MKV \*.mpg \*.MPG \*.ogv \*.OGV
       i3-swallow "$MEDIAPLAYER" "$argv"
