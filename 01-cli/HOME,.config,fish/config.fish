@@ -6,7 +6,7 @@ if test -s /usr/share/autojump/autojump.fish
 end
 
 # do not process stuff under this line unless necessary
-[ -z "$reload_config" ] && exit
+[ -n "$__fish_config_set" ] && exit
 
 # aliases
 alias -s l "ls --color=auto --group-directories-first" 
@@ -137,3 +137,5 @@ set -U __fish_git_prompt_color_stagedstate --bold brmagenta
 set -U __fish_git_prompt_color_invalidstate --bold brmagenta
 set -U __fish_git_prompt_color_untrackedfiles --bold brmagenta
 set -U __fish_git_prompt_color_cleanstate --bold brmagenta
+
+set -U __fish_config_set 1
