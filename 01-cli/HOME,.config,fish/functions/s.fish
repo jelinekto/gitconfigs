@@ -1,4 +1,4 @@
 # Defined via `source`
-function s --wraps='doas ' --description 'alias s=doas '
-  doas  $argv; 
+function s --wraps='doas ' --description 'alias sudo/doas'
+  $SUDO $argv; 
 end
