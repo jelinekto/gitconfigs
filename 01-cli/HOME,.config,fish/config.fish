@@ -1,5 +1,5 @@
 # do not process this file unless necessary
-if status is-interactive; and not set -q __fish_config_set
+status is-interactive; and not set -q __fish_config_set; or exit
 
 # variables
 set -U fish_greeting
@@ -142,4 +142,3 @@ set -U __fish_git_prompt_color_untrackedfiles --bold brmagenta
 set -U __fish_git_prompt_color_cleanstate --bold brmagenta
 
 set -U __fish_config_set 1
-end

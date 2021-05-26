@@ -1,3 +1,6 @@
+status is-interactive
+or exit 0
+
 # fzf
 bind \co __fzf_search_current_dir
 bind \cr __fzf_search_history
