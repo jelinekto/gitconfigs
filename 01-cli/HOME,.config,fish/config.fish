@@ -1,28 +1,18 @@
 # only read this config when interactive
 status is-interactive; or exit
 
-# Plugins
+# key bindings
 ## fzf
-bind \co __fzf_search_current_dir
-bind \cr __fzf_search_history
-bind --mode insert \co __fzf_search_current_dir
-bind --mode insert \cr __fzf_search_history
-## z
-function __z_on_variable_pwd --on-variable PWD
-    __z_add
-end
-if test ! -e "$Z_DATA"
-  mkdir -p "$Z_DATA"
-  and rmdir "$Z_DATA"
-  touch "$Z_DATA"
-end
-## pisces
-for pair in $pisces_pairs
-    _pisces_bind_pair insert (string split -- ',' $pair)
-end
-bind -M insert \b _pisces_backspace
-bind -M insert \177 _pisces_backspace
-bind -M insert \t _pisces_complete
+bind           \co   __fzf_search_current_dir
+bind -M insert \co   __fzf_search_current_dir
+bind           \cr   __fzf_search_history
+bind -M insert \cr   __fzf_search_history
+bind           \e\cv $fzf_search_vars_cmd
+bind -M insert \e\cv $fzf_search_vars_cmd
+bind           \e\cl __fzf_search_git_log
+bind -M insert \e\cl __fzf_search_git_log
+bind           \e\cs __fzf_search_git_status
+bind -M insert \e\cs __fzf_search_git_status
 
 # do not read below this line unless necessary
 not set -q __fish_config_set; or exit
@@ -31,6 +21,9 @@ set -U fish_greeting
 set -U fish_key_bindings fish_hybrid_key_bindings
 set -U fish_handle_reflow 0
 set -U fish_escape_delay_ms 10
+
+# list of plugins
+set -U __fish_plugins PatrickF1/fzf.fish jethrokuan/z jorgebucaran/autopair.fish jorgebucaran/replay.fish markcial/upto
 
 # aliases
 alias -s l "ls --color=auto --group-directories-first" 
@@ -111,13 +104,10 @@ abbr -a splitflac "shnsplit -f *.cue -o flac flac -0 -o %f - -t %n %t"
 
 # plugins
 ## z
-set -U Z_DATA_DIR "$XDG_DATA_HOME/z"
-set -U Z_DATA "$Z_DATA_DIR/data"
+set -U Z_CMD "j"
 ## fzf
-set -U fzf_search_vars_cmd '__fzf_search_shell_variables (set --show | psub) (set --names | psub)'
-set -U FZF_DEFAULT_OPTS '--cycle --layout=reverse --border --height=90% --preview-window=wrap --marker="*"'
-## pisces
-set -U pisces_pairs '(,)' '[,]' '{,}' '","' "','"
+set -U fzf_fish_custom_keybindings
+set -U fzf_fd_opts --hidden --exclude=.git
 
 # colours
 set -U fish_color_autosuggestion brblack
