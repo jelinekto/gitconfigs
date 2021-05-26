@@ -19,5 +19,8 @@ bind -M insert \t _pisces_complete
 function __z_on_variable_pwd --on-variable PWD
     __z_add
 end
-test ! -e "$Z_DATA_DIR"; and mkdir -p "$Z_DATA_DIR"
-test ! -e "$Z_DATA"; and touch "$Z_DATA"
+if test ! -e "$Z_DATA"
+  mkdir -p "$Z_DATA"
+  and rmdir "$Z_DATA"
+  touch "$Z_DATA"
+end
