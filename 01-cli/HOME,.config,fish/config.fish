@@ -41,7 +41,7 @@ abbr -a ytf "youtube-dl -f"
 abbr -a ytF "youtube-dl -F" 
 abbr -a dmesg "dmesg -e" 
 abbr -a fstab "$EDITOR /etc/fstab" 
-abbr -a rld "rm $XDG_CONFIG_HOME/fish/fish_variables; fish -i -c exit"
+abbr -a rld "rm $XDG_CONFIG_HOME/fish/fish_variables; exec fish"
 abbr -a zconf "$EDITOR "$ZDOTDIR"/.zshrc "$ZDOTDIR"/*.zsh" 
 abbr -a fconf "$EDITOR $XDG_CONFIG_HOME/fish/{config.fish,functions/fish*}"
 abbr -a nvimrc "$EDITOR ~/.config/nvim/init.vim" 
@@ -83,6 +83,10 @@ abbr -a depclean 'yay -Rns (yay -Qqdt)'
 abbr -a reswap "for swap in (swapon --noheadings | awk '{print $1}'); do s swapoff $swap; s swapon $swap; done" 
 abbr -a cpuvuln "grep . /sys/devices/system/cpu/vulnerabilities/*" 
 abbr -a splitflac "shnsplit -f *.cue -o flac flac -0 -o %f - -t %n %t"
+
+# plugins
+## z
+set -U Z_CMD "j"
 
 # colours
 set -U fish_color_autosuggestion brblack
