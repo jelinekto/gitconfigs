@@ -18,7 +18,7 @@ function fish_prompt
     set -l jobs (jobs | grep -v autojump | wc -l)
     if test $jobs -gt 0
       set_color brcyan
-      printf '[%s] ' $jobs
+      printf ' [%s]' $jobs
     end
 
     # symbol
