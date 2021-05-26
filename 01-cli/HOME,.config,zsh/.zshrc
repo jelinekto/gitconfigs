@@ -48,12 +48,14 @@ if [ -e "$ZPLUGDIR/powerlevel10k/powerlevel10k.zsh-theme" ]; then
   [ ! -e "${XDG_DATA_HOME}/zsh/gitstatus" ] && mkdir -p "${XDG_DATA_HOME}/zsh/gitstatus"
   [ ! -e "${XDG_CACHE_HOME}/gitstatus" ] && ln -s "${XDG_DATA_HOME}/zsh/gitstatus" "$XDG_CACHE_HOME"
   POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
-  source "$ZPLUGDIR/powerlevel10k/powerlevel10k.zsh-theme"
   source "$ZDOTDIR"/p10k.zsh
+  source "$ZPLUGDIR/powerlevel10k/powerlevel10k.zsh-theme"
 fi
 if [ -e "$ZPLUGDIR/zsh-defer/zsh-defer.plugin.zsh" ]; then
   source "$ZPLUGDIR/zsh-defer/zsh-defer.plugin.zsh"
 fi
 
 # Load the rest in background
-zsh-defer -1 -2 source "$ZDOTDIR"/defer.zsh || source "$ZDOTDIR"/defer.zsh
+for config in "$ZDOTDIR"/0*.zsh; do
+  zsh-defer -1 -2 source "$config" || source "$config"
+done
