@@ -21,29 +21,30 @@ ZSH_SYSTEM_CLIPBOARD_USE_WL_CLIPBOARD=1
 
 plugload "zsh-users/zsh-autosuggestions"
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="30"
-ZSH_AUTOSUGGEST_USE_ASYNC=1
+ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd completion)
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="100"
+# ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 
 plugload "zsh-users/zsh-history-substring-search"
-HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="bg=white,fg=black"
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="bg=cyan,fg=black"
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND="fg=red,bold"
 HISTORY_SUBSTRING_SEARCH_FUZZY=1
+HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
 
 plugload "zdharma/fast-syntax-highlighting"
 cat > "${XDG_CACHE_HOME}/.zsh_colors.ini" <<"EOF"
 [base]
 default          = none
-unknown-token    = red,bold
-commandseparator = none
-redirection      = 248
-here-string-tri  = 248
+unknown-token    = 9,bold
+commandseparator = 15,bold
+redirection      = 15,bold
+here-string-tri  = none
 here-string-text = none
-here-string-var  = 14
-exec-descriptor  = 13
-comment          = 7
-correct-subtle   = 15
+here-string-var  = 11
+exec-descriptor  = none
+comment          = 8
+correct-subtle   = 8
 incorrect-subtle = 15
 subtle-separator = 15
 subtle-bg        = 15
@@ -103,36 +104,37 @@ case-input       = 14
 case-parentheses = 9
 case-condition   = 15
 EOF
-[ ! "$FAST_THEME_NAME" = ".zsh_colors" ] && fast-theme "${XDG_CACHE_HOME}/.zsh_colors.ini" >/dev/null
+# [ ! "$FAST_THEME_NAME" = ".zsh_colors" ] && fast-theme "${XDG_CACHE_HOME}/.zsh_colors.ini" >/dev/null
+fast-theme "${XDG_CACHE_HOME}/.zsh_colors.ini" >/dev/null
 
-# function for installing/updating plugins
-function plugup() {
-  for repo in $plugins; do
-    local pluginName="$(echo $repo | cut -f 2 -d "/")"
-    local pluginDir="${ZPLUGDIR}/${pluginName}"
-    mkdir -p "$pluginDir"
-    if [ -d "$pluginDir"/.git ]; then
-      echo "Updating ${repo}..."
-      (git -C "$pluginDir" fetch --depth=1 origin master &> /dev/null
-      git -C "$pluginDir" reset --hard origin/master &> /dev/null
-      git -C "$pluginDir" gc --prune=now 1>/dev/null &> /dev/null) &
-    else
-      echo "Fetching ${repo}..."
-      git clone --depth=1 "https://github.com/${repo}.git" "$pluginDir" &> /dev/null &
-      echo
-    fi
-  for plugin in $(ls "$ZPLUGDIR"); do
-    if ! echo $plugins | grep -q "/${plugin}"; then
-      rm -Rf "${ZPLUGDIR}/${plugin}"
-    fi
-  done
-  done
-  wait
-  for file in $(fd -H ".zsh" "$ZPLUGDIR" | grep -v ".zwc$"); do
-    jit "$file"
-  done
-  [ -e "$ZPLUGDIR/zsh-completions/src" ] && for f in "$ZPLUGDIR/zsh-completions/src"/*; do
-    [[ ! "$f" = *".zwc" ]] && jit "$f"
-  done
-  pkill -USR1 zsh
-}
+# # function for installing/updating plugins
+# function plugup() {
+#   for repo in $plugins; do
+#     local pluginName="$(echo $repo | cut -f 2 -d "/")"
+#     local pluginDir="${ZPLUGDIR}/${pluginName}"
+#     mkdir -p "$pluginDir"
+#     if [ -d "$pluginDir"/.git ]; then
+#       echo "Updating ${repo}..."
+#       (git -C "$pluginDir" fetch --depth=1 origin master &> /dev/null
+#       git -C "$pluginDir" reset --hard origin/master &> /dev/null
+#       git -C "$pluginDir" gc --prune=now 1>/dev/null &> /dev/null) &
+#     else
+#       echo "Fetching ${repo}..."
+#       git clone --depth=1 "https://github.com/${repo}.git" "$pluginDir" &> /dev/null &
+#       echo
+#     fi
+#   for plugin in $(ls "$ZPLUGDIR"); do
+#     if ! echo $plugins | grep -q "/${plugin}"; then
+#       rm -Rf "${ZPLUGDIR}/${plugin}"
+#     fi
+#   done
+#   done
+#   wait
+#   for file in $(fd -H ".zsh" "$ZPLUGDIR" | grep -v ".zwc$"); do
+#     jit "$file"
+#   done
+#   [ -e "$ZPLUGDIR/zsh-completions/src" ] && for f in "$ZPLUGDIR/zsh-completions/src"/*; do
+#     [[ ! "$f" = *".zwc" ]] && jit "$f"
+#   done
+#   pkill -USR1 zsh
+# }

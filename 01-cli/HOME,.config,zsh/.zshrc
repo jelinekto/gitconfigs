@@ -27,13 +27,9 @@ setopt extendedglob \
        rmstarsilent \
        noflowcontrol \
        multios \
-       incappendhistory \
        sharehistory \
-       histignorealldups \
        histignorespace \
-       histsavenodups \
        histreduceblanks \
-       histexpiredupsfirst \
        menu_complete
 
 # Use signal to reload config
