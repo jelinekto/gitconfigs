@@ -13,5 +13,8 @@ bind -M insert \177 _pisces_backspace
 bind -M insert \t _pisces_complete
 
 # z
+function __z_on_variable_pwd --on-variable PWD
+    __z_add
+end
 test ! -e "$Z_DATA_DIR"; and mkdir -p "$Z_DATA_DIR"
 test ! -e "$Z_DATA"; and touch "$Z_DATA"
