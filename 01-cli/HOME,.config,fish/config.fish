@@ -86,7 +86,13 @@ abbr -a splitflac "shnsplit -f *.cue -o flac flac -0 -o %f - -t %n %t"
 
 # plugins
 ## z
-set -U Z_CMD "j"
+set -U Z_DATA_DIR "$XDG_DATA_HOME/z"
+set -U Z_DATA "$Z_DATA_DIR/data"
+## fzf
+set -U fzf_search_vars_cmd '__fzf_search_shell_variables (set --show | psub) (set --names | psub)'
+set -U FZF_DEFAULT_OPTS '--cycle --layout=reverse --border --height=90% --preview-window=wrap --marker="*"'
+## pisces
+set -U pisces_pairs '(,)' '[,]' '{,}' '","' "','"
 
 # colours
 set -U fish_color_autosuggestion brblack
