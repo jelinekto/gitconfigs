@@ -70,7 +70,7 @@ cursor:
 live_config_reload: true
 
 shell:
-  program: fish
+  program: zsh
 #  args:
 #    - --login
 

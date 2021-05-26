@@ -191,9 +191,7 @@ bindkey -M viins "^[n" edit-command-line
 [ -e /usr/share/autojump/autojump.zsh ] && source /usr/share/autojump/autojump.zsh
 
 ## list of plugins
-typeset -gU plugins; plugins=(
-  "romkatv/zsh-defer"
-  "romkatv/powerlevel10k"
+plugins+=(
   "zsh-users/zsh-completions"
   "zsh-users/zsh-history-substring-search"
   "zdharma/fast-syntax-highlighting"
@@ -438,6 +436,28 @@ osc7_cwd() {
 autoload -Uz add-zsh-hook
 add-zsh-hook -Uz chpwd osc7_cwd
 _zshtitle
+
+# Change cursor shape based on vi mode
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]] ||
+    [[ $1 = "block" ]]; then
+    echo -ne "\e[1 q"
+  elif [[ ${KEYMAP} == main ]] ||
+    [[ ${KEYMAP} == viins ]] ||
+    [[ ${KEYMAP} = "" ]] ||
+    [[ $1 = "beam" ]]; then
+    echo -ne "\e[5 q"
+  fi
+}
+zle -N zle-keymap-select
+zle-line-init() {
+  zle -K viins
+  echo -ne "\e[5 q"
+}
+zle -N zle-line-init
+echo -ne "\e[5 q"
+cursor_preexec() { echo -ne "\e[5 q" ;}
+preexec_functions+=(cursor_preexec)
 
 # compile zsh files
 for f in "$ZDOTDIR"/*.zsh; do
