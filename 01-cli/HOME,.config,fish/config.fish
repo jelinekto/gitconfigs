@@ -23,7 +23,7 @@ set -U fish_handle_reflow 0
 set -U fish_escape_delay_ms 10
 
 # list of plugins
-set -U __fish_plugins PatrickF1/fzf.fish jethrokuan/z jorgebucaran/autopair.fish jorgebucaran/replay.fish markcial/upto
+set -U __fish_plugins PatrickF1/fzf.fish jethrokuan/z jorgebucaran/autopair.fish jorgebucaran/replay.fish markcial/upto IlanCosman/tide
 
 # aliases
 alias -s l "ls --color=auto --group-directories-first" 
@@ -108,6 +108,43 @@ set -U Z_CMD "j"
 ## fzf
 set -U fzf_fish_custom_keybindings
 set -U fzf_fd_opts --hidden --exclude=.git
+## tide prompt
+### left side
+set -U tide_left_prompt_item_separator_same_color ' '
+set -U tide_left_prompt_item_separator_diff_color ' '
+set -U tide_left_prompt_items context pwd git jobs prompt_char
+set -U tide_left_prompt_pad_items false
+set -U tide_context_root_color bryellow
+set -U tide_context_ssh_color brgreen
+set -U tide_git_branch_color brmagenta
+set -U tide_git_conflicted_color brmagenta
+set -U tide_git_dirty_color brmagenta
+set -U tide_git_operation_color brmagenta
+set -U tide_git_staged_color brmagenta
+set -U tide_git_stash_color brmagenta
+set -U tide_git_untracked_color brmagenta
+set -U tide_git_upstream_color brmagenta
+set -U tide_jobs_color brcyan
+set -U tide_jobs_verbose true
+set -U tide_prompt_char_success_color brgreen
+set -U tide_prompt_char_failure_color brred
+set -U tide_prompt_char_vi_default_icon '$'
+set -U tide_prompt_char_vi_insert_icon '$'
+set -U tide_prompt_char_vi_replace_icon '$'
+set -U tide_prompt_char_vi_visual_icon '$'
+set -U tide_pwd_color_anchors brblue
+set -U tide_pwd_color_dirs brblue
+set -U tide_pwd_color_truncated_dirs brcyan
+set -U tide_pwd_truncate_margin 1000
+set -U tide_status_failure_color brred
+set -U tide_status_failure_icon '⏎'
+### right side
+set -U tide_right_prompt_item_separator_same_color ' '
+set -U tide_right_prompt_item_separator_diff_color ' '
+set -U tide_right_prompt_items status cmd_duration
+set -U tide_cmd_duration_threshold 5000
+set -U tide_cmd_duration_decimals 1
+set -U tide_cmd_duration_color brblack
 
 # colours
 set -U fish_color_autosuggestion brblack
