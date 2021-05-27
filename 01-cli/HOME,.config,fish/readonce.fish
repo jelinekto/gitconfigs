@@ -14,18 +14,33 @@ alias -s ll "ls -Nlh --color=auto --group-directories-first"
 alias -s cp "cp -ai --reflink=auto --strip-trailing-slashes" 
 alias -s mv "mv -i --strip-trailing-slashes" 
 alias -s rm "rm -I --one-file-system" 
-alias -s rmr "rm -R -I --one-file-system" 
-alias -s rmrf "rm -Rf --one-file-system" 
 alias -s grep "egrep --color=auto" 
 alias -s egrep "egrep --color=auto" 
 
 # abbreviations
 abbr -a :q "exit" 
 abbr -a v "$EDITOR" 
+abbr -a rmr "rm -R" 
+abbr -a rmrf "rm -Rf" 
 abbr -a ln "ln -fis" 
 abbr -a free "free -h" 
+abbr -a sort "sort -h" 
 abbr -a du "du -h" 
 abbr -a df "df -h" 
+abbr -a g 'grep'
+abbr -a gi 'grep -i'
+abbr -a gv 'grep -v'
+abbr -a giv 'grep -iv'
+abbr -a H 'head -n'
+abbr -a T 'tail -n'
+abbr -a P "$PAGER"
+abbr -a DT 'doas tee'
+abbr -a S 'sort -h'
+abbr -a U "uniq -u"
+abbr -a C "cut -f"
+abbr -a W "wc -l"
+abbr -a Wc "wc -c"
+abbr -a Ww "wc -w"
 abbr -a mkdir "mkdir -p" 
 abbr -a rsync "rsync -aHSv --info=progress2" 
 abbr -a userctl "systemctl --user" 
