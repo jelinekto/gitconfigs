@@ -3,7 +3,7 @@ set -U fish_key_bindings fish_hybrid_key_bindings
 set -U fish_handle_reflow 0
 set -U fish_escape_delay_ms 10
 
-# list of plugins
+# list plugins
 set -U __fish_plugins PatrickF1/fzf.fish jethrokuan/z jorgebucaran/autopair.fish jorgebucaran/replay.fish markcial/upto IlanCosman/tide
 
 # aliases
@@ -152,7 +152,7 @@ set -U fish_color_selection white\x1e\x2d\x2dbold\x1e\x2d\x2dbackground\x3dbrbla
 set -U fish_color_valid_path bryellow
 ## pager colours
 set -U fish_pager_color_completion normal
-set -U fish_pager_color_description brblack
+set -U fish_pager_color_description bryellow
 set -U fish_pager_color_prefix cyan\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 set -U fish_pager_color_progress --reverse
 set -U fish_pager_color_selected_background --background=brcyan
