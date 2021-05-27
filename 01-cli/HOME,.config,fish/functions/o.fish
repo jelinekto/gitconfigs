@@ -1,4 +1,4 @@
-# Defined in /tmp/fish.LP1qVf/o.fish @ line 2
+# Defined in /tmp/fish.U7p4oH/o.fish @ line 2
 function o
   switch "$argv[1]"
     case \*.part \*.PART \*.mp4 \*.MP4 \*.avi \*.AVI \*.mov \*.MOV \*.webm \*.WEBM \*.mkv \*.MKV \*.mpg \*.MPG \*.ogv \*.OGV
@@ -7,7 +7,7 @@ function o
       "$MEDIAPLAYER" "$argv"
     case \*.pdf \*.PDF
       i3-swallow "$PDFREADER" "$argv"
-    case \*.txt \*.TXT \*.tex \*.TEX \*.rmd \*.RMD \*.md \*.MD \*.srt \*.SRT \*.ini \*.INI \*.json \*.JSON \*.yaml \*.YAML \*.yml \*.YML \*.js \*.JS \*.zsh \*.ZSH \*.fish \*.FISH \*.patch \*.PATCH \*.conf \*.CONF
+    case \*.txt \*.TXT \*.tex \*.TEX \*.rmd \*.RMD \*.md \*.MD \*.srt \*.SRT \*.ini \*.INI \*.json \*.JSON \*.yaml \*.YAML \*.yml \*.YML \*.js \*.JS \*.zsh \*.ZSH \*.fish \*.FISH \*.patch \*.PATCH \*.conf \*.CONF \*config
       "$EDITOR" "$argv"
     case \*.doc \*.DOC \*.docx \*.DOCX \*.xls \*.XLS \*.xlsx \*.XLSX \*.ppt \*.PPT \*.pptx \*.PPTX
       i3-swallow libreoffice "$argv"
