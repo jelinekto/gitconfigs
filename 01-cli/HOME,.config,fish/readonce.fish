@@ -107,8 +107,8 @@ set -U fzf_fd_opts --hidden --exclude=.git
 ## tide prompt
 ### left side
 set -U tide_left_prompt_item_separator_same_color ' '
-set -U tide_left_prompt_item_separator_diff_color ' '
-set -U tide_left_prompt_items vi_mode context pwd git jobs prompt_char
+set -U tide_left_prompt_item_separator_diff_color ''
+set -U tide_left_prompt_items context pwd git jobs prompt_char vi_mode
 set -U tide_context_root_color bryellow
 set -U tide_context_ssh_color brgreen
 set -U tide_git_branch_color brmagenta
@@ -136,14 +136,14 @@ set -U tide_status_failure_icon '⏎'
 ### right side
 set -U tide_right_prompt_item_separator_same_color ' '
 set -U tide_right_prompt_item_separator_diff_color ' '
-set -U tide_right_prompt_items vi_mode status cmd_duration
+set -U tide_right_prompt_items status cmd_duration
 set -U tide_cmd_duration_threshold 5000
 set -U tide_cmd_duration_decimals 1
 set -U tide_cmd_duration_color brblack
-set -U tide_vi_mode_default_color black
-set -U tide_vi_mode_insert_color black
-set -U tide_vi_mode_visual_color black
-set -U tide_vi_mode_replace_color black
+set -U tide_vi_mode_default_bg_color black
+set -U tide_vi_mode_insert_bg_color black
+set -U tide_vi_mode_visual_bg_color black
+set -U tide_vi_mode_replace_bg_color black
 set -U tide_vi_mode_default_icon '\e[1 q'
 set -U tide_vi_mode_insert_icon '\e[5 q'
 set -U tide_vi_mode_replace_icon '\e[3 q'
