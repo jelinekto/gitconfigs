@@ -43,8 +43,8 @@ export  WINEPREFIX="${XDG_DATA_HOME}/wine" \
 
 # default applications
 export  INT_SHELL="fish" \
-        TERMINAL="footclient" \
-        TERMINAL_FLOATING="footclient -T float -w 900x600" \
+        TERMINAL="foot" \
+        TERMINAL_FLOATING="foot -T float -w 900x600" \
         PAGER="nvimpager" \
         MANPAGER="nvimanpager" \
         GIT_PAGER="nvimgitpager" \

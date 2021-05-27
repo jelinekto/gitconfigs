@@ -1,6 +1,8 @@
 status is-interactive; or exit
 
 # key bindings
+bind           \eo __prepend_o
+bind -M insert \eo __prepend_o
 ## fzf
 bind           \co   __fzf_search_current_dir
 bind -M insert \co   __fzf_search_current_dir

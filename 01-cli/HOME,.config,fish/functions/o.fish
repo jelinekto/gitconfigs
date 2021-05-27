@@ -1,3 +1,4 @@
+# Defined in /tmp/fish.LP1qVf/o.fish @ line 2
 function o
   switch "$argv[1]"
     case \*.part \*.PART \*.mp4 \*.MP4 \*.avi \*.AVI \*.mov \*.MOV \*.webm \*.WEBM \*.mkv \*.MKV \*.mpg \*.MPG \*.ogv \*.OGV
@@ -22,5 +23,7 @@ function o
       i3-swallow "$BROWSER" "$argv"
     case \*.torrent \*.TORRENT
       i3-swallow "$TORRENTCLIENT" "$argv"
+    case \*
+      printf 'Unhandled file type\n'
   end
 end

@@ -1,12 +1,12 @@
-# Defined in /tmp/fish.ykfmZV/__fish_prepend_sudo.fish @ line 2
-function __fish_prepend_sudo --description Prepend\ \'sudo\ \'\ to\ the\ beginning\ of\ the\ current\ commandline
+# Defined in /tmp/fish.iljgXI/__prepend_o.fish @ line 2
+function __prepend_o --description Prepend\ \'o\ \'\ to\ the\ beginning\ of\ the\ current\ commandline
     set -l cmd (commandline -po)
     set -l cursor (commandline -C)
     if test -z "$cmd"
-        commandline -r "s $history[1]"
-    else if test "$cmd[1]" != s
+        commandline -r "o $history[1]"
+    else if test "$cmd[1]" != o
         commandline -C 0
-        commandline -i "s "
+        commandline -i "o "
         commandline -C (math $cursor + 2)
     else
         commandline -r (string sub --start=6 (commandline -p))
