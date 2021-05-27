@@ -40,7 +40,7 @@ abbr -a ytf "youtube-dl -f"
 abbr -a ytF "youtube-dl -F" 
 abbr -a dmesg "dmesg -e" 
 abbr -a fstab "$EDITOR /etc/fstab" 
-abbr -a rld "rm $XDG_CONFIG_HOME/fish/fish_variables; fish -c 'source $XDG_CONFIG_HOME/fish/readonce.fish'
+abbr -a rld "rm $XDG_CONFIG_HOME/fish/fish_variables; fish -c 'source $XDG_CONFIG_HOME/fish/readonce.fish'"
 abbr -a zconf "$EDITOR "$ZDOTDIR"/.zshrc "$ZDOTDIR"/*.zsh" 
 abbr -a fconf "$EDITOR $XDG_CONFIG_HOME/fish/config.fish $XDG_CONFIG_HOME/fish/**/*.fish"
 abbr -a nvimrc "$EDITOR ~/.config/nvim/init.vim" 
