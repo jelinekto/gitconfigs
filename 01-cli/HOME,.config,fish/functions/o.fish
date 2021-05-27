@@ -1,4 +1,4 @@
-# Defined in /tmp/fish.U7p4oH/o.fish @ line 2
+# Defined in /tmp/fish.YS4jGO/o.fish @ line 2
 function o
   switch "$argv[1]"
     case \*.part \*.PART \*.mp4 \*.MP4 \*.avi \*.AVI \*.mov \*.MOV \*.webm \*.WEBM \*.mkv \*.MKV \*.mpg \*.MPG \*.ogv \*.OGV

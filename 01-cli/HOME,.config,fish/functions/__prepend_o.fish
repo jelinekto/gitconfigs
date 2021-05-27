@@ -1,10 +1,8 @@
-# Defined in /tmp/fish.iljgXI/__prepend_o.fish @ line 2
+# Defined in /tmp/fish.LWVXOW/__prepend_o.fish @ line 2
 function __prepend_o --description Prepend\ \'o\ \'\ to\ the\ beginning\ of\ the\ current\ commandline
     set -l cmd (commandline -po)
     set -l cursor (commandline -C)
-    if test -z "$cmd"
-        commandline -r "o $history[1]"
-    else if test "$cmd[1]" != o
+    if test "$cmd[1]" != o
         commandline -C 0
         commandline -i "o "
         commandline -C (math $cursor + 2)
