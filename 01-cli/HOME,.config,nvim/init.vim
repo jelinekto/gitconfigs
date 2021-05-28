@@ -235,14 +235,6 @@ autocmd! User GoyoLeave Limelight!
 " targets
 let g:targets_nl = 'nN'
 
-" ultisnips
-let g:UltiSnipsListSnippets="<C-h>"
-let g:UltiSnipsExpandTrigger="<C-l>"
-let g:UltiSnipsJumpForwardTrigger="<C-l>"
-let g:UltiSnipsJumpBackwardTrigger="<C-k>"
-let g:UltiSnipsEditSplit="vertical"
-autocmd Filetype plaintex UltiSnipsAddFiletypes tex
-
 " VimCompletesMe
 set omnifunc=syntaxcomplete#Complete
 let g:vcm_s_tab_behavior = 1
