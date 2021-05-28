@@ -6,6 +6,7 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.local/share/nvim/plugged')
+Plug 'LunarWatcher/auto-pairs'
 Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
 Plug 'ajh17/VimCompletesMe'
@@ -180,6 +181,9 @@ endfunction
 
 " *tree
 noremap U <Esc>:UndotreeToggle<CR>
+
+" autopairs
+let g:AutoPairsCompatibleMaps = 0
 
 " gitgutter
 set foldtext=gitgutter#fold#foldtext()
