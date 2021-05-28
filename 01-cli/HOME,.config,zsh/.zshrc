@@ -52,6 +52,4 @@ if [ -e "$ZPLUGDIR/zsh-defer/zsh-defer.plugin.zsh" ]; then
 fi
 
 # Load the rest in background
-for config in "$ZDOTDIR"/0*.zsh; do
-  zsh-defer -1 -2 source "$config" || source "$config"
-done
+zsh-defer -1 -2 source "${ZDOTDIR}/defer.zsh" || source "${ZDOTDIR}/defer.zsh"
