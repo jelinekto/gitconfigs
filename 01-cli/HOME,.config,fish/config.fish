@@ -1,3 +1,5 @@
+set SHELL /usr/bin/fish
+
 status is-interactive; or exit
 
 # key bindings
