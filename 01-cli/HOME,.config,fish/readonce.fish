@@ -4,7 +4,7 @@ set -U fish_handle_reflow 0
 set -U fish_escape_delay_ms 10
 
 # list plugins
-set -U __fish_plugins PatrickF1/fzf.fish jethrokuan/z jorgebucaran/autopair.fish jorgebucaran/replay.fish markcial/upto IlanCosman/tide
+set -U fish_plugins PatrickF1/fzf.fish jethrokuan/z jorgebucaran/autopair.fish jorgebucaran/replay.fish markcial/upto IlanCosman/tide
 
 # aliases
 alias -s l "ls --color=auto --group-directories-first" 
@@ -67,7 +67,23 @@ abbr -a cstatus "s git -C $GITCONFIGS status"
 abbr -a cdiff "s git -C $GITCONFIGS diff" 
 abbr -a cpull "s git -C $GITCONFIGS pull origin master; s chown -R (whoami):(whoami) $GITCONFIGS/**/HOME,*" 
 abbr -a cpush "s git -C $GITCONFIGS add -A .; s git -C $GITCONFIGS commit -a -m (date +%F_%T); s git -C $GITCONFIGS push origin master" 
-abbr -a creset "s git -C $GITCONFIGS reset --hard; s chown -R {$USER}:{$USER} $GITCONFIGS/**/HOME,*" 
+abbr -a creset "s git -C $GITCONFIGS reset --hard; s chown -R {$USER}:{$USER} $GITCONFIGS/**/HOME,*"
+abbr -a ga "git add"
+abbr -a gb "git branch"
+abbr -a gbl "git blame"
+abbr -a gc "git clone"
+abbr -a gch "git checkout"
+abbr -a gcl "git clean"
+abbr -a gco "git config"
+abbr -a gcr "git crypt"
+abbr -a gd "git diff"
+abbr -a gf "git fetch"
+abbr -a gg "git grep"
+abbr -a ggc "git gc"
+abbr -a gp "git pull"
+abbr -a gps "git push"
+abbr -a gr "git remote"
+abbr -a gs "git status"
 abbr -a bsu "s btrfs subvolume" 
 abbr -a bsuc "s btrfs subvolume create" 
 abbr -a bsud "s btrfs subvolume delete" 
