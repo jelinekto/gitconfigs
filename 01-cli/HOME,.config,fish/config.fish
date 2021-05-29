@@ -1,4 +1,4 @@
-set SHELL /usr/bin/fish
+set SHELL (status fish-path)
 
 status is-interactive; or exit
 
