@@ -209,7 +209,6 @@ output * {
 # window rules
 for_window [title="- KeePassXC$"] floating enable; border $border
 for_window [title="^float$"] floating enable; border $border
-for_window [title="^footpipe$"] floating enable; border $border
 for_window [shell="xwayland"] title_format "[XW] %title" 
 for_window [app_id="^firefox$"] border none
 
