@@ -43,7 +43,8 @@ abbr -a Wc "wc -c"
 abbr -a Ww "wc -w"
 abbr -a mkdir "mkdir -p" 
 abbr -a rsync "rsync -aHSv --info=progress2" 
-abbr -a userctl "systemctl --user" 
+abbr -a ss "s systemctl" 
+abbr -a us "systemctl --user" 
 abbr -a zstd "zstd -v -T(nproc) --ultra" 
 abbr -a zstdl "zstd -v -T(nproc) --long=31 --ultra" 
 abbr -a lrzip "lrzip -p(nproc) -L9 -U -T" 
@@ -138,7 +139,7 @@ set -U tide_right_prompt_item_separator_same_color ' '
 set -U tide_right_prompt_item_separator_diff_color ' '
 set -U tide_right_prompt_items status cmd_duration
 set -U tide_cmd_duration_threshold 5000
-set -U tide_cmd_duration_decimals 1
+set -U tide_cmd_duration_decimals 0
 set -U tide_cmd_duration_color brblack
 set -U tide_vi_mode_default_bg_color black
 set -U tide_vi_mode_insert_bg_color black
@@ -164,7 +165,7 @@ set -U fish_color_param brcyan
 set -U fish_color_quote brgreen
 set -U fish_color_search_match --reverse
 set -U fish_color_selection white\x1e\x2d\x2dbold\x1e\x2d\x2dbackground\x3dbrblack
-set -U fish_color_valid_path bryellow
+set -U fish_color_valid_path --underline
 ## pager colours
 set -U fish_pager_color_completion normal
 set -U fish_pager_color_description bryellow
