@@ -18,6 +18,7 @@ export  LESSHISTFILE=/dev/null \
 
 # config files location
 export  ZDOTDIR="${XDG_CONFIG_HOME}/zsh" \
+        ZPLUGDIR="${XDG_DATA_HOME}/zsh/plugged" \
         GTK2_RC_FILES="${XDG_CONFIG_HOME}/gtk-2.0/gtkrc" \
         WGETRC="${XDG_CONFIG_HOME}/wget/wgetrc" \
         PYTHONSTARTUP="${XDG_CONFIG_HOME}/python/pythonrc" \

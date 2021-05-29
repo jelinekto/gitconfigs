@@ -132,7 +132,7 @@ set -U tide_pwd_color_dirs brblue
 set -U tide_pwd_color_truncated_dirs brcyan
 set -U tide_pwd_truncate_margin 1000
 set -U tide_status_failure_color brred
-set -U tide_status_failure_icon '⏎'
+set -U tide_status_failure_icon '↵'
 ### right side
 set -U tide_right_prompt_item_separator_same_color ' '
 set -U tide_right_prompt_item_separator_diff_color ' '

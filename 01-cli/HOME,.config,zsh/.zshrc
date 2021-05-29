@@ -1,14 +1,21 @@
 # zmodload zsh/zprof
 # set -x
 
-# powerlevel10k instant prompt
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# Load powerlevel10k and zsh-defer plugins early enough
+plugins+=(
+  "romkatv/powerlevel10k"
+  "romkatv/zsh-defer"
+)
+[ ! -e "${XDG_DATA_HOME}/zsh/gitstatus" ] && mkdir -p "${XDG_DATA_HOME}/zsh/gitstatus"
+[ ! -e "${XDG_CACHE_HOME}/gitstatus" ] && ln -s "${XDG_DATA_HOME}/zsh/gitstatus" "$XDG_CACHE_HOME"
+POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
+source "$ZDOTDIR"/p10k.zsh
+source "$ZPLUGDIR/powerlevel10k/powerlevel10k.zsh-theme"
+source "$ZPLUGDIR/zsh-defer/zsh-defer.plugin.zsh"
 
 # Variables and setopts misbehave when deferred
-export ZPLUGDIR="$XDG_DATA_HOME/zsh/plugged" \
-       CORRECT_IGNORE='_*' \
+export CORRECT_IGNORE='_*' \
+       WORDCHARS="*?_-.~=&!#$%^<>"
        HISTFILE="${XDG_DATA_HOME}/zsh/history"
        HISTSIZE=1000000000 \
        SAVEHIST=${HISTSIZE} \
@@ -34,22 +41,6 @@ setopt extendedglob \
 
 # Use signal to reload config
 trap "exec zsh" USR1
-
-# Load powerlevel10k and zsh-defer plugins early enough
-plugins+=(
-  "romkatv/powerlevel10k"
-  "romkatv/zsh-defer"
-)
-if [ -e "$ZPLUGDIR/powerlevel10k/powerlevel10k.zsh-theme" ]; then
-  [ ! -e "${XDG_DATA_HOME}/zsh/gitstatus" ] && mkdir -p "${XDG_DATA_HOME}/zsh/gitstatus"
-  [ ! -e "${XDG_CACHE_HOME}/gitstatus" ] && ln -s "${XDG_DATA_HOME}/zsh/gitstatus" "$XDG_CACHE_HOME"
-  POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
-  source "$ZDOTDIR"/p10k.zsh
-  source "$ZPLUGDIR/powerlevel10k/powerlevel10k.zsh-theme"
-fi
-if [ -e "$ZPLUGDIR/zsh-defer/zsh-defer.plugin.zsh" ]; then
-  source "$ZPLUGDIR/zsh-defer/zsh-defer.plugin.zsh"
-fi
 
 # Load the rest in background
 zsh-defer -1 -2 source "${ZDOTDIR}/defer.zsh" || source "${ZDOTDIR}/defer.zsh"
