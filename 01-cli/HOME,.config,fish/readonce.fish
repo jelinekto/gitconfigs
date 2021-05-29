@@ -138,8 +138,8 @@ set -U tide_git_untracked_color brmagenta
 set -U tide_git_upstream_color brmagenta
 set -U tide_jobs_color brcyan
 set -U tide_jobs_verbose true
-set -U tide_prompt_char_success_color brgreen
 set -U tide_prompt_char_failure_color brred
+set -U tide_prompt_char_success_color brgreen
 set -U tide_prompt_char_vi_default_icon '$'
 set -U tide_prompt_char_vi_insert_icon '$'
 set -U tide_prompt_char_vi_replace_icon '$'
@@ -150,6 +150,14 @@ set -U tide_pwd_color_truncated_dirs brcyan
 set -U tide_pwd_truncate_margin 1000
 set -U tide_status_failure_color brred
 set -U tide_status_failure_icon '↵'
+set -U tide_vi_mode_default_bg_color black
+set -U tide_vi_mode_insert_bg_color black
+set -U tide_vi_mode_replace_bg_color black
+set -U tide_vi_mode_visual_bg_color black
+set -U tide_vi_mode_default_icon '\e[1 q'
+set -U tide_vi_mode_insert_icon '\e[5 q'
+set -U tide_vi_mode_replace_icon '\e[3 q'
+set -U tide_vi_mode_visual_icon '\e[1 q'
 ### right side
 set -U tide_right_prompt_item_separator_same_color ' '
 set -U tide_right_prompt_item_separator_diff_color ' '
@@ -157,14 +165,6 @@ set -U tide_right_prompt_items status cmd_duration
 set -U tide_cmd_duration_threshold 5000
 set -U tide_cmd_duration_decimals 0
 set -U tide_cmd_duration_color brblack
-set -U tide_vi_mode_default_bg_color black
-set -U tide_vi_mode_insert_bg_color black
-set -U tide_vi_mode_visual_bg_color black
-set -U tide_vi_mode_replace_bg_color black
-set -U tide_vi_mode_default_icon '\e[1 q'
-set -U tide_vi_mode_insert_icon '\e[5 q'
-set -U tide_vi_mode_replace_icon '\e[3 q'
-set -U tide_vi_mode_visual_icon '\e[1 q'
 
 # colours
 set -U fish_color_autosuggestion brblack
@@ -190,25 +190,3 @@ set -U fish_pager_color_progress --reverse
 set -U fish_pager_color_selected_background --background=brcyan
 set -U fish_pager_color_selected_prefix black
 set -U fish_pager_color_selected_completion black
-## prompt colours
-set -U fish_color_cwd normal
-set -U fish_color_cwd_root normal
-set -U fish_color_status --bold brred
-## git prompt
-set -U __fish_git_prompt_show_informative_status 1
-set -U __fish_git_prompt_color_branch magenta --bold
-set -U __fish_git_prompt_showupstream informative
-set -U __fish_git_prompt_char_stateseparator " "
-set -U __fish_git_prompt_char_upstream_ahead "^"
-set -U __fish_git_prompt_char_upstream_behind "v"
-set -U __fish_git_prompt_char_upstream_prefix ""
-set -U __fish_git_prompt_char_stagedstate "#"
-set -U __fish_git_prompt_char_dirtystate "~"
-set -U __fish_git_prompt_char_untrackedfiles "+"
-set -U __fish_git_prompt_char_invalidstate "X"
-set -U __fish_git_prompt_char_cleanstate ""
-set -U __fish_git_prompt_color_dirtystate --bold brmagenta
-set -U __fish_git_prompt_color_stagedstate --bold brmagenta
-set -U __fish_git_prompt_color_invalidstate --bold brmagenta
-set -U __fish_git_prompt_color_untrackedfiles --bold brmagenta
-set -U __fish_git_prompt_color_cleanstate --bold brmagenta
