@@ -12,6 +12,7 @@ automake
 autotiling
 awesome-terminal-fonts
 base
+bat
 biber
 bind
 binutils
