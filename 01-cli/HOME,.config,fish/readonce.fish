@@ -18,7 +18,6 @@ alias -s grep "egrep --color=auto"
 alias -s egrep "egrep --color=auto" 
 
 # abbreviations
-## regular
 abbr -a :q "exit" 
 abbr -a v "$EDITOR" 
 abbr -a rmr "rm -R" 
@@ -105,7 +104,9 @@ abbr -a depclean 'yay -Rns (yay -Qqdt)'
 abbr -a reswap "for swap in (swapon --noheadings | awk '{print $1}'); do s swapoff $swap; s swapon $swap; done" 
 abbr -a cpuvuln "grep . /sys/devices/system/cpu/vulnerabilities/*" 
 abbr -a splitflac "shnsplit -f *.cue -o flac flac -0 -o %f - -t %n %t"
-## global
+
+# plugins
+## fish-global-abbreviation
 gabbr -a G "| grep"
 gabbr -a Gi "| grep -i"
 gabbr -a Gv "| grep -v"
@@ -125,8 +126,6 @@ gabbr -a Ww "| wc -w"
 gabbr -a Tr "| tr"
 gabbr -a Trd "| tr -d ''"
 gabbr -a Q ">/dev/null 2>&1"
-
-# plugins
 ## z
 set -U Z_CMD "j"
 ## fzf
