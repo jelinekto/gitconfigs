@@ -4,7 +4,7 @@ set -U fish_handle_reflow 0
 set -U fish_escape_delay_ms 10
 
 # list plugins
-set -U fish_plugins PatrickF1/fzf.fish jethrokuan/z jorgebucaran/autopair.fish jorgebucaran/replay.fish markcial/upto IlanCosman/tide
+set -U fish_plugins PatrickF1/fzf.fish jethrokuan/z jorgebucaran/autopair.fish jorgebucaran/replay.fish markcial/upto IlanCosman/tide re3turn/fish-global-abbreviation 
 
 # aliases
 alias -s l "ls --color=auto --group-directories-first" 
@@ -18,6 +18,7 @@ alias -s grep "egrep --color=auto"
 alias -s egrep "egrep --color=auto" 
 
 # abbreviations
+## regular
 abbr -a :q "exit" 
 abbr -a v "$EDITOR" 
 abbr -a rmr "rm -R" 
@@ -31,16 +32,6 @@ abbr -a g 'grep'
 abbr -a gi 'grep -i'
 abbr -a gv 'grep -v'
 abbr -a giv 'grep -iv'
-abbr -a H 'head -n'
-abbr -a T 'tail -n'
-abbr -a P "$PAGER"
-abbr -a DT 'doas tee'
-abbr -a S 'sort -h'
-abbr -a U "uniq -u"
-abbr -a C "cut -f"
-abbr -a W "wc -l"
-abbr -a Wc "wc -c"
-abbr -a Ww "wc -w"
 abbr -a mkdir "mkdir -p" 
 abbr -a rsync "rsync -aHSv --info=progress2" 
 abbr -a ss "s systemctl" 
@@ -114,6 +105,26 @@ abbr -a depclean 'yay -Rns (yay -Qqdt)'
 abbr -a reswap "for swap in (swapon --noheadings | awk '{print $1}'); do s swapoff $swap; s swapon $swap; done" 
 abbr -a cpuvuln "grep . /sys/devices/system/cpu/vulnerabilities/*" 
 abbr -a splitflac "shnsplit -f *.cue -o flac flac -0 -o %f - -t %n %t"
+## global
+gabbr -a G "| grep"
+gabbr -a Gi "| grep -i"
+gabbr -a Gv "| grep -v"
+gabbr -a Gvi "| grep -iv"
+gabbr -a Giv "| grep -iv"
+gabbr -a A "| awk"
+gabbr -a H "| head -n"
+gabbr -a T "| tail -n"
+gabbr -a P "| $PAGER"
+gabbr -a DT "| s tee"
+gabbr -a S "| sort -h"
+gabbr -a U "| uniq"
+gabbr -a C "| cut -f"
+gabbr -a W "| wc -l"
+gabbr -a Wc "| wc -c"
+gabbr -a Ww "| wc -w"
+gabbr -a Tr "| tr"
+gabbr -a Trd "| tr -d ''"
+gabbr -a Q ">/dev/null 2>&1"
 
 # plugins
 ## z

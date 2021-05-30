@@ -1,6 +1,9 @@
 # key bindings
 bind           \eo __prepend_o
 bind -M insert \eo __prepend_o
+## fish-global-abbreviation
+bind           ' ' '__gabbr_expand; commandline -i " "'
+bind -M insert ' ' '__gabbr_expand; commandline -i " "'
 ## fzf
 bind           \co   __fzf_search_current_dir
 bind -M insert \co   __fzf_search_current_dir
