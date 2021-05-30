@@ -1,7 +1,3 @@
-set SHELL (status fish-path)
-
-status is-interactive; or exit
-
 # key bindings
 bind           \eo __prepend_o
 bind -M insert \eo __prepend_o
