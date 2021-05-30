@@ -47,6 +47,7 @@ user_pref("privacy.cpd.cookies", false);
 user_pref("privacy.cpd.sessions", false);
 user_pref("privacy.resistFingerprinting.letterboxing", false);
 user_pref("reader.parse-on-load.enabled", false);
+user_pref("services.sync.engine.addresses", false);
 user_pref("services.sync.engine.creditcards", false);
 user_pref("services.sync.engine.history", false);
 user_pref("services.sync.engine.passwords", false);
