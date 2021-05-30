@@ -14,6 +14,7 @@ automake
 autotiling
 awesome-terminal-fonts
 base
+bat
 biber
 bind
 binutils
@@ -58,10 +59,11 @@ fdupes
 fff
 file
 firejail
+fish
 flashfocus-git
 flex
 fmt
-foot
+foot-git
 fzf
 gammastep
 gcc
@@ -82,6 +84,7 @@ hdparm
 highlight
 htop-vim-git
 hyperfine
+i3-swallow
 i3blocks
 iftop
 imv
@@ -147,7 +150,6 @@ ncdu
 ncmpcpp
 neofetch
 neovim
-network-manager-applet
 networkmanager
 nnn
 noto-fonts
@@ -171,6 +173,7 @@ pavucontrol
 pcmanfm-gtk3
 pigz
 pkgconf
+pkgfile
 polkit
 powerline-fonts
 powertop
@@ -260,6 +263,7 @@ which
 wine-staging
 wl-clipboard
 wl-clipboard-x11
+wob
 wofi
 wpa_supplicant
 wtype
