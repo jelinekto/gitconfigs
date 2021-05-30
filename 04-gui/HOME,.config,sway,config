@@ -24,7 +24,7 @@ bar bar-0 {
   position bottom
   mode hide
   font pango:Ubuntu Light, FontAwesome 14
-  status_command i3blocks
+  status_command sleep 1 && i3blocks
   strip_workspace_name yes
   strip_workspace_numbers yes
 }
