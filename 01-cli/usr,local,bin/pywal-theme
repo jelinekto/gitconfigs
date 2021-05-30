@@ -10,7 +10,7 @@ case "$1" in
     ;;
 esac
 
-wal -q --theme "$THEME" || exit 1
+wal -q -t --theme "$THEME" || exit 1
 wal --preview | grep -v 'Current'
 printf "%s\n" "$THEME" > "${XDG_CACHE_HOME}/.pywal-theme"
 . "${XDG_CACHE_HOME}/wal/colors.sh"
