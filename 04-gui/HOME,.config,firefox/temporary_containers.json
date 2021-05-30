@@ -1,6 +1,6 @@
 {
   "version": "1.9.2",
-  "date": 1619308223000,
+  "date": 1622378839600,
   "preferences": {
     "automaticMode": {
       "active": true,
@@ -24,7 +24,7 @@
     "isolation": {
       "global": {
         "navigation": {
-          "action": "never"
+          "action": "notsamedomain"
         },
         "mouseClick": {
           "middle": {
@@ -54,13 +54,13 @@
     "contextMenu": true,
     "contextMenuBookmarks": false,
     "keyboardShortcuts": {
-      "AltC": true,
+      "AltC": false,
       "AltP": true,
-      "AltN": true,
-      "AltShiftC": true,
-      "AltX": true,
-      "AltO": true,
-      "AltI": true
+      "AltN": false,
+      "AltShiftC": false,
+      "AltX": false,
+      "AltO": false,
+      "AltI": false
     },
     "replaceTabs": true,
     "closeRedirectorTabs": {
@@ -94,7 +94,7 @@
     "statistics": false,
     "ui": {
       "expandPreferences": true,
-      "popupDefaultTab": "actions"
+      "popupDefaultTab": "isolation-per-domain"
     }
   }
 }
