@@ -205,7 +205,6 @@ alias :q="exit" \
       Syu='paru -Syu' \
       pacd="paru -Rns" \
       depclean='paru -Rns $(paru -Qqdt)' \
-      pacache="s rm -R /tmp/.pacman_cache /tmp/.paru_cache" \
       reswap="for swap in \$(swapon --noheadings | awk '{print \$1}'); do s swapoff \$swap; s swapon \$swap; done" \
       cpuvuln="grep . /sys/devices/system/cpu/vulnerabilities/*" \
       splitflac="shnsplit -f *.cue -o flac\ flac\ -0\ -o\ %f\ - -t %n\ %t"
