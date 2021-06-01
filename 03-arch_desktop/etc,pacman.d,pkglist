@@ -153,6 +153,7 @@ pacman-contrib
 pacutils
 pamixer
 pandoc-bin
+paru-bin
 patch
 pavucontrol
 pcmanfm-gtk3
@@ -257,7 +258,6 @@ xorg-xrdb
 xorg-xwayland
 xsettingsd
 xxd-standalone
-yay-bin
 youtube-dl
 zathura-pdf-poppler
 zsh

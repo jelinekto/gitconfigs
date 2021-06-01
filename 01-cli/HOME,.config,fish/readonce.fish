@@ -95,12 +95,12 @@ abbr -a bbalp "s btrfs balance pause"
 abbr -a bbalc "s btrfs balance cancel" 
 abbr -a bbalr "s btrfs balance resume" 
 abbr -a bbalst "s btrfs balance status" 
-abbr -a pacs 'yay -S' 
-abbr -a pacss 'yay -Ss' 
-abbr -a syu 'yay -Syu' 
-abbr -a Syu 'yay -Syu' 
-abbr -a pacd "yay -Rns" 
-abbr -a depclean 'yay -Rns (yay -Qqdt)' 
+abbr -a pacs 'paru -S' 
+abbr -a pacss 'paru -Ss' 
+abbr -a syu 'paru -Syu' 
+abbr -a Syu 'paru -Syu' 
+abbr -a pacd "paru -Rns" 
+abbr -a depclean 'paru -Rns (paru -Qqdt)' 
 abbr -a reswap "for swap in (swapon --noheadings | awk '{print $1}'); do s swapoff $swap; s swapon $swap; done" 
 abbr -a cpuvuln "grep . /sys/devices/system/cpu/vulnerabilities/*" 
 abbr -a splitflac "shnsplit -f *.cue -o flac flac -0 -o %f - -t %n %t"

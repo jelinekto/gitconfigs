@@ -3,15 +3,13 @@ DISTRO="$(awk -F '^ID=' '/^ID=/ {print $2}' /etc/os-release 2>/dev/null)"
 
 case "$DISTRO" in
   arch)
-    AUR_HELPER='yay'
+    AUR_HELPER='paru'
 
     ${AUR_HELPER} -Syu || exit 1
 
     if [ "$(${AUR_HELPER} -Qqdt | wc -l)" -gt '0' ]; then
       ${AUR_HELPER} -Rns $(${AUR_HELPER} -Qqdt)
     fi
-
-    doas rm -Rf /tmp/.pacman_cache "${XDG_CACHE_HOME}/yay" 2>/dev/null
   ;;
   *)
     if type termux-setup-storage >/dev/null 2>&1; then
