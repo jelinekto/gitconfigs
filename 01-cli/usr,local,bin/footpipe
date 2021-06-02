@@ -1,5 +1,5 @@
-#!/bin/sh
-PIPEFILE="${XDG_CACHE_HOME}/.footpipe-${RANDOM}${RANDOM}"
+#!/bin/dash
+PIPEFILE="${XDG_CACHE_HOME}/.footpipe"
 cat - > "$PIPEFILE"
 
 i3-swallow foot -T footpipe "$PAGER" "$PIPEFILE"

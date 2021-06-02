@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 for repo in /etc/portage/repos.conf/*; do
  LOCATION="$(awk -F ' = ' '/^location/ {print $2}' "$repo")"
  URI="$(awk -F ' = ' '/^sync-uri/ {print $2}' "$repo")"

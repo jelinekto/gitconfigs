@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 case "$1" in
   *facebook.com/groups/*/user/*)
     GROUP="$(echo "$1" | cut -f 5 -d '/')"

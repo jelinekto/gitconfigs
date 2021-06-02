@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 case "$1" in
   dark|light)
     THEME="$(fd '\.json$' "${XDG_CONFIG_HOME}/pywal-schemes/${1}" | shuf -n 1)"

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 pidof mpdas >/dev/null && echo 'mpdas instance already running.' && exit 0
 while :; do
   mpd

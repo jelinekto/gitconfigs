@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 [ ! -e "${XDG_CACHE_HOME}/.bspratio" ] && echo 50 > "${XDG_CACHE_HOME}/.bspratio"
 
 if echo "$1" | grep -Eq -- '^\+|^\-'; then

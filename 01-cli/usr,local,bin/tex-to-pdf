@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 [ ! -e "$1" ] && echo 'No such file.' && exit 1
 DIRNAME="$(dirname "$1")"
 

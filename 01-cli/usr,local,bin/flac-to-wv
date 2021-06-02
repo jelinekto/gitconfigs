@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 
 mkdir -p "${XDG_CACHE_HOME}/.flac-to-wv"
 PARAMS="$1" && shift

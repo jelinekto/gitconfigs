@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/dash -e
 OS="$(awk -F '=' '/^ID=/ {print $2}' /etc/os-release)"
 
 if [ ! "$(whoami)" = 'root' ]; then

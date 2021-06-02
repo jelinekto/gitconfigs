@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 CONFIGFILE="${XDG_CACHE_HOME}/.foot.ini"
 
 cat "${XDG_CONFIG_HOME}/foot/local.ini" > "$CONFIGFILE"

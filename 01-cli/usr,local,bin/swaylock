@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 . "${XDG_CACHE_HOME}/wal/colors.sh"
 
 exec /usr/bin/swaylock -e --indicator-idle-visible \

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 DISTRO="$(awk -F '^ID=' '/^ID=/ {print $2}' /etc/os-release 2>/dev/null)"
 
 case "$DISTRO" in

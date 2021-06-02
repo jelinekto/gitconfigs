@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 until [ -z "$1" ]; do
   case "$1" in
     -s|--start)

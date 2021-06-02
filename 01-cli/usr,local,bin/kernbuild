@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 while [ -n "$1" ]; do
   case "$1" in
     --no-menu|-n)

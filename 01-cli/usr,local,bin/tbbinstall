@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 [ -z "$1" ] && printf 'Specify version.\n' && exit 1
 
 if [ -e ~/.local/tor-browser ]; then

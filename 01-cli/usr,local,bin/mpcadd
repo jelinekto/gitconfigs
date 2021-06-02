@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 for file in "$@"; do
   if [ -e "$file" ]; then
     mpc add "$(readlink -f "$file" | awk -F "/home/$(whoami)/Music/" '{print $2}')"

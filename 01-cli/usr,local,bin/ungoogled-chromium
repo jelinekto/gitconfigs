@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 export CHROME_WRAPPER="`readlink -f "$0"`"
 [ -z "$CHROME_USER_DATA_DIR" ] && export CHROME_USER_DATA_DIR="${XDG_CONFIG_HOME}/chromium"
 

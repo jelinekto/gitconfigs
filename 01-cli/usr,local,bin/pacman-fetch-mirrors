@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 # COUNTRY='country=CZ&country=SK&country=PL&country=AT&country=DE'
 COUNTRY='country=CZ&country=SK&country=PL&country=AT'
 curl -s "https://archlinux.org/mirrorlist/?${COUNTRY}&protocol=https&ip_version=4&use_mirror_status=on" \

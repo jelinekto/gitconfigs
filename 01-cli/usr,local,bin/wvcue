@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 
 CUEFILE="$1" && shift
 [ ! -f "${CUEFILE}" ] && echo "No such cue file." && exit 1

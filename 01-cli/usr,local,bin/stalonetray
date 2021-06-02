@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 . "${XDG_CACHE_HOME}/wal/colors.sh"
 [ -z "$background" ] && background='#000000'
 

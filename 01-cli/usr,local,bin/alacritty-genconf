@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 cat ~/.config/alacritty/config.yml > "${XDG_CACHE_HOME}/.alacritty.yml"
 
 if [ -e ~/.config/alacritty/local.yml ]; then

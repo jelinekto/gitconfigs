@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 [ -z "$1" ] && echo 'Specify website' && exit 1
 mkdir -p "${XDG_DATA_HOME}/qutekiosk/${1}"
 exec /usr/bin/qutebrowser -B "${XDG_DATA_HOME}/qutekiosk/${1}" -C "${XDG_CONFIG_HOME}/qutebrowser/kiosk.py" "$1"

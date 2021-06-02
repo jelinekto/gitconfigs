@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 killall lemonstatus 2>/dev/null
 
 if pkill lemonbar >/dev/null 2>&1; then

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 if ! pidof libvirtd >/dev/null; then
   doas systemctl start libvirtd.service
 fi

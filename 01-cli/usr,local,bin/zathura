@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 cp -a ~/.config/zathura/zathurarc "${XDG_CACHE_HOME}/zathurarc"
 
 . "${XDG_CACHE_HOME}/wal/colors.sh"

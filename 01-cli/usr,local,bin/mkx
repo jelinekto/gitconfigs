@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 while echo $1 | grep -q '^-'; do
   [ "$1" = "--sh" ] && FORMAT="sh"
   [ "$1" = "-s" ] && FORMAT="sh"

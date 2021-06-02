@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 [ -e "${HOME}/.cache/wal/colors.sh" ] && . "${HOME}/.cache/wal/colors.sh"
 
 FONT="$(grep gtk-font-name "${XDG_CONFIG_HOME}/gtk-3.0/settings.ini" | rev | cut -f 2- -d ' ' | rev | cut -f 2- -d '=')"

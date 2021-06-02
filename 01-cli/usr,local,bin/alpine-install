@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 chrootDir="$1"
 mkdir -p "$chrootDir" 2>/dev/null
 [ ! -e "$chrootDir" ] && echo "'${chrootDir}': no such directory." && exit 1

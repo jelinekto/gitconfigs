@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 mkdir "${XDG_CACHE_HOME}/widevine-install" 2>/dev/null
 cd "${XDG_CACHE_HOME}/widevine-install" || exit 1
 

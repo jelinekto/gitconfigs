@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 # parse parameters
 while [ ! -z "$1" ]; do
   case $1 in

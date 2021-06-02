@@ -1,2 +1,2 @@
-#!/bin/sh
-wget https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts -O /etc/hosts
+#!/bin/dash
+exec wget https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts -O /etc/hosts
