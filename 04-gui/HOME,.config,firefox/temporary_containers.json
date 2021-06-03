@@ -1,6 +1,6 @@
 {
   "version": "1.9.2",
-  "date": 1622737182200,
+  "date": 1622737328400,
   "preferences": {
     "automaticMode": {
       "active": true,
@@ -66,8 +66,32 @@
             }
           },
           "excluded": {
-            "*.redd.it": {},
-            "*.imgur.com": {}
+            "*.redd.it": {}
+          }
+        },
+        {
+          "pattern": "i.redd.it",
+          "always": {
+            "action": "disabled",
+            "allowedInPermanent": false,
+            "allowedInTemporary": false
+          },
+          "navigation": {
+            "action": "global"
+          },
+          "mouseClick": {
+            "middle": {
+              "action": "global"
+            },
+            "ctrlleft": {
+              "action": "global"
+            },
+            "left": {
+              "action": "global"
+            }
+          },
+          "excluded": {
+            "*.reddit.com": {}
           }
         }
       ],
