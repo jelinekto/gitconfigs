@@ -2,6 +2,6 @@
 PIPEFILE="${XDG_CACHE_HOME}/.footpipe"
 cat - > "$PIPEFILE"
 
-i3-swallow foot -T footpipe "$PAGER" "$PIPEFILE"
+i3-swallow $TERMINAL -T footpipe "$PAGER" "$PIPEFILE"
 
 rm "$PIPEFILE"
