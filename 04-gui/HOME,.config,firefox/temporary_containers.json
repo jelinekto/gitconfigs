@@ -1,6 +1,6 @@
 {
   "version": "1.9.2",
-  "date": 1622827835000,
+  "date": 1622828453100,
   "preferences": {
     "automaticMode": {
       "active": true,
@@ -119,6 +119,56 @@
           },
           "excluded": {
             "www.reddit.com": {}
+          }
+        },
+        {
+          "pattern": "accounts.firefox.com",
+          "always": {
+            "action": "disabled",
+            "allowedInPermanent": false,
+            "allowedInTemporary": false
+          },
+          "navigation": {
+            "action": "global"
+          },
+          "mouseClick": {
+            "middle": {
+              "action": "global"
+            },
+            "ctrlleft": {
+              "action": "global"
+            },
+            "left": {
+              "action": "global"
+            }
+          },
+          "excluded": {
+            "*.mozilla.org": {}
+          }
+        },
+        {
+          "pattern": "addons.mozilla.org",
+          "always": {
+            "action": "disabled",
+            "allowedInPermanent": false,
+            "allowedInTemporary": false
+          },
+          "navigation": {
+            "action": "global"
+          },
+          "mouseClick": {
+            "middle": {
+              "action": "global"
+            },
+            "ctrlleft": {
+              "action": "global"
+            },
+            "left": {
+              "action": "global"
+            }
+          },
+          "excluded": {
+            "*.firefox.com": {}
           }
         }
       ],
