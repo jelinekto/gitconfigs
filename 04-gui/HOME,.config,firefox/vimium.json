@@ -1,13 +1,12 @@
 {
 	"name": "Vimium C",
-	"@time": "5/1/2021, 3:09:05 PM",
-	"time": 1619881745600,
+	"@time": "6/4/2021, 5:36:28 PM",
+	"time": 1622828188500,
 	"environment": {
-		"extension": "1.89.1",
+		"extension": "1.90.2",
 		"platform": "linux",
-		"firefox": 89
+		"firefox": 91
 	},
-	"autoDarkMode": true,
 	"exclusionRules": [],
 	"keyMappings": [
 		"unmapAll",
@@ -92,6 +91,7 @@
 	],
 	"linkHintCharacters": "jfkdls;amciroe",
 	"nextPatterns": "next,more,newer,>,›,→,»,≫,>>,další,následující,novější",
+	"notifyUpdate": false,
 	"previousPatterns": "prev,previous,back,older,<,‹,←,«,≪,<<,starší,předchozí,předešlé,předešlý",
 	"scrollStepSize": 150,
 	"searchEngines": [
@@ -128,8 +128,9 @@
 		""
 	],
 	"searchUrl": "http://0.0.0.0/$s",
+	"showActionIcon": false,
 	"smoothScroll": false,
-	"vimSync": false,
+	"vimSync": true,
 	"vomnibarOptions": {
 		"actions": "",
 		"maxMatches": 25,

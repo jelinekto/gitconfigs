@@ -33,9 +33,9 @@
   "labelOverflowStyle": "crop",
   "lastDraggedTabs": {
     "tabIds": [
-      2
+      21
     ],
-    "urlsDigest": "98fbb0a990b312d509e4ca338e0bbb722e1c2247"
+    "urlsDigest": "0438f981fa131800909b9da49b9d37b230edf480"
   },
   "maxTreeLevel": 6,
   "migratedBookmarkUrls": [
@@ -51,19 +51,21 @@
   ],
   "showExpertOptions": true,
   "simulateSVGContextFill": false,
+  "style": "photon",
   "suppressGapFromShownOrHiddenToolbarOnFullScreen": true,
+  "syncAvailableNotified": true,
   "syncDeviceInfo": {
     "id": "device-1620386018400-2503",
     "name": "Firefox on Linux",
     "icon": "device-desktop",
-    "timestamp": 1620392519300
+    "timestamp": 1622827369000
   },
   "syncDevices": {
     "device-1620386018400-2503": {
       "id": "device-1620386018400-2503",
       "name": "Firefox on Linux",
       "icon": "device-desktop",
-      "timestamp": 1620392519300
+      "timestamp": 1622827369000
     }
   },
   "syncDevicesLocalCache": {
@@ -71,9 +73,10 @@
       "id": "device-1620386018400-2503",
       "name": "Firefox on Linux",
       "icon": "device-desktop",
-      "timestamp": 1620392519300
+      "timestamp": 1622827369000
     }
   },
+  "syncOtherDevicesDetected": true,
   "treeDoubleClickBehavior": 1,
   "useCachedTree": false,
   "userStyleRules": "",
