@@ -42,6 +42,7 @@ user_pref("media.eme.enabled", true);
 user_pref("media.hardwaremediakeys.enabled", false);
 user_pref("media.videocontrols.picture-in-picture.video-toggle.enabled", false);
 user_pref("mousewheel.min_line_scroll_amount", 25);
+user_pref("network.http.referer.XOriginPolicy", 1);
 user_pref("network.protocol-handler.external.mailto", false);
 user_pref("permissions.memory_only", true);
 user_pref("privacy.cpd.cookies", false);
