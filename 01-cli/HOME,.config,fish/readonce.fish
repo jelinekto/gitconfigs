@@ -6,19 +6,17 @@ set -U fish_escape_delay_ms 10
 # list plugins
 set -U fish_plugins PatrickF1/fzf.fish jethrokuan/z jorgebucaran/autopair.fish jorgebucaran/replay.fish markcial/upto IlanCosman/tide re3turn/fish-global-abbreviation 
 
-# aliases
-alias -s l "ls --color=auto --group-directories-first" 
-alias -s ls "ls --color=auto --group-directories-first" 
-alias -s la "ls -NAlh --color=auto --group-directories-first" 
-alias -s ll "ls -Nlh --color=auto --group-directories-first" 
-alias -s cp "cp -ai --reflink=auto --strip-trailing-slashes" 
-alias -s mv "mv -i --strip-trailing-slashes" 
-alias -s rm "rm -I --one-file-system" 
-alias -s grep "egrep --color=auto" 
-alias -s egrep "egrep --color=auto" 
-
 # abbreviations
 abbr -a :q "exit" 
+abbr -a l "ls --color=auto --group-directories-first" 
+abbr -a ls "ls --color=auto --group-directories-first" 
+abbr -a la "ls -NAlh --color=auto --group-directories-first" 
+abbr -a ll "ls -Nlh --color=auto --group-directories-first" 
+abbr -a cp "cp -ai --reflink=auto --strip-trailing-slashes" 
+abbr -a mv "mv -i --strip-trailing-slashes" 
+abbr -a rm "rm -I --one-file-system" 
+abbr -a grep "egrep --color=auto" 
+abbr -a egrep "egrep --color=auto" 
 abbr -a v "$EDITOR" 
 abbr -a rmr "rm -R" 
 abbr -a rmrf "rm -Rf" 
