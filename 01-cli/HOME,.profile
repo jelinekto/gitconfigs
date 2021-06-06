@@ -38,8 +38,7 @@ export  QT_QPA_PLATFORMTHEME=qt5ct \
 export  WINEPREFIX="${XDG_DATA_HOME}/wine" \
         STACK_ROOT="${XDG_DATA_HOME}/stack" \
         CCACHE_DIR="/tmp/ccache" \
-        MOZ_X11_EGL=1 \
-        PASSWORD_STORE_DIR="${XDG_DATA_HOME}/pass"
+        MOZ_X11_EGL=1
 
 # default applications
 export  INT_SHELL="fish" \
