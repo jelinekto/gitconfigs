@@ -16,4 +16,6 @@ else
   CLIPBOARD='xclip'
 fi
 
+pass >/dev/null
+
 pass ls "$(fd '.gpg$' "$PASSWORD_STORE_DIR" | awk -F "${PASSWORD_STORE_DIR}/|.gpg" '{print $2}' | $MENU --prompt password)" | sed -n "${LINE}p" | "$CLIPBOARD"
