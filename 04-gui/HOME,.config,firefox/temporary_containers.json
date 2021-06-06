@@ -1,6 +1,6 @@
 {
   "version": "1.9.2",
-  "date": 1622828453100,
+  "date": 1622985285100,
   "preferences": {
     "automaticMode": {
       "active": true,
@@ -43,135 +43,7 @@
         "excluded": {},
         "excludedContainers": []
       },
-      "domain": [
-        {
-          "pattern": "www.reddit.com",
-          "always": {
-            "action": "disabled",
-            "allowedInPermanent": false,
-            "allowedInTemporary": false
-          },
-          "navigation": {
-            "action": "global"
-          },
-          "mouseClick": {
-            "middle": {
-              "action": "global"
-            },
-            "ctrlleft": {
-              "action": "global"
-            },
-            "left": {
-              "action": "global"
-            }
-          },
-          "excluded": {
-            "*.redd.it": {},
-            "imgur.com": {},
-            "*.imgur.com": {}
-          }
-        },
-        {
-          "pattern": "i.redd.it",
-          "always": {
-            "action": "disabled",
-            "allowedInPermanent": false,
-            "allowedInTemporary": false
-          },
-          "navigation": {
-            "action": "global"
-          },
-          "mouseClick": {
-            "middle": {
-              "action": "global"
-            },
-            "ctrlleft": {
-              "action": "global"
-            },
-            "left": {
-              "action": "global"
-            }
-          },
-          "excluded": {
-            "*.reddit.com": {}
-          }
-        },
-        {
-          "pattern": "*.imgur.com",
-          "always": {
-            "action": "disabled",
-            "allowedInPermanent": false,
-            "allowedInTemporary": false
-          },
-          "navigation": {
-            "action": "global"
-          },
-          "mouseClick": {
-            "middle": {
-              "action": "global"
-            },
-            "ctrlleft": {
-              "action": "global"
-            },
-            "left": {
-              "action": "global"
-            }
-          },
-          "excluded": {
-            "www.reddit.com": {}
-          }
-        },
-        {
-          "pattern": "accounts.firefox.com",
-          "always": {
-            "action": "disabled",
-            "allowedInPermanent": false,
-            "allowedInTemporary": false
-          },
-          "navigation": {
-            "action": "global"
-          },
-          "mouseClick": {
-            "middle": {
-              "action": "global"
-            },
-            "ctrlleft": {
-              "action": "global"
-            },
-            "left": {
-              "action": "global"
-            }
-          },
-          "excluded": {
-            "*.mozilla.org": {}
-          }
-        },
-        {
-          "pattern": "addons.mozilla.org",
-          "always": {
-            "action": "disabled",
-            "allowedInPermanent": false,
-            "allowedInTemporary": false
-          },
-          "navigation": {
-            "action": "global"
-          },
-          "mouseClick": {
-            "middle": {
-              "action": "global"
-            },
-            "ctrlleft": {
-              "action": "global"
-            },
-            "left": {
-              "action": "global"
-            }
-          },
-          "excluded": {
-            "*.firefox.com": {}
-          }
-        }
-      ],
+      "domain": [],
       "mac": {
         "action": "enabled"
       },
