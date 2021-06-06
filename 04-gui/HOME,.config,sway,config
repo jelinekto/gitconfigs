@@ -57,8 +57,6 @@ bindsym Mod4+j focus down
 bindsym Mod4+k focus up
 bindsym Mod4+l focus right
 bindsym Mod4+space focus mode_toggle
-bindsym Mod4+p focus parent
-bindsym Mod4+Shift+p focus child
 bindsym Mod4+z exec nc_flash_window
 ## move windows
 bindsym Mod4+Shift+h unmark "_swap"; mark --add "_swap"; focus left; swap container with mark "_swap"; focus left; unmark "_swap"
@@ -166,6 +164,8 @@ bindsym Mod4+c exec $TERMINAL_FLOATING python -q
 bindsym Mod4+e exec cat ~/.local/share/emojis.txt | rofi -dmenu -p emoji | cut -f 1 -d ' ' | wl-copy -n
 bindsym Mod4+n exec udiskie-mount $(udiskie-info -a -o "\{ui_device_label\} (\{id_type\})" -f '!is_mounted' | rofi -dmenu -p mount | cut -f 1 -d ':'); exec pkill -SIGRTMIN+29 i3blocks
 bindsym Mod4+Shift+n exec udiskie-umount $(udiskie-info -a -o "\{ui_device_label\} (\{id_type\})" -f is_mounted | rofi -dmenu -p unmount | cut -f 1 -d ':'); exec pkill -SIGRTMIN+29 i3blocks
+bindsym Mod4+p exec pass-clip username
+bindsym Mod4+Shift+p exec pass-clip password
 ## volume
 bindsym Mod4+Left exec pactl set-sink-volume @DEFAULT_SINK@ -1% && pamixer --get-volume > $SWAYSOCK.wob; exec pkill -SIGRTMIN+28 i3blocks
 bindsym Mod4+Right exec pactl set-sink-volume @DEFAULT_SINK@ +1% && pamixer --get-volume > $SWAYSOCK.wob; exec pkill -SIGRTMIN+28 i3blocks
