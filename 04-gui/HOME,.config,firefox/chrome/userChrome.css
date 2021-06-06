@@ -41,7 +41,6 @@
 #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
     visibility: collapse;
 }
-
 /* Shrink sidebar until hovered, when using Tree Style Tab. */
 :root {
     --thin-tab-width: 1px;
