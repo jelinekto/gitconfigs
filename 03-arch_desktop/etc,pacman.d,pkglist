@@ -17,6 +17,7 @@ biber
 bind
 binutils
 bison
+brave-nightly-bin
 btrfs-heatmap
 btrfs-progs
 busybox
@@ -43,6 +44,7 @@ ebtables
 edk2-ovmf
 efibootmgr
 entr
+exa
 exfatprogs
 f2fs-tools
 fakeroot
@@ -154,6 +156,7 @@ pacutils
 pamixer
 pandoc-bin
 paru-bin
+pass
 patch
 pavucontrol
 pcmanfm-gtk3
@@ -231,7 +234,6 @@ udftools
 udiskie
 ufw
 ufw-extras
-ungoogled-chromium
 unp
 unrar
 usbutils
