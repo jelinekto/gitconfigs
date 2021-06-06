@@ -1,5 +1,9 @@
 #!/bin/dash
-MENU="rofi -dmenu -p "$1""
+if [ "$TERM" = 'linux' ]; then
+  MENU="rofi -dmenu -p "$1""
+else
+  MENU="$FUZZYFINDER --prompt "$1""
+fi
 
 case "$1" in
   *name*)
