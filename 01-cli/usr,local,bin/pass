@@ -2,12 +2,12 @@
 [ -z "$PASSWORD_STORE_DIR" ] && PASSWORD_STORE_DIR="${XDG_DATA_HOME}/pass"
 GNUPGHOME="${PASSWORD_STORE_DIR}/.gpg"
 
-if [ ! -e "${GNUPGHOME}/pubring.kbx" ]; then
+if [ "$1" = 'init' ] && [ ! -e "${GNUPGHOME}/pubring.kbx" ]; then
+  [ -z "$2" ] && printf 'Usage: pass init [--path=subfolder,-p subfolder] gpg-id..\n' && exit 1
   mkdir -p "$GNUPGHOME"
   chmod 700 "$GNUPGHOME"
-  gpg --no-tty --quick-gen-key --yes pass
-  pass init pass
-  exit 0
+  gpg --no-tty --quick-gen-key --yes "$2" || exit 1
+  echo '.gpg/*' > "${PASSWORD_STORE_DIR}/.gitignore"
 fi
 
 exec /usr/bin/pass "$@"
