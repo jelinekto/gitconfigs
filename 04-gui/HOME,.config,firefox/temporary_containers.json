@@ -1,6 +1,6 @@
 {
   "version": "1.9.2",
-  "date": 1622985571000,
+  "date": 1623149360400,
   "preferences": {
     "automaticMode": {
       "active": true,
@@ -12,7 +12,8 @@
       "color": "yellow",
       "colorRandom": true,
       "colorRandomExcluded": [
-        "toolbar"
+        "toolbar",
+        "blue"
       ],
       "icon": "fingerprint",
       "iconRandom": false,
