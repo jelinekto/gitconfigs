@@ -46,8 +46,6 @@ user_pref("mousewheel.min_line_scroll_amount", 15);
 user_pref("network.http.referer.XOriginPolicy", 1);
 user_pref("network.protocol-handler.external.mailto", false);
 user_pref("permissions.memory_only", true);
-user_pref("privacy.clearOnShutdown.cookies", false);
-user_pref("privacy.clearOnShutdown.sessions", false);
 user_pref("privacy.cpd.cookies", false);
 user_pref("privacy.cpd.sessions", false);
 user_pref("privacy.resistFingerprinting.letterboxing", false);

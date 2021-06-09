@@ -1,2 +1,2 @@
 #!/bin/dash
-exec firefox --nightly "$@"
+exec firefox --beta "$@"

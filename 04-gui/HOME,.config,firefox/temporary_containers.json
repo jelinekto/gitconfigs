@@ -1,6 +1,6 @@
 {
   "version": "1.9.2",
-  "date": 1623273702100,
+  "date": 1623276432900,
   "preferences": {
     "automaticMode": {
       "active": true,
@@ -25,7 +25,7 @@
     "isolation": {
       "global": {
         "navigation": {
-          "action": "notsamedomain"
+          "action": "never"
         },
         "mouseClick": {
           "middle": {
