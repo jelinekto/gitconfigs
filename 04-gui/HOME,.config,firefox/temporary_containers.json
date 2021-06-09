@@ -1,6 +1,6 @@
 {
   "version": "1.9.2",
-  "date": 1623149360400,
+  "date": 1623273702100,
   "preferences": {
     "automaticMode": {
       "active": true,
@@ -37,7 +37,7 @@
             "container": "default"
           },
           "left": {
-            "action": "never",
+            "action": "notsamedomain",
             "container": "default"
           }
         },
