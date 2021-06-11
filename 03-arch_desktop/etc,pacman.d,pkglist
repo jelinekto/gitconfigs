@@ -17,7 +17,7 @@ biber
 bind
 binutils
 bison
-brave-nightly-bin
+brave-beta-bin
 btrfs-heatmap
 btrfs-progs
 busybox
@@ -157,6 +157,7 @@ pamixer
 pandoc-bin
 paru-bin
 pass
+pass-otp
 patch
 pavucontrol
 pcmanfm-gtk3
@@ -200,6 +201,7 @@ smartmontools
 spek-alternative
 squashfs-tools
 sshfs
+stow
 stress
 subliminal
 sudo
