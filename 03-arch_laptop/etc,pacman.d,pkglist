@@ -22,6 +22,7 @@ bison
 blueberry
 bluez-tools
 bluez-utils
+brave-beta-bin
 broadcom-wl-dkms
 btrfs-heatmap
 btrfs-progs
@@ -51,6 +52,7 @@ edk2-ovmf
 efibootmgr
 entr
 ethtool
+exa
 exfatprogs
 f2fs-tools
 fakeroot
@@ -168,6 +170,9 @@ pacman-contrib
 pacutils
 pamixer
 pandoc-bin
+paru-bin
+pass
+pass-otp
 patch
 pavucontrol
 pcmanfm-gtk3
@@ -211,6 +216,7 @@ smartmontools
 spek-alternative
 squashfs-tools
 sshfs
+stow
 stress
 subliminal
 sudo
@@ -246,7 +252,6 @@ udftools
 udiskie
 ufw
 ufw-extras
-ungoogled-chromium
 unp
 unrar
 upower
@@ -274,7 +279,6 @@ xorg-xrdb
 xorg-xwayland
 xsettingsd
 xxd-standalone
-yay-bin
 youtube-dl
 zathura-pdf-poppler
 zsh
