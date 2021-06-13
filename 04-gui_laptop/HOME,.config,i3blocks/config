@@ -3,7 +3,7 @@ separator_block_width=12
 
 [mpd]
 command=mpc -f ' %artist%  -  %title%' current
-interval=4
+interval=5
 signal=30
 
 [updates]
@@ -13,12 +13,12 @@ signal=25
 
 [usb]
 command=udiskie-info -a -f is_mounted | wc -l | grep -Ev '^0$'
-interval=120
+interval=180
 signal=29
 
 [volume]
 command=pamixer --get-volume-human | sed 's/^/ /'
-interval=60
+interval=120
 signal=28
 
 [brightness]
@@ -28,7 +28,7 @@ signal=27
 
 [cpufreq]
 command=echo " $(($(cat /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq)/1000)) MHz"
-interval=45
+interval=60
 signal=26
 
 [cpuusage]
