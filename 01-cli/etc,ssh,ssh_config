@@ -1,4 +1,0 @@
-Host *
-  ControlMaster yes
-  ControlPersist yes
-  ControlPath ~/.cache/.ssh_socket-%r@%h:%p
