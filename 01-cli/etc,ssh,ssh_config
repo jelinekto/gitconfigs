@@ -1,8 +1,4 @@
 Host *
-  AddressFamily inet
-  Port 22
-  Port 2222
-  Ciphers aes128-gcm@openssh.com,aes256-gcm@openssh.com,chacha20-poly1305@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr
-  ControlMaster auto
+  ControlMaster yes
   ControlPersist yes
   ControlPath ~/.cache/.ssh_socket-%r@%h:%p
