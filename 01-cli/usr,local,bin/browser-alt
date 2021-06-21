@@ -1,2 +1,2 @@
 #!/bin/dash
-exec brave "$@"
+exec chromium "$@"
