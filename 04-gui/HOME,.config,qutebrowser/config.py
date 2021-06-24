@@ -2,7 +2,7 @@ config.load_autoconfig(True)
 
 # Permanent incognito mode
 c.auto_save.session = False
-c.content.private_browsing = True
+# c.content.private_browsing = True
 
 # Privacy
 c.content.cache.size = 0
