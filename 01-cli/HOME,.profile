@@ -29,7 +29,6 @@ export  ZDOTDIR="${XDG_CONFIG_HOME}/zsh" \
 # enable wayland
 export  QT_QPA_PLATFORMTHEME=qt5ct \
         QT_QPA_PLATFORM=wayland-egl \
-        QT_WAYLAND_DISABLE_WINDOWDECORATION=1 \
         CLUTTER_BACKEND=wayland \
         SDL_VIDEODRIVER=wayland \
         MOZ_ENABLE_WAYLAND=1

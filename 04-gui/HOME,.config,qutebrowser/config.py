@@ -114,7 +114,7 @@ c.url.searchengines = {
   "DEFAULT": "{}",
   "s":    "http://127.0.0.1:8888/search?q={}",
   "si":   "http://127.0.0.1:8888/search?q=!images+{}",
-  "q":    "https://lite.qwant.com/?s=0&vt=1&q={} Qwant",
+  "q":    "https://lite.qwant.com/?s=0&vt=1&q={}",
   "qi":   "https://lite.qwant.com/?s=0&vt=1&t=images&q={}",
   "d":    "https://duckduckgo.com/?kae=-1&kp=-2&kav=1&k1=-1&kk=-1&kaj=m&kay=b&kak=-1&kax=-1&kaq=-1&kap=-1&kao=-1&kau=-1&kad=en_US&kac=-1&kt=n&k18=1&ka=n&q={}",
   "di":   "https://duckduckgo.com/?kae=-1&kp=-2&kav=1&k1=-1&kk=-1&kaj=m&kay=b&kak=-1&kax=-1&kaq=-1&kap=-1&kao=-1&kau=-1&kad=en_US&kac=-1&kt=n&k18=1&ka=n&ia=images&iax=images&q={}",
