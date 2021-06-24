@@ -22,7 +22,7 @@ printf "%s\n" "$THEME" > "${XDG_CACHE_HOME}/.pywal-theme"
 (type rofi >/dev/null 2>&1 && sed -i "s/selected-normal-foreground: @foreground/selected-normal-foreground: @background/;s/border-color: @background/border-color: $color6/" "${XDG_CACHE_HOME}/wal/colors-"*.rasi && echo '#window { border: 2; }' >> "${XDG_CACHE_HOME}/wal/colors-rofi-dark.rasi") &
 (type alacritty >/dev/null 2>&1 && alacritty-genconf) &
 (type foot >/dev/null 2>&1 && foot-genconf) &
-(pidof -x qutebrowser >/dev/null && qutebrowser --target tab-bg-silent ':config-source wal.py') &
+(pidof -x qutebrowser >/dev/null && qutebrowser --target tab-bg-silent ':config-source') &
 (pidof firefox-bin firefox >/dev/null && pywalfox update) &
 (pidof bspwm >/dev/null && ~/.config/bspwm/bspwmrc) &
 (pidof mako >/dev/null && pkill mako && nohup mako) &
