@@ -53,13 +53,13 @@ c.spellcheck.languages = ["en-GB", "cs-CZ"]
 # Completion menu
 c.completion.cmd_history_max_items = 300
 c.completion.height = '40%'
-c.completion.open_categories = ["bookmarks", "filesystem"]
+c.completion.open_categories = ["history", "bookmarks", "filesystem"]
 c.completion.shrink = True
 c.completion.use_best_match = True
 c.completion.web_history.max_items = -1
 c.history_gap_interval = -1
 
-# Zoom/scroll
+# Zoom
 c.zoom.levels = ["50%", "55%", "60%", "65%", "70%", "75%", "80%", "85%", "70%", "75%", "80%", "85%", "90%", "95%", "100%", "105%", "110%", "115%", "120%", "125%", "130%", "135%", "140%", "145%", "150%", "155%", "160%", "165%", "170%", "175%", "180%", "185%", "190%", "195%", "200%"]
 
 # Content blocking
@@ -97,7 +97,6 @@ c.content.blocking.adblock.lists = [
 
 # Bars
 c.downloads.position = 'bottom'
-c.scrolling.bar = 'always'
 c.statusbar.show = 'in-mode'
 c.statusbar.widgets = ["keypress", "tabs", "history", "url", "scroll", "progress"]
 c.tabs.indicator.width = 0
