@@ -10,12 +10,10 @@ c.content.canvas_reading = False
 c.content.cookies.accept = 'no-3rdparty'
 c.content.dns_prefetch = False
 c.content.headers.referer = 'same-domain'
+c.content.hyperlink_auditing = False
 c.content.javascript.enabled = False
-c.content.local_content_can_access_file_urls = False
-c.content.unknown_url_scheme_policy = 'allow-from-user-interaction'
 c.content.webgl = False
 c.content.webrtc_ip_handling_policy = 'disable-non-proxied-udp'
-config.set('content.local_content_can_access_file_urls', True, '*://*.pdfjs/*')
 
 # Window
 c.content.fullscreen.overlay_timeout = 0
@@ -55,13 +53,13 @@ c.spellcheck.languages = ["en-GB", "cs-CZ"]
 # Completion menu
 c.completion.cmd_history_max_items = 300
 c.completion.height = '40%'
-c.completion.open_categories = ["bookmarks", "history", "searchengines"]
+c.completion.open_categories = ["bookmarks", "filesystem"]
 c.completion.shrink = True
 c.completion.use_best_match = True
 c.completion.web_history.max_items = -1
 c.history_gap_interval = -1
 
-# Zoom
+# Zoom/scroll
 c.zoom.levels = ["50%", "55%", "60%", "65%", "70%", "75%", "80%", "85%", "70%", "75%", "80%", "85%", "90%", "95%", "100%", "105%", "110%", "115%", "120%", "125%", "130%", "135%", "140%", "145%", "150%", "155%", "160%", "165%", "170%", "175%", "180%", "185%", "190%", "195%", "200%"]
 
 # Content blocking
@@ -99,7 +97,7 @@ c.content.blocking.adblock.lists = [
 
 # Bars
 c.downloads.position = 'bottom'
-c.scrolling.bar = 'overlay'
+c.scrolling.bar = 'always'
 c.statusbar.show = 'in-mode'
 c.statusbar.widgets = ["keypress", "tabs", "history", "url", "scroll", "progress"]
 c.tabs.indicator.width = 0
@@ -248,6 +246,7 @@ c.aliases = {
 }
 
 # Low level behaviour
+c.content.prefers_reduced_motion = True
 c.logging.level.console = 'warning'
 
 # Fonts
