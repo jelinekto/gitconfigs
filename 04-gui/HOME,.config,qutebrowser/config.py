@@ -67,25 +67,34 @@ c.zoom.levels = ["50%", "55%", "60%", "65%", "70%", "75%", "80%", "85%", "70%", 
 # Content blocking
 c.content.blocking.method = 'both'
 c.content.blocking.adblock.lists = [
-    "https://easylist-downloads.adblockplus.org/abp-filters-anti-cv.txt",
-    "https://secure.fanboy.co.nz/fanboy-annoyance_ubo.txt",
-    "https://easylist.to/easylist/easylist.txt",
-    "https://easylist.to/easylist/easyprivacy.txt",
-    "https://filters.adtidy.org/extension/ublock/filters/11.txt",
-    "https://filters.adtidy.org/extension/ublock/filters/14.txt",
-    "https://filters.adtidy.org/extension/ublock/filters/2_without_easylist.txt",
-    "https://filters.adtidy.org/extension/ublock/filters/3.txt",
-    "https://filters.adtidy.org/extension/ublock/filters/4.txt",
-    "https://pgl.yoyo.org/adservers/serverlist.php?hostformat=adblockplus;showintro=0",
-    "https://raw.github.com/tomasko126/easylistczechandslovak/master/filters.txt",
-    "https://raw.githubusercontent.com/Spam404/lists/master/adblock-list.txt",
-    "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/annoyances.txt",
     "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/badware.txt",
     "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters.txt",
     "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/privacy.txt",
     "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/resource-abuse.txt",
     "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/unbreak.txt",
+    "https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_2_English/filter.txt",
+    "https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_11_Mobile/filter.txt",
+    "https://easylist.to/easylist/easylist.txt",
+    "https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_3_Spyware/filter.txt",
+    "https://easylist.to/easylist/easyprivacy.txt",
+    # "https://curben.gitlab.io/malware-filter/urlhaus-filter.txt",
+    "https://raw.githubusercontent.com/Spam404/lists/master/adblock-list.txt",
+    "https://raw.githubusercontent.com/Spam404/lists/master/main-blacklist.txt",
+    "https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_14_Annoyances/filter.txt",
+    "https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_4_Social/filter.txt",
     "https://secure.fanboy.co.nz/fanboy-antifacebook.txt",
+    "https://secure.fanboy.co.nz/fanboy-cookiemonster.txt",
+    "https://secure.fanboy.co.nz/fanboy-annoyance_ubo.txt",
+    "https://secure.fanboy.co.nz/fanboy-social.txt",
+    "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/annoyances.txt",
+    "https://someonewhocares.org/hosts/hosts",
+    "https://winhelp2002.mvps.org/hosts.txt",
+    "https://pgl.yoyo.org/adservers/serverlist.php?hostformat=adblockplus;showintro=0",
+    "https://raw.github.com/tomasko126/easylistczechandslovak/master/filters.txt",
+    "https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_17_TrackParam/filter.txt",
+    "https://www.fanboy.co.nz/enhancedstats.txt",
+    "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/LegitimateURLShortener.txt",
+    "https://secure.fanboy.co.nz/fanboy-antifonts.txt",
 ]
 
 # Bars
@@ -242,7 +251,7 @@ c.aliases = {
 c.logging.level.console = 'warning'
 
 # Fonts
-monospace = '13pt Ubuntu Mono'
+monospace = '14pt Ubuntu Mono'
 bmonospace = 'bold 14pt Ubuntu Mono'
 regular = '12pt Ubuntu Bold'
 c.fonts.completion.category = monospace
