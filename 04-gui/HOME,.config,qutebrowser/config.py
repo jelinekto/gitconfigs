@@ -6,9 +6,9 @@ c.content.private_browsing = True
 
 # Privacy
 c.content.cache.size = 0
+c.content.canvas_reading = False
 c.content.cookies.accept = 'no-3rdparty'
 c.content.dns_prefetch = False
-c.content.headers.do_not_track = False
 c.content.headers.referer = 'same-domain'
 c.content.javascript.enabled = False
 c.content.local_content_can_access_file_urls = False
@@ -43,7 +43,7 @@ c.url.start_pages = 'about:blank'
 c.downloads.location.directory = '~/Downloads'
 
 # Input
-c.editor.command = ["foot", "-T", "float", "-w", "900x600", "nvim" "{file}"]
+c.editor.command = ["foot", "-T", "float", "-w", "900x600", "nvim", "{file}"]
 c.hints.chars = 'asdfjkl;uiomrc'
 c.input.insert_mode.auto_load = True
 c.input.insert_mode.plugins = True
@@ -65,7 +65,7 @@ c.history_gap_interval = -1
 c.zoom.levels = ["50%", "55%", "60%", "65%", "70%", "75%", "80%", "85%", "70%", "75%", "80%", "85%", "90%", "95%", "100%", "105%", "110%", "115%", "120%", "125%", "130%", "135%", "140%", "145%", "150%", "155%", "160%", "165%", "170%", "175%", "180%", "185%", "190%", "195%", "200%"]
 
 # Content blocking
-c.content.blocking.method = 'adblock'
+c.content.blocking.method = 'both'
 c.content.blocking.adblock.lists = [
     "https://easylist-downloads.adblockplus.org/abp-filters-anti-cv.txt",
     "https://secure.fanboy.co.nz/fanboy-annoyance_ubo.txt",
