@@ -1,4 +1,5 @@
 **/*.zwc
+**/*qutebrowser/autoconfig.yml
 **/*qutebrowser/bookmarks/*
 **/*qutebrowser/quickmarks
 **/._cfg0000*

@@ -1,4 +1,4 @@
-config.load_autoconfig(False)
+config.load_autoconfig(True)
 
 # Permanent incognito mode
 c.auto_save.session = False
