@@ -24,8 +24,8 @@ c.window.title_format = '{current_title}{title_sep}qutebrowser'
 c.content.pdfjs = True
 
 # Site permissions
+c.content.notifications.enabled = False
 c.content.register_protocol_handler = False
-c.content.notifications.presenter = 'messages'
 
 # Tabs behaviour
 c.session.lazy_restore = True
