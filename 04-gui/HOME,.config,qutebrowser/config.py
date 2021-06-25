@@ -1,3 +1,7 @@
+import random
+import json
+import os
+
 config.load_autoconfig(True)
 
 # Permanent incognito mode
@@ -99,15 +103,16 @@ c.content.blocking.adblock.lists = [
 
 # Bars
 c.downloads.position = 'bottom'
+c.statusbar.padding = {"bottom": 1, "left": 2, "right": 2, "top": 0}
 c.statusbar.show = 'never'
 c.statusbar.widgets = ["keypress", "tabs", "history", "url", "scroll", "progress"]
 c.tabs.indicator.width = 0
+c.tabs.padding = {"bottom": 1, "left": 3, "right": 0, "top": 1}
 c.tabs.position = 'left'
 c.tabs.show = 'never'
-c.tabs.show_switching_delay = 600
-c.tabs.title.format = '{current_title}'
+c.tabs.title.format = '{audio}{current_title}'
 c.tabs.undo_stack_size = -1
-c.tabs.width = 120
+c.tabs.width = 70
 
 # Search engines
 c.url.searchengines = {
@@ -157,8 +162,7 @@ config.bind('<Alt-r>', 'config-source;; message-info "Config file sourced."')
 config.bind('cc', 'edit-text')
 config.bind('<Shift-s>', 'set-cmd-text -s :set')
 ## show/hide tabs bar
-config.bind('s', 'config-cycle statusbar.show always never')
-config.bind('t', 'config-cycle tabs.show always never')
+config.bind('s', 'config-cycle statusbar.show always never;; config-cycle tabs.show always never')
 ## modes
 # insert
 config.bind('a', 'mode-enter insert')
@@ -260,7 +264,7 @@ c.logging.level.console = 'warning'
 # Fonts
 monospace = '15pt Ubuntu Mono'
 bmonospace = 'bold 15pt Ubuntu Mono'
-regular = '14pt Ubuntu Bold'
+regular = '14pt Ubuntu'
 c.fonts.completion.category = monospace
 c.fonts.completion.entry = monospace
 c.fonts.debug_console = monospace
@@ -277,8 +281,6 @@ c.fonts.tabs.unselected = regular
 
 # Load pywal colours
 ## gitlab.com/jjzmajic/qutewal
-import json
-import os
 home = os.getenv('HOME')
 colors_relative = '.cache/wal/colors.json'
 daemon_relative = '.config/qutebrowser/qutewald.py'
@@ -370,8 +372,8 @@ if os.path.isfile(colors_absolute):
   c.colors.statusbar.url.error.fg = red
   c.colors.statusbar.url.fg = background
   c.colors.statusbar.url.hover.fg = blue
-  c.colors.statusbar.url.success.http.fg = gray
-  c.colors.statusbar.url.success.https.fg = foreground
+  c.colors.statusbar.url.success.http.fg = yellow
+  c.colors.statusbar.url.success.https.fg = green
   c.colors.statusbar.url.warn.fg = red
   ## tabs bar
   c.colors.tabs.bar.bg = background
