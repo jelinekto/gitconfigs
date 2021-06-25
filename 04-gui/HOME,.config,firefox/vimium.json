@@ -1,11 +1,11 @@
 {
 	"name": "Vimium C",
-	"@time": "6/4/2021, 5:36:28 PM",
-	"time": 1622828188500,
+	"@time": "6/25/2021, 10:42:40 PM",
+	"time": 1624660960300,
 	"environment": {
 		"extension": "1.90.2",
 		"platform": "linux",
-		"firefox": 91
+		"firefox": 78
 	},
 	"exclusionRules": [],
 	"keyMappings": [
@@ -93,7 +93,7 @@
 	"nextPatterns": "next,more,newer,>,›,→,»,≫,>>,další,následující,novější",
 	"notifyUpdate": false,
 	"previousPatterns": "prev,previous,back,older,<,‹,←,«,≪,<<,starší,předchozí,předešlé,předešlý",
-	"scrollStepSize": 150,
+	"scrollStepSize": 50,
 	"searchEngines": [
 		"s:    http://127.0.0.1:8888/search?q=%s Searx",
 		"si:   http://127.0.0.1:8888/search?q=!images+%s SearxImages",
