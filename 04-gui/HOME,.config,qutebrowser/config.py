@@ -256,6 +256,8 @@ c.aliases = {
 # Low level behaviour
 c.content.prefers_reduced_motion = True
 c.logging.level.console = 'warning'
+c.qt.force_software_rendering = 'chromium'
+c.qt.low_end_device_mode = 'always'
 
 # Fonts
 monospace = '15pt Ubuntu Mono'
