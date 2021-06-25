@@ -97,7 +97,7 @@ c.content.blocking.adblock.lists = [
 
 # Bars
 c.downloads.position = 'bottom'
-c.statusbar.show = 'in-mode'
+c.statusbar.show = 'never'
 c.statusbar.widgets = ["keypress", "tabs", "history", "url", "scroll", "progress"]
 c.tabs.indicator.width = 0
 c.tabs.position = 'left'
@@ -152,9 +152,10 @@ config.bind('<Escape>', 'clear-messages;; clear-keychain;; search')
 config.bind('<Alt-Shift-r>', 'spawn sh -c "pkill qutebrowser && exec qutebrowser"')
 config.bind('<Alt-r>', 'config-source;; message-info "Config file sourced."')
 config.bind('cc', 'edit-text')
-config.bind('ss', 'set-cmd-text -s :set')
+config.bind('<Shift-s>', 'set-cmd-text -s :set')
 ## show/hide tabs bar
-config.bind('<Alt-b>', 'config-cycle tabs.show always never')
+config.bind('s', 'config-cycle statusbar.show always never')
+config.bind('t', 'config-cycle tabs.show always never')
 ## modes
 # insert
 config.bind('a', 'mode-enter insert')
@@ -182,7 +183,6 @@ config.bind('<Alt-Space>', 'mode-enter normal', mode='passthrough')
 # caret
 config.bind('v', 'mode-enter caret')
 # hints
-config.bind('t', 'hint')
 config.bind('I', 'hint inputs')
 ## history
 config.bind('L', 'forward')
@@ -203,7 +203,7 @@ config.unbind('d')
 config.bind('dd', 'tab-close')
 config.unbind('u')
 config.bind('U', 'undo')
-config.bind('<Ctrl-t>', 'set-cmd-text -ts :open -t')
+config.bind('<Ctrl-t>', 'set-cmd-text -s :open -t')
 config.bind('<Alt-0>', 'open -t about:blank')
 config.bind('<Alt-9>', 'tab-focus 9')
 config.bind('M', 'tab-mute')
@@ -232,6 +232,12 @@ config.bind(';i', 'config-cycle --print --pattern *://*.{url:host}/* content.ima
 ## External apps/scripts
 config.bind(';m', 'spawn mpv {url}')
 config.bind(';M', 'hint links spawn mpv {hint-url}')
+config.bind('<Alt-Shift-p>', 'spawn --userscript qute-pass')
+config.bind('<Alt-o>', 'spawn --userscript qute-pass --username-only')
+config.bind('<Alt-p>', 'spawn --userscript qute-pass --password-only')
+config.bind('<Alt-Shift-p>', 'spawn --userscript qute-pass', mode='insert')
+config.bind('<Alt-o>', 'spawn --userscript qute-pass --username-only', mode='insert')
+config.bind('<Alt-p>', 'spawn --userscript qute-pass --password-only', mode='insert')
 
 # Aliases
 c.aliases = {
