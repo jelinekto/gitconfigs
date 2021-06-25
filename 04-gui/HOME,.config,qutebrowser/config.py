@@ -43,6 +43,7 @@ c.downloads.location.directory = '~/Downloads'
 # Input
 c.editor.command = ["foot", "-T", "float", "-w", "900x600", "nvim", "{file}"]
 c.hints.chars = 'asdfjkl;uiomrc'
+c.input.forward_unbound_keys = 'all'
 c.input.insert_mode.auto_load = True
 c.input.insert_mode.plugins = True
 c.input.partial_timeout = 2000
