@@ -382,4 +382,4 @@ if os.path.isfile(colors_absolute):
   c.colors.tabs.indicator.start = green
   c.colors.tabs.indicator.error = red
   ## page backround
-  # c.colors.webpage.bg = background
+  c.colors.webpage.bg = background

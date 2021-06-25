@@ -1,7 +1,7 @@
 #!/bin/dash
 _sanitize() {
   if ! pidof -x /usr/bin/qutebrowser >/dev/null; then
-    fd -HL -E '*.bdic' -E 'qtwebengine_dictionaries' -E 'adblock-cache.dat' -E 'blocked-hosts' -E 'state' . ~/.local/share/qutebrowser -X rm -R
+    fd -HL -E '*.bdic' -E 'qtwebengine_dictionaries' -E 'adblock-cache.dat' -E 'blocked-hosts' -E 'state' . ~/.local/share/qutebrowser -X rm -R 2>/dev/null
     rm -R "${XDG_CACHE_HOME}/qutebrowser" 2>/dev/null
   fi
 }
