@@ -84,6 +84,7 @@ c.content.blocking.adblock.lists = [
     "https://secure.fanboy.co.nz/fanboy-cookiemonster.txt",
     "https://secure.fanboy.co.nz/fanboy-annoyance_ubo.txt",
     "https://secure.fanboy.co.nz/fanboy-social.txt",
+    "https://www.i-dont-care-about-cookies.eu/abp/",
     "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/annoyances.txt",
     "https://someonewhocares.org/hosts/hosts",
     "https://winhelp2002.mvps.org/hosts.txt",
