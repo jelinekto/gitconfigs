@@ -53,7 +53,7 @@ c.spellcheck.languages = ["en-GB", "cs-CZ"]
 # Completion menu
 c.completion.cmd_history_max_items = 300
 c.completion.height = '40%'
-c.completion.open_categories = ["history", "bookmarks", "filesystem"]
+c.completion.open_categories = ["history", "bookmarks", "filesystem", "searchengines"]
 c.completion.shrink = True
 c.completion.use_best_match = True
 c.completion.web_history.max_items = -1
@@ -256,9 +256,9 @@ c.content.prefers_reduced_motion = True
 c.logging.level.console = 'warning'
 
 # Fonts
-monospace = '14pt Ubuntu Mono'
-bmonospace = 'bold 14pt Ubuntu Mono'
-regular = '12pt Ubuntu Bold'
+monospace = '15pt Ubuntu Mono'
+bmonospace = 'bold 15pt Ubuntu Mono'
+regular = '14pt Ubuntu Bold'
 c.fonts.completion.category = monospace
 c.fonts.completion.entry = monospace
 c.fonts.debug_console = monospace
