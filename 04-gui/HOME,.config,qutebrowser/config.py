@@ -1,4 +1,3 @@
-import random
 import json
 import os
 
@@ -235,14 +234,24 @@ config.bind('<Alt-d>', 'set-cmd-text :open {url:pretty}')
 config.bind(';j', 'config-cycle --print --pattern *://*.{url:host}/* content.javascript.enabled;; reload')
 config.bind(';i', 'config-cycle --print --pattern *://*.{url:host}/* content.images;; reload -f')
 ## External apps/scripts
-config.bind(';m', 'spawn mpv {url}')
-config.bind(';M', 'hint links spawn mpv {hint-url}')
+config.bind(';m', 'spawn mpv --force-window=immediate {url}')
+config.bind(';M', 'hint links spawn mpv --force-window=immediate {hint-url}')
 config.bind('<Alt-Shift-p>', 'spawn --userscript qute-pass')
 config.bind('<Alt-o>', 'spawn --userscript qute-pass --username-only')
 config.bind('<Alt-p>', 'spawn --userscript qute-pass --password-only')
 config.bind('<Alt-Shift-p>', 'spawn --userscript qute-pass', mode='insert')
 config.bind('<Alt-o>', 'spawn --userscript qute-pass --username-only', mode='insert')
 config.bind('<Alt-p>', 'spawn --userscript qute-pass --password-only', mode='insert')
+config.bind(';s', 'jseval (function () { '+
+'  var i, elements = document.querySelectorAll("body *");'+
+''+
+'  for (i = 0; i < elements.length; i++) {'+
+'    var pos = getComputedStyle(elements[i]).position;'+
+'    if (pos === "fixed" || pos == "sticky") {'+
+'      elements[i].parentNode.removeChild(elements[i]);'+
+'    }'+
+'  }'+
+'})();');
 
 # Aliases
 c.aliases = {
