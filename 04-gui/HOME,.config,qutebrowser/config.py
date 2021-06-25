@@ -158,8 +158,9 @@ config.bind('<Alt-Shift-r>', 'spawn sh -c "pkill qutebrowser && exec qutebrowser
 config.bind('<Alt-r>', 'config-source;; message-info "Config file sourced."')
 config.bind('cc', 'edit-text')
 config.bind('<Shift-s>', 'set-cmd-text -s :set')
-## show/hide tabs bar
-config.bind('s', 'config-cycle statusbar.show always never;; config-cycle tabs.show always never')
+## show/hide bars
+config.bind('s', 'config-cycle statusbar.show always never')
+config.bind('t', 'config-cycle tabs.show always never')
 ## modes
 # insert
 config.bind('a', 'mode-enter insert')
