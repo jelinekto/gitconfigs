@@ -103,8 +103,9 @@ c.tabs.indicator.width = 0
 c.tabs.position = 'left'
 c.tabs.show = 'never'
 c.tabs.show_switching_delay = 600
+c.tabs.title.format = '{current_title}'
 c.tabs.undo_stack_size = -1
-c.tabs.width = 350
+c.tabs.width = 120
 
 # Search engines
 c.url.searchengines = {
