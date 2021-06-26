@@ -44,7 +44,7 @@
 /* Shrink sidebar until hovered, when using Tree Style Tab. */
 :root {
     --thin-tab-width: 1px;
-    --wide-tab-width: 300px;
+    --wide-tab-width: 250px;
 }
 #sidebar-box:not() {
     min-width: var(--wide-tab-width) !important;
@@ -61,6 +61,6 @@
 }
 #sidebar-box:hover {
     min-width: var(--wide-tab-width) !important;
-    margin-right: -300px !important;
+    margin-right: -250px !important;
     z-index: 1;
 }

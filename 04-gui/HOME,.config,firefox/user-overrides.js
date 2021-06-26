@@ -28,6 +28,7 @@ user_pref("full-screen-api.warning.timeout", 0);
 user_pref("general.smoothScroll", false);
 user_pref("identity.fxaccounts.enabled", false);
 user_pref("keyword.enabled", true);
+user_pref("layout.css.devPixelsPerPx", "1.2");
 user_pref("media.autoplay.default", 0);
 user_pref("media.videocontrols.picture-in-picture.video-toggle.enabled", false);
 user_pref("mousewheel.min_line_scroll_amount", 15);
