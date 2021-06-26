@@ -17,7 +17,7 @@ pass >/dev/null
 
 case "$1" in
   pass*)
-    pass ls "$(fd '.gpg$' "$PASSWORD_STORE_DIR" | awk -F "${PASSWORD_STORE_DIR}/|.gpg" '{print $2}' | $MENU)" | $CLIPBOARD ;;
+    pass -c "$(fd '.gpg$' "$PASSWORD_STORE_DIR" | awk -F "${PASSWORD_STORE_DIR}/|.gpg" '{print $2}' | $MENU)" > /dev/null ;;
   user*|name*)
     fd '.gpg$' "$PASSWORD_STORE_DIR" | awk -F "${PASSWORD_STORE_DIR}/|.gpg" '{print $2}' | $MENU | rev | cut -f 1 -d '/' | rev | $CLIPBOARD ;;
 esac
