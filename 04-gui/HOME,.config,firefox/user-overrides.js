@@ -1,5 +1,4 @@
 user_pref("app.update.auto", true);
-user_pref("browser.display.use_document_fonts", 0);
 user_pref("browser.library.activity-stream.enabled", false);
 user_pref("browser.safebrowsing.downloads.enabled", false);
 user_pref("browser.safebrowsing.malware.enabled", false);
