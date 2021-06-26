@@ -1,6 +1,6 @@
 {
   "version": "1.9.2",
-  "date": 1623276902500,
+  "date": 1624710066700,
   "preferences": {
     "automaticMode": {
       "active": true,
@@ -16,16 +16,16 @@
         "blue"
       ],
       "icon": "fingerprint",
-      "iconRandom": false,
+      "iconRandom": true,
       "iconRandomExcluded": [],
-      "numberMode": "keepuntilrestart",
+      "numberMode": "reuse",
       "removal": 300000
     },
     "iconColor": "default",
     "isolation": {
       "global": {
         "navigation": {
-          "action": "never"
+          "action": "notsamedomain"
         },
         "mouseClick": {
           "middle": {
@@ -37,7 +37,7 @@
             "container": "default"
           },
           "left": {
-            "action": "never",
+            "action": "notsamedomain",
             "container": "default"
           }
         },
@@ -46,14 +46,14 @@
       },
       "domain": [],
       "mac": {
-        "action": "enabled"
+        "action": "disabled"
       },
       "reactivateDelay": 0
     },
     "browserActionPopup": true,
     "pageAction": true,
     "contextMenu": true,
-    "contextMenuBookmarks": false,
+    "contextMenuBookmarks": true,
     "keyboardShortcuts": {
       "AltC": false,
       "AltP": true,
