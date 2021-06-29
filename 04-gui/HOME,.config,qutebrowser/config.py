@@ -62,7 +62,6 @@ c.completion.web_history.max_items = -1
 c.history_gap_interval = -1
 
 # Zoom
-c.qt.environ = {'QT_SCALE_FACTOR': '1.2'}
 c.zoom.levels = ["50%", "55%", "60%", "65%", "70%", "75%", "80%", "85%", "70%", "75%", "80%", "85%", "90%", "95%", "100%", "105%", "110%", "115%", "120%", "125%", "130%", "135%", "140%", "145%", "150%", "155%", "160%", "165%", "170%", "175%", "180%", "185%", "190%", "195%", "200%"]
 
 # Content blocking
@@ -269,6 +268,7 @@ c.aliases = {
 # Low level behaviour
 c.content.prefers_reduced_motion = True
 c.logging.level.console = 'warning'
+c.qt.environ = {'QT_QPA_PLATFORM': 'xcb', 'QT_SCALE_FACTOR': '1.2'}
 
 # Fonts
 monospace = '13pt Ubuntu Mono'
