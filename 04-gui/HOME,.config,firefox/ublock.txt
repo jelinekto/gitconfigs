@@ -1,10 +1,10 @@
 {
-  "timeStamp": 1624958956500,
+  "timeStamp": 1625049200100,
   "version": "1.36.0",
   "userSettings": {
     "advancedUserEnabled": true,
     "cloudStorageEnabled": true,
-    "externalLists": "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/LegitimateURLShortener.txt\nhttps://www.fanboy.co.nz/enhancedstats.txt\nhttps://www.i-dont-care-about-cookies.eu/abp/",
+    "externalLists": "https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_17_TrackParam/filter.txt\nhttps://raw.githubusercontent.com/DandelionSprout/adfilt/master/LegitimateURLShortener.txt\nhttps://www.fanboy.co.nz/enhancedstats.txt\nhttps://www.i-dont-care-about-cookies.eu/abp/",
     "importedLists": [
       "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/LegitimateURLShortener.txt",
       "https://www.fanboy.co.nz/enhancedstats.txt",
@@ -60,7 +60,7 @@
     "vivaldi-scheme",
     "wyciwyg-scheme"
   ],
-  "dynamicFilteringString": "behind-the-scene * * noop\nbehind-the-scene * inline-script noop\nbehind-the-scene * 1p-script noop\nbehind-the-scene * 3p-script noop\nbehind-the-scene * 3p-frame noop\nbehind-the-scene * image noop\nbehind-the-scene * 3p noop\n* facebook.com * block\n* twitter.com * block\n* paypal.com * block\n* vk.com * block\n* live.com * block\n* twimg.com * block\n* gemius.pl * block\n* fonts.googleapis.com * block\n* trafficjunky.com * block\n* adobedtm.com * block\ntwitter.com twimg.com * noop\ntwitter.com twitter.com * noop\npaypal.com paypal.com * noop\nfacebook.com facebook.com * noop\ninstangram.com facebook.com * noop\n* trackad.cz * block\nvk.com vk.com * noop",
+  "dynamicFilteringString": "behind-the-scene * * noop\nbehind-the-scene * inline-script noop\nbehind-the-scene * 1p-script noop\nbehind-the-scene * 3p-script noop\nbehind-the-scene * 3p-frame noop\nbehind-the-scene * image noop\nbehind-the-scene * 3p noop",
   "urlFilteringString": "",
   "hostnameSwitchesString": "no-remote-fonts: * true\nno-csp-reports: * true\nno-remote-fonts: diep.io false\nno-remote-fonts: fontawesome.com false\nno-remote-fonts: mail.protonmail.com false\nno-remote-fonts: reddit.com false",
   "userFilters": "||analytics.^\n||adservice.^\n||ads.^\n||tracker.^\n*##.showed.cookies\n\n!||youtube.com^$3p,frame,redirect=click2load.html\n!||youtube-nocookie.com^$3p,frame,redirect=click2load.html\n    \nfacebook.com##.tkr6xdv7.n7fi1qx3.poy2od1o.j9ispegn.kr520xx4\nfacebook.com##.rek2kq2y.du4w35lb.lpgh02oy.rq0escxv:style(position:relative!important;top:0px!important;)\nfacebook.com##.ecm0bbzt.e5nlhep0.l9j0dhe7.k4urcfbm.du4w35lb\nfacebook.com##.bp9cbjyn.j83agx80.lhclo0ds.osnr6wyh.hv4rvrfc.dati1w0a.pybr56ya\nfacebook.com##.ejjq64ki.v8c10jal.e3xpq0al.d2edcug0\nfacebook.com##.e3zsy2ct.cx39uazk.qmfd67dx.mz2297xg.ox1siiyg.oh7imozk.f9o22wc5.oygrvhab.ad2k81qe.kvgmc6g5\n\ngrammarly.com##._3lor6-shadow\ngrammarly.com##._1iwa5-childrenContainer\ngrammarly.com##._1X8pZ-overlay\n\nreddit.com##.kEQVd8aneM1tVkcIKUyDT\nreddit.com##._3obgdFz00GvpqpuX8QCsNK\nreddit.com##a[href^=\"/rpan/\"]>h3:has-text(/Top livestream|Top broadcast/):nth-ancestor(7)\n\necho24.cz##.js-popup-quest.intent-exit-popup--quest.intent-exit-popup\n\nduckduckgo.com##.footer\nduckduckgo.com##.js-feedback-btn-wrap\nduckduckgo.com##.js-header-aside.header--aside\n\nwolframalpha.com##._3Rk5X._10K5v.krBQN._2LJkH._10um4\nwolframalpha.com##._3xDfU\nwolframalpha.com##._1ahcz.Ugj72\nwolframalpha.com##._28OPL\n\nroadcycling.cz##body > .hidden-xs\n\nidnes.cz###m_nativ_clankovy_horni\n\nroot.cz##.clear.promo-in-article\nroot.cz##.design-list.design-list--server-promo.js-server-promo\n\nrutracker.org###bn-page-bottom-block\nrutracker.org##.ext-links.products.bn-idx\n"
