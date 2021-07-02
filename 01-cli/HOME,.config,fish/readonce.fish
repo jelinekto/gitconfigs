@@ -23,7 +23,7 @@ abbr -a rmrf "rm -I --one-file-system -Rf"
 abbr -a ln "ln -fis"
 abbr -a free "free -h"
 abbr -a sort "sort -h"
-abbr -a du "du -h"
+abbr -a du "du -hs"
 abbr -a df "df -h"
 abbr -a g 'grep'
 abbr -a gi 'grep -i'
