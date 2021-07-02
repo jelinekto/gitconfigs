@@ -20,6 +20,7 @@ bison
 brave-beta-bin
 btrfs-heatmap
 btrfs-progs
+buku-git
 busybox
 checkbashisms
 checkpkgs
@@ -37,7 +38,6 @@ dnsmasq
 dos2unix
 dosbox
 dosfstools
-droidcam
 duperemove
 earlyoom
 ebtables
@@ -76,7 +76,7 @@ gtypist
 gzip
 hdparm
 highlight
-htop-vim-git
+htim
 hyperfine
 i3-swallow
 i3blocks
@@ -158,9 +158,11 @@ pandoc-bin
 paru-bin
 pass
 pass-otp
+passff-host-git
 patch
 pavucontrol
 pcmanfm-gtk3
+pdfjs
 pigz
 pkgconf
 pkgfile
@@ -178,13 +180,14 @@ python-prctl
 python-pynvim
 python-pywal
 python-pywalfox
+python-tldextract
 python2
 qemu
 qt5-styleplugins
 qt5-wayland
 qt5-webengine-widevine
 qt5ct
-qutebrowser
+qutebrowser-git
 rclone
 ripgrep
 rofi-lbonn-wayland-git
