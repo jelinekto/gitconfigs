@@ -99,7 +99,7 @@ abbr -a syu 'paru -Syu'
 abbr -a Syu 'paru -Syu'
 abbr -a pacd "paru -Rns"
 abbr -a depclean 'paru -Rns (paru -Qqdt)'
-abbr -a reswap "for swap in (swapon --noheadings | awk '{print $1}'); do s swapoff $swap; s swapon $swap; done"
+abbr -a reswap "for swap in (swapon --noheadings | awk '{print \$1}'); s swapoff \$swap; s swapon \$swap; end"
 abbr -a cpuvuln "grep . /sys/devices/system/cpu/vulnerabilities/*"
 abbr -a splitflac "shnsplit -f *.cue -o flac flac -0 -o %f - -t %n %t"
 
