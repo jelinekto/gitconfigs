@@ -1,5 +1,5 @@
 #!/bin/dash
-BASE="$(printf "%s" "$1 $2" | sha512sum | cut -f 1 -d ' ' | base64 | tr -d '\n' | cut -c $(seq -s , 3 3 60))"
+BASE="$(printf "%s" "$*" | sha512sum | cut -f 1 -d ' ' | base64 | tr -d '\n' | cut -c $(seq -s , 3 3 60))"
 ONE="$(printf "%s" "$BASE" | cut -c 1-5)"
 TWO="$(printf "%s" "$BASE" | cut -c 6-10)"
 THREE="$(printf "%s" "$BASE" | cut -c 11-15)"
