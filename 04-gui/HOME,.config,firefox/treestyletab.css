@@ -6,7 +6,7 @@
 tab-item {
   --tab-size: 23px !important;
   height: var(--tab-size);
-  opacity: 1.0;
+  opacity: 0.7;
   border: solid 0px;
   box-shadow: none !important;
 }
@@ -17,7 +17,7 @@ tab-item.active {
 }
 tab-item:hover {
   background: transparent;
-  opacity: 0.9;
+  opacity: 1;
   box-shadow: none !important;
 }
 
