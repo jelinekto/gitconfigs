@@ -14,6 +14,7 @@ export  LESSHISTFILE=/dev/null \
         XAUTHORITY="${XDG_DATA_HOME}/xauthority" \
         CARGO_HOME="${XDG_DATA_HOME}/cargo" \
         RUSTUP_HOME="${XDG_DATA_HOME}/rustup" \
+        DOOMLOCALDIR="${XDG_DATA_HOME}/doom" \
         GOPATH="/tmp/.go"
 
 # config files location
@@ -26,7 +27,6 @@ export  ZDOTDIR="${XDG_CONFIG_HOME}/zsh" \
         XINITRC="${XDG_CONFIG_HOME}/X11/xinitrc" \
         EMACSDIR="${XDG_CONFIG_HOME}/emacs" \
         DOOMDIR="${XDG_CONFIG_HOME}/doom" \
-        DOOMLOCALDIR="${XDG_CONFIG_HOME}/doom/local" \
         XSERVERRC="${XDG_CONFIG_HOME}/X11/xserverrc"
 
 # enable wayland
