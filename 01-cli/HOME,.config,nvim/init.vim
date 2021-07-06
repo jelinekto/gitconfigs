@@ -29,7 +29,7 @@ Plug 'machakann/vim-sandwich'
 Plug 'mbbill/undotree'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'qpkorr/vim-bufkill'
-Plug 'svermeulen/vim-easyclip'
+" Plug 'svermeulen/vim-easyclip'
 Plug 'szw/vim-maximizer'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
@@ -189,10 +189,10 @@ let g:AutoPairsCompatibleMaps = 0
 set foldtext=gitgutter#fold#foldtext()
 
 " easyclip
-nnoremap gm m
-let g:EasyClipUseSubstituteDefaults = 0
-let g:EasyClipAutoFormat = 0
-nmap <a-p> <plug>EasyClipToggleFormattedPaste
+" nnoremap gm m
+" let g:EasyClipUseSubstituteDefaults = 0
+" let g:EasyClipAutoFormat = 0
+" nmap <a-p> <plug>EasyClipToggleFormattedPaste
 
 " easymotion
 let g:EasyMotion_smartcase = 1

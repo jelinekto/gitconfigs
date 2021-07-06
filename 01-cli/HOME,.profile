@@ -24,6 +24,9 @@ export  ZDOTDIR="${XDG_CONFIG_HOME}/zsh" \
         ANDROID_SDK_HOME="${XDG_CONFIG_HOME}/android" \
         GNUPGHOME="${XDG_DATA_HOME}/gnupg" \
         XINITRC="${XDG_CONFIG_HOME}/X11/xinitrc" \
+        EMACSDIR="${XDG_CONFIG_HOME}/emacs" \
+        DOOMDIR="${XDG_CONFIG_HOME}/doom" \
+        DOOMLOCALDIR="${XDG_CONFIG_HOME}/doom/local" \
         XSERVERRC="${XDG_CONFIG_HOME}/X11/xserverrc"
 
 # enable wayland
