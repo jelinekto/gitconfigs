@@ -105,11 +105,11 @@ abbr -a splitflac "shnsplit -f *.cue -o flac flac -0 -o %f - -t %n %t"
 
 # plugins
 ## fish-global-abbreviation
-gabbr -a G "| grep"
-gabbr -a Gi "| grep -i"
-gabbr -a Gv "| grep -v"
-gabbr -a Gvi "| grep -iv"
-gabbr -a Giv "| grep -iv"
+gabbr -a G "| egrep --color=auto"
+gabbr -a Gi "| egrep --color=auto -i"
+gabbr -a Gv "| egrep -v"
+gabbr -a Gvi "| egrep -iv"
+gabbr -a Giv "| egrep -iv"
 gabbr -a A "| awk"
 gabbr -a H "| head -n"
 gabbr -a T "| tail -n"
