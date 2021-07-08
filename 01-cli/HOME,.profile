@@ -55,7 +55,7 @@ export  INT_SHELL="fish" \
         PDFREADER="zathura" \
         PDFVIEWER="zathura" \
         IMAGEVIEWER="imv" \
-        EDITOR="nvim" \
+        EDITOR="emacsclient" \
         MEDIAPLAYER="mpv" \
         TORRENTCLIENT='transmission-gtk'
 
