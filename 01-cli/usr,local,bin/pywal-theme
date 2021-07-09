@@ -28,6 +28,7 @@ printf "%s\n" "$THEME" > "${XDG_CACHE_HOME}/.pywal-theme"
 (pidof mako >/dev/null && pkill mako && nohup mako) &
 (pidof stalonetray >/dev/null && pkill stalonetray && nohup stalonetray) &
 (pidof keepassxc >/dev/null && grep -E '^ApplicationTheme=classic$' "${XDG_CONFIG_HOME}/keepassxc/keepassxc.ini" && pkill keepassxc) &
+(pidof emacs >/dev/null && /usr/bin/emacsclient -e "(load-theme 'ewal-doom-custom t)") &
 
 # GTK theme
 [ -e "${XDG_CACHE_HOME}/oomox-xresources-reverse" ] && rm -R "${XDG_CACHE_HOME}/oomox-xresources-reverse"
