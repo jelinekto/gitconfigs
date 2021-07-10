@@ -1,4 +1,7 @@
-;; Fonts
+;; start emacs server
+(server-start)
+
+;; fonts
 (setq doom-font (font-spec :family "Ubuntu Mono" :weight 'light :size 20)
       doom-variable-pitch-font (font-spec :family "Ubuntu" :weight 'light :size 20)
       doom-big-font (font-spec :family "Ubuntu" :weight 'light :size 40))
