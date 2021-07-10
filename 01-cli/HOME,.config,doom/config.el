@@ -38,8 +38,8 @@
 (define-key evil-normal-state-map (kbd "M-C") 'kill-current-buffer)
 ;; switch buffers
 (define-key evil-normal-state-map (kbd "M-w") 'counsel-switch-buffer)
-(define-key evil-normal-state-map (kbd "M-b") 'next-buffer)
-(define-key evil-normal-state-map (kbd "M-B") 'previous-buffer)
+(define-key evil-normal-state-map (kbd "M-d") 'next-buffer)
+(define-key evil-normal-state-map (kbd "M-u") 'previous-buffer)
 ;; resize windows
 (define-key evil-normal-state-map (kbd "M-[") 'evil-window-decrease-width)
 (define-key evil-normal-state-map (kbd "M-]") 'evil-window-increase-width)
