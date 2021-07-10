@@ -18,6 +18,14 @@
 ;; modeline
 (setq doom-modeline-enable-word-count t)
 
+;; centaur-tabs
+(setq centaur-tabs-set-icons t)
+(setq centaur-tabs-style "bar")
+(setq centaur-tabs-set-bar 'left)
+(setq centaur-tabs-gray-out-icons 'buffer)
+(setq centaur-tabs-set-close-button nil)
+(setq centaur-tabs-cycle-scope 'tabs)
+
 ;; org mode
 (setq org-directory "~/Documents")
 
@@ -37,9 +45,10 @@
 (define-key evil-normal-state-map (kbd "M-c") 'evil-window-delete)
 (define-key evil-normal-state-map (kbd "M-C") 'kill-current-buffer)
 ;; switch buffers
-(define-key evil-normal-state-map (kbd "M-w") 'counsel-switch-buffer)
-(define-key evil-normal-state-map (kbd "M-d") 'next-buffer)
-(define-key evil-normal-state-map (kbd "M-u") 'previous-buffer)
+(define-key evil-normal-state-map (kbd "M-w") 'centaur-tabs-counsel-switch-group)
+(define-key evil-normal-state-map (kbd "M-W") 'counsel-switch-buffer)
+(define-key evil-normal-state-map (kbd "<M-tab>") 'centaur-tabs-forward)
+(define-key evil-normal-state-map (kbd "M-;") 'centaur-tabs-forward-group)
 ;; resize windows
 (define-key evil-normal-state-map (kbd "M-[") 'evil-window-decrease-width)
 (define-key evil-normal-state-map (kbd "M-]") 'evil-window-increase-width)
