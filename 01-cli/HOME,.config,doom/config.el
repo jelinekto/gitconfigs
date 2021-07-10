@@ -11,9 +11,6 @@
 (add-to-list 'custom-theme-load-path "~/.config/doom")
 (setq doom-theme 'ewal-doom-custom)
 
-;; line numbering
-(setq display-line-numbers-type 'relative)
-
 ;; indentation
 (setq indent-tabs-mode nil)
 (setq tab-width 2)

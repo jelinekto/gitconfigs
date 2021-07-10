@@ -3,6 +3,11 @@ bind           \eo 'fish_commandline_prepend o'
 bind -M insert \eo 'fish_commandline_prepend o'
 bind           \es 'fish_commandline_prepend s'
 bind -M insert \es 'fish_commandline_prepend s'
+## cycle through completion items with Ctrl+{h,j,k,l}
+bind -M insert \cj 'down-or-search'
+bind -M insert \ck 'up-or-search'
+bind -M insert \ch 'backward-char'
+bind -M insert \cl 'forward-char'
 ## fish-global-abbreviation
 bind           ' ' '__gabbr_expand; commandline -i " "'
 bind -M insert ' ' '__gabbr_expand; commandline -i " "'
