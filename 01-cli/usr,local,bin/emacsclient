@@ -1,6 +1,0 @@
-#!/bin/dash
-if ! pidof emacs >/dev/null; then
-  emacs --daemon
-fi
-
-/usr/bin/emacsclient "$@" || /usr/local/bin/emacsclient -c "$@"
