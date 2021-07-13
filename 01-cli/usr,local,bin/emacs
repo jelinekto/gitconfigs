@@ -1,0 +1,6 @@
+#!/bin/dash
+if pidof emacs >/dev/null; then
+    exec /usr/bin/emacsclient "$@"
+else
+    exec /usr/bin/emacs "$@"
+fi
