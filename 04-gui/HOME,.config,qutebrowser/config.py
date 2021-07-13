@@ -268,7 +268,7 @@ c.aliases = {
 # Low level behaviour
 c.content.prefers_reduced_motion = True
 c.logging.level.console = 'warning'
-c.qt.environ = {'QT_QPA_PLATFORM': 'xcb', 'QT_SCALE_FACTOR': '1.2'}
+c.qt.environ = {'QT_SCALE_FACTOR': '1.2'}
 
 # Fonts
 monospace = '13pt Ubuntu Mono'
