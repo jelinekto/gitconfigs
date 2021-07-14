@@ -33,8 +33,8 @@ export  ZDOTDIR="${XDG_CONFIG_HOME}/zsh" \
 export  QT_QPA_PLATFORMTHEME=qt5ct \
         QT_QPA_PLATFORM=wayland-egl \
         CLUTTER_BACKEND=wayland \
-        SDL_VIDEODRIVER=wayland \
-        MOZ_ENABLE_WAYLAND=1
+        SDL_VIDEODRIVER=wayland
+        # MOZ_ENABLE_WAYLAND=1
 
 # apps default options
 export  WINEPREFIX="${XDG_DATA_HOME}/wine" \
