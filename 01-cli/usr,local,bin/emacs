@@ -1,6 +1,6 @@
 #!/bin/dash
 if pidof emacs >/dev/null; then
-    exec /usr/bin/emacsclient "$@"
+    /usr/bin/emacsclient "$@" || /usr/bin/emacsclient -c "$@"
 else
     exec /usr/bin/emacs "$@"
 fi
