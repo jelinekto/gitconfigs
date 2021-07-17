@@ -11,6 +11,7 @@
 **/plug.vim*
 **/supervise
 */*,greasemonkey/requires
+*/HOME,.config,emacs/*
 */HOME,.config,mpd/database
 */HOME,.config,mpv/watch_later/*
 */HOME,.config,qt5ct/colors/*
@@ -19,3 +20,4 @@
 */etc,runit,runsvdir/previous
 01-cli/etc,NetworkManager/conf.d/dns-servers.conf
 sets.conf
+!*/HOME,.config,emacs/*.el
