@@ -287,9 +287,17 @@
     (lambda () (interactive) (vterm-send-key (kbd "C-w"))))
   (setq vterm-shell '/usr/bin/fish
         vterm-max-scrollback '32000
-        vterm-buffer-name-string "vterm: %s"))
+        vterm-buffer-name-string "vterm: %s")
+  :bind ("M-RET" . vterm-other-window))
 (use-package vterm-toggle
   :after vterm
+  :config
+  (setq vterm-toggle-fullscreen-p nil)
+  (add-to-list 'display-buffer-alist
+    '((lambda(bufname _) (with-current-buffer bufname (equal major-mode 'vterm-mode)))
+      (display-buffer-reuse-window display-buffer-at-bottom)
+      (reusable-frames . visible)
+      (window-height . 0.3)))
   :bind ("M-;" . vterm-toggle))
 
 ;; various key bindings
