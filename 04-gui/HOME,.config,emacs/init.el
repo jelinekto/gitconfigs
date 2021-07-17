@@ -87,7 +87,8 @@
 (dolist (mode '(org-mode-hook
                 term-mode-hook
                 shell-mode-hook
-                eshell-mode-hook))
+                eshell-mode-hook
+                vterm-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 ;; indentation
@@ -263,6 +264,33 @@
   :diminish
   :config
   (rainbow-mode 1))
+
+;; terminal emulator
+(use-package vterm
+  :config
+  (defun vterm-counsel-yank-pop-action (orig-fun &rest args)
+    (if (equal major-mode 'vterm-mode)
+      (let ((inhibit-read-only t)
+            (yank-undo-function (lambda (_start _end) (vterm-undo))))
+        (cl-letf (((symbol-function 'insert-for-yank)
+               (lambda (str) (vterm-send-string str t))))
+            (apply orig-fun args)))
+    (apply orig-fun args)))
+  (advice-add 'counsel-yank-pop-action :around #'vterm-counsel-yank-pop-action)
+  (defun vterm-directory-sync ()
+    (interactive)
+    (when vterm--process
+      (let* ((pid (process-id vterm--process))
+            (dir (file-truename (format "/proc/%d/cwd/" pid))))
+        (setq default-directory dir))))
+  (define-key vterm-mode-map (kbd "<C-backspace>")
+    (lambda () (interactive) (vterm-send-key (kbd "C-w"))))
+  (setq vterm-shell '/usr/bin/fish
+        vterm-max-scrollback '32000
+        vterm-buffer-name-string "vterm: %s"))
+(use-package vterm-toggle
+  :after vterm
+  :bind ("M-;" . vterm-toggle))
 
 ;; various key bindings
 (global-set-key (kbd "C-M-u") 'universal-argument)
